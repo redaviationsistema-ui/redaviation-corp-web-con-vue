@@ -2,33 +2,23 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { vistas } from '../datos/sitio'
 import InicioVista from '../vistas/InicioVista.vue'
 import NosotrosVista from '../vistas/NosotrosVista.vue'
-import EcosistemaVista from '../vistas/EcosistemaVista.vue'
-import DivisionTecnicaVista from '../vistas/DivisionTecnicaVista.vue'
-import GesaVista from '../vistas/GesaVista.vue'
-import ExcelTurbinesVista from '../vistas/ExcelTurbinesVista.vue'
-import CesaVista from '../vistas/CesaVista.vue'
-import SkyGroupVista from '../vistas/SkyGroupVista.vue'
-import SolucionesDigitalesVista from '../vistas/SolucionesDigitalesVista.vue'
-import CicloDeVidaVista from '../vistas/CicloDeVidaVista.vue'
-import LatinoamericaVista from '../vistas/LatinoamericaVista.vue'
-import SociosInternacionalesVista from '../vistas/SociosInternacionalesVista.vue'
-import EstandaresVista from '../vistas/EstandaresVista.vue'
+import ServiciosVista from '../vistas/ServiciosVista.vue'
+import FlotaVista from '../vistas/FlotaVista.vue'
+import VentaAeronavesVista from '../vistas/VentaAeronavesVista.vue'
+import MantenimientoVista from '../vistas/MantenimientoVista.vue'
+import CoberturaVista from '../vistas/CoberturaVista.vue'
+import BlogVista from '../vistas/BlogVista.vue'
 import ContactoVista from '../vistas/ContactoVista.vue'
 
 const componentesPorId = {
   inicio: InicioVista,
   nosotros: NosotrosVista,
-  ecosistema: EcosistemaVista,
-  'division-tecnica': DivisionTecnicaVista,
-  gesa: GesaVista,
-  'excel-turbines': ExcelTurbinesVista,
-  cesa: CesaVista,
-  'sky-group': SkyGroupVista,
-  'soluciones-digitales': SolucionesDigitalesVista,
-  'ciclo-de-vida-aeronave': CicloDeVidaVista,
-  latinoamerica: LatinoamericaVista,
-  'socios-internacionales': SociosInternacionalesVista,
-  estandares: EstandaresVista,
+  servicios: ServiciosVista,
+  flota: FlotaVista,
+  'venta-aeronaves': VentaAeronavesVista,
+  mantenimiento: MantenimientoVista,
+  cobertura: CoberturaVista,
+  blog: BlogVista,
   contacto: ContactoVista,
 }
 
@@ -39,6 +29,7 @@ const rutas = vistas.map((vista) => ({
   meta: {
     titulo: vista.seo.titulo,
     descripcion: vista.seo.descripcion,
+    palabrasClave: vista.seo.palabrasClave?.join(', ') ?? '',
   },
 }))
 
@@ -50,18 +41,22 @@ const enrutador = createRouter({
   },
 })
 
-enrutador.afterEach((to) => {
-  document.title = to.meta.titulo ?? 'Red Aviation Co'
+function asegurarMeta(nombre) {
+  let meta = document.querySelector(`meta[name="${nombre}"]`)
 
-  let metaDescripcion = document.querySelector('meta[name="description"]')
-
-  if (!metaDescripcion) {
-    metaDescripcion = document.createElement('meta')
-    metaDescripcion.setAttribute('name', 'description')
-    document.head.appendChild(metaDescripcion)
+  if (!meta) {
+    meta = document.createElement('meta')
+    meta.setAttribute('name', nombre)
+    document.head.appendChild(meta)
   }
 
-  metaDescripcion.setAttribute('content', to.meta.descripcion ?? '')
+  return meta
+}
+
+enrutador.afterEach((to) => {
+  document.title = to.meta.titulo ?? 'Red Aviation Co.'
+  asegurarMeta('description').setAttribute('content', to.meta.descripcion ?? '')
+  asegurarMeta('keywords').setAttribute('content', to.meta.palabrasClave ?? '')
 })
 
 export default enrutador
