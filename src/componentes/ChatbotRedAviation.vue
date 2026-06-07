@@ -48,12 +48,14 @@ function agregarMensaje(tipo, texto, imagen = '', alt = '') {
 }
 
 function alternarChat() {
-  abierto.value = !abierto.value
   if (abierto.value) {
+    abierto.value = false
+    mostrarBurbuja.value = true
+    reiniciar()
+  } else {
+    abierto.value = true
     mostrarBurbuja.value = false
     desplazar()
-  } else {
-    mostrarBurbuja.value = true
   }
 }
 
