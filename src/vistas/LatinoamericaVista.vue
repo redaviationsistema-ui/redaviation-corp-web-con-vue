@@ -2,7 +2,7 @@
 import PlantillaVista from '../componentes/PlantillaVista.vue'
 import { obtenerVista } from '../datos/sitio'
 
-const vista = obtenerVista('latinoamerica')
+const vista = obtenerVista('cobertura')
 </script>
 
 <template>

@@ -6,7 +6,7 @@ import { pieSitio } from '../datos/sitio'
   <footer class="pie">
     <div class="pie__interior">
       <section class="pie__columna">
-        <span class="pie__titulo">Red Aviation Co.</span>
+        <img src="/LOGO.png" alt="Red Aviation Co." class="pie__logo" />
         <p>{{ pieSitio.descripcion }}</p>
       </section>
 
@@ -36,14 +36,16 @@ import { pieSitio } from '../datos/sitio'
       <div class="pie__legal-enlaces">
         <span v-for="item in pieSitio.legales" :key="item">{{ item }}</span>
       </div>
-      <span>Copyright © Red Aviation Co.</span>
+      <span>Todos los derechos reservados © Red Aviation Co.</span>
     </div>
   </footer>
 </template>
 
 <style scoped>
 .pie {
-  padding: 24px 0 28px;
+  padding: 48px 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.28);
 }
 
 .pie__interior,
@@ -59,11 +61,14 @@ import { pieSitio } from '../datos/sitio'
 }
 
 .pie__columna {
-  padding: 22px;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  padding: 0 22px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(217, 217, 217, 0.72);
+}
+
+.pie__columna:first-child {
+  padding-left: 0;
+  border-left: 0;
 }
 
 .pie__titulo {
@@ -72,6 +77,15 @@ import { pieSitio } from '../datos/sitio'
   color: #ffffff;
   font-family: var(--fuente-titulo);
   font-size: 1.15rem;
+}
+
+.pie__logo {
+  display: block;
+  width: 150px;
+  height: 92px;
+  margin: -12px 0 2px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .pie ul {
@@ -105,6 +119,12 @@ import { pieSitio } from '../datos/sitio'
 
   .pie__interior {
     grid-template-columns: 1fr;
+  }
+
+  .pie__columna {
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 0;
   }
 
   .pie__legal {

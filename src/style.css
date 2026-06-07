@@ -6,6 +6,8 @@
   --gris-claro: #d9d9d9;
   --fuente-ui: "Avenir Next", "Segoe UI", sans-serif;
   --fuente-titulo: "Iowan Old Style", "Palatino Linotype", serif;
+  --linea-suave: rgba(255, 255, 255, 0.12);
+  --superficie-suave: rgba(255, 255, 255, 0.035);
   color: var(--gris-claro);
   background:
     radial-gradient(circle at top left, rgba(200, 16, 46, 0.18), transparent 24%),
@@ -50,4 +52,61 @@ a {
 
 #app {
   min-height: 100vh;
+}
+
+/*
+ * Sistema editorial: las superficies se reservan para controles y contenido
+ * interactivo. Las secciones informativas se organizan con aire y divisores.
+ */
+main :where(
+  .hero,
+  .encabezado,
+  .vista__hero,
+  .estructura__hero,
+  .cesa__hero,
+  .gesa__hero,
+  .excel__hero
+) {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+main :where(.panel:not(.formulario), .tarjeta, .bloque, .servicio, .metrica) {
+  border: 0 !important;
+  border-top: 1px solid var(--linea-suave) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+main :where(.metricas) > article {
+  border: 0 !important;
+  border-left: 1px solid var(--linea-suave) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+main :where(.metricas) > article:first-child {
+  border-left-color: transparent !important;
+}
+
+main :where(.bloques, .servicios__rejilla, .diferenciales, .rejilla) > article {
+  border-radius: 0 !important;
+}
+
+main .formulario,
+main .vista-especial .tarjeta {
+  border: 1px solid var(--linea-suave) !important;
+  border-radius: 22px !important;
+  background: var(--superficie-suave) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+@media (max-width: 960px) {
+  main :where(.metricas) > article {
+    border-left: 0 !important;
+    border-top: 1px solid var(--linea-suave) !important;
+  }
 }

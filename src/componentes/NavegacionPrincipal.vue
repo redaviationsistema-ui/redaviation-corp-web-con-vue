@@ -15,8 +15,8 @@ function estaActivo(ruta) {
   <header class="navegacion">
     <div class="navegacion__interior">
       <RouterLink to="/" class="marca">
-        <span class="marca__nombre">Red Aviation Co.</span>
-        <span class="marca__descripcion">Aviación ejecutiva de alto nivel en Latinoamérica</span>
+        <img src="/LOGO.png" alt="Red Aviation Co." class="marca__logo" />
+        <span class="marca__descripcion">EXPERTOS EN AERONÁUTICA</span>
       </RouterLink>
 
       <nav class="menu" aria-label="Principal">
@@ -60,8 +60,8 @@ function estaActivo(ruta) {
 
 <style scoped>
 .navegacion {
-  position: fixed;
-  inset: 0 0 auto;
+  position: sticky;
+  top: 0;
   z-index: 20;
   backdrop-filter: blur(14px);
   background: rgba(5, 5, 5, 0.82);
@@ -80,19 +80,25 @@ function estaActivo(ruta) {
 
 .marca {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   color: #ffffff;
 }
 
-.marca__nombre {
-  font-size: 0.95rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.marca__logo {
+  width: 92px;
+  height: 58px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .marca__descripcion {
+  max-width: 130px;
   color: rgba(217, 217, 217, 0.7);
-  font-size: 0.85rem;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .menu {
@@ -140,9 +146,12 @@ function estaActivo(ruta) {
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(10, 10, 10, 0.96);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  max-height: min(72vh, 560px);
+  overflow-y: auto;
 }
 
-.menu__grupo:hover .submenu {
+.menu__grupo:hover .submenu,
+.menu__grupo:focus-within .submenu {
   display: grid;
 }
 
@@ -176,11 +185,40 @@ function estaActivo(ruta) {
 @media (max-width: 1080px) {
   .navegacion__interior {
     width: min(100%, calc(100% - 20px));
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
   }
 
   .menu {
+    grid-column: 1 / -1;
+    flex-wrap: nowrap;
     justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .menu__grupo {
+    flex: 0 0 auto;
+  }
+
+  .submenu {
+    position: fixed;
+    top: auto;
+    left: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 620px) {
+  .navegacion__interior {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    display: none;
+  }
+
+  .marca__descripcion {
+    display: none;
   }
 }
 </style>

@@ -6,45 +6,45 @@ export const vistas = [
     ruta: '/',
     menu: 'Inicio',
     seo: {
-      titulo: 'Red Aviation Co. | Aviación Ejecutiva Integral en Latinoamérica',
+      titulo: 'Red Aviation Co. | Aviación Ejecutiva Integral',
       descripcion:
-        'Soluciones integrales de aviación ejecutiva en Latinoamérica. Compra y venta de aeronaves, vuelos chárter, mantenimiento, gestión y consultoría aeronáutica.',
+        'Soluciones integrales de aviación ejecutiva. Compra y venta de aeronaves, vuelos chárter, mantenimiento, gestión y consultoría aeronáutica.',
       palabrasClave: [
         'Aviación ejecutiva',
-        'Charter privado',
+        'Vuelos privados',
         'Vuelos privados',
         'Gestión de aeronaves',
         'Compra de aeronaves',
         'Venta de aeronaves',
         'Mantenimiento aeronáutico',
-        'Aviation services Mexico',
-        'Private jet charter Mexico',
-        'Aircraft management Latin America',
+        'Servicios de aviación en México',
+        'Vuelos privados en México',
+        'Gestión internacional de aeronaves',
       ],
     },
     pretitulo: 'Inicio',
-    titulo: 'Su Socio Estratégico de Aviación en Latinoamérica',
-    subtitulo: 'Aviación Ejecutiva de Servicio Completo • Un Grupo • Una Región • Un Estándar',
+    titulo: 'Representación Privada para Activos Aeronáuticos',
+    subtitulo: 'Estrategia comercial, respaldo técnico y ejecución confidencial',
     descripcion:
-      'Si buscas una página web corporativa de alto nivel para Red Aviation Co., aquí tu visitante entiende que puede acercarse a una plataforma que integra imagen premium, capacidad técnica, conversión comercial y posicionamiento de marca en una sola experiencia.',
+      'Red Aviation Co. representa a propietarios, compradores, operadores e inversionistas en operaciones de adquisición, comercialización, mantenimiento y gestión de aeronaves de alto valor.',
     visual: {
-      etiqueta: 'Hero corporativo',
-      tipo: 'imagen principal conectada',
+      etiqueta: 'Presentación corporativa',
+      tipo: 'Aeronave representada',
       detalle:
-        'Este bloque ya puede mostrar un recurso visual local y después lo sustituyes por video, fotografía aérea o secuencia cinematográfica.',
+        'Cada operación se conduce con criterio de mercado, revisión técnica, control documental y absoluta discreción.',
       imagen: heroPrincipal,
       alt: 'Visual principal de Red Aviation Co',
     },
     metricas: [
-      { valor: 'LATAM', etiqueta: 'Cobertura regional que fortalece tu operación' },
-      { valor: '360°', etiqueta: 'Servicios integrales que puedes coordinar' },
-      { valor: 'Premium', etiqueta: 'Posicionamiento de marca para un cliente exigente' },
+      { valor: 'Privada', etiqueta: 'Representación confidencial de propietarios y compradores' },
+      { valor: '360°', etiqueta: 'Cobertura comercial, técnica y operativa' },
+      { valor: 'Alto valor', etiqueta: 'Activos evaluados con criterio aeronáutico' },
     ],
     animaciones: [
-      'Ruta aérea roja sobre el hero',
-      'Fade in del mensaje principal',
-      'Parallax suave en el recurso visual',
-      'Hover elegante en tarjetas y CTA',
+      'Representación confidencial',
+      'Análisis técnico y comercial',
+      'Coordinación documental',
+      'Ejecución integral',
     ],
   },
   {
@@ -52,66 +52,67 @@ export const vistas = [
     ruta: '/nosotros',
     menu: 'Nosotros',
     seo: {
-      titulo: 'Acerca de Red Aviation Co. | Aviación Ejecutiva en Latinoamérica',
+      titulo: 'Nosotros | Red Aviation Company',
       descripcion:
-        'Conoce la historia, misión, visión, valores, liderazgo, presencia regional y compromiso de Red Aviation Co. con la aviación ejecutiva.',
-      palabrasClave: ['Acerca de Red Aviation Co', 'empresa de aviación ejecutiva', 'aviación ejecutiva Latinoamérica'],
+        'Conoce la esencia, misión, visión, valores y cultura organizacional de Red Aviation Company.',
+      palabrasClave: ['Red Aviation Company', 'empresa de aviación ejecutiva', 'aviación privada ejecutiva'],
     },
     pretitulo: 'Nosotros',
-    titulo: 'Acerca de Red Aviation Co.',
-    subtitulo: 'La historia detrás de una plataforma regional de aviación ejecutiva',
+    titulo: 'Red Aviation Company, expertos en aeronáutica',
+    subtitulo: 'Aviación ejecutiva, gestión y representación de activos',
     descripcion:
-      'Aquí le explicas a tu visitante quién eres, cómo llegaste hasta aquí y por qué puede confiar en una organización que combina visión comercial, infraestructura técnica y criterio regional.',
+      'Soluciones integrales con conocimiento técnico y atención personalizada.',
     visual: {
       etiqueta: 'Historia y presencia',
-      tipo: 'imagen institucional',
-      detalle: 'Espacio ideal para colocar equipo directivo, hangar, mapa corporativo o fotografía institucional.',
-      imagen: heroPrincipal,
-      alt: 'Visual institucional de Red Aviation Co',
+      tipo: 'Presencia operativa',
+      detalle: 'Nuestro equipo participa directamente en la coordinación y ejecución de operaciones aeronáuticas.',
+      imagen: '/imagenes/nosotros/imagen-institucional.png',
+      alt: 'Personal operativo de Red Aviation Co. en plataforma',
     },
-    animaciones: ['Entrada progresiva de bloques institucionales', 'Línea temporal de historia', 'Mapa regional iluminado'],
+    animaciones: ['Atención personalizada', 'Excelencia operativa', 'Desarrollo estratégico'],
     bloques: [
       {
-        titulo: 'Nuestra Historia',
+        titulo: 'Esencia de la Marca',
         descripcion:
-          'Cuando cuentas tu historia en segunda persona, haces que tu visitante entienda cómo construiste una plataforma que hoy puede resolver necesidades comerciales y técnicas en varios mercados de Latinoamérica.',
-        items: ['Orígenes del grupo', 'Evolución de servicios', 'Consolidación regional'],
+          'Red Aviation Company nace como una empresa de aviación ejecutiva enfocada en brindar soluciones aeronáuticas integrales con un enfoque humano, profesional y orientado a la experiencia del cliente. Cada servicio se basa en confianza, conocimiento técnico y excelencia operativa.',
+        items: ['Enfoque humano', 'Conocimiento técnico', 'Excelencia operativa'],
       },
       {
-        titulo: 'Nuestra Misión',
+        titulo: 'Misión',
         descripcion:
-          'Aquí dejas claro que tu propósito es ayudarle a propietarios, operadores e inversionistas a tomar decisiones con más respaldo técnico, comercial y operativo.',
-        items: ['Acompañamiento integral', 'Ejecución confiable', 'Visión de largo plazo'],
+          'Brindar servicios aeronáuticos integrales en aviación privada ejecutiva mediante soluciones estratégicas, seguras y personalizadas, creando experiencias excepcionales para cada cliente a través de la profesionalización, innovación y compromiso operativo.',
+        items: ['Soluciones estratégicas', 'Seguridad', 'Atención personalizada'],
       },
       {
-        titulo: 'Nuestra Visión',
+        titulo: 'Visión',
         descripcion:
-          'Esta sección te permite posicionarte como una referencia regional para quienes buscan una relación más sofisticada con la aviación ejecutiva.',
-        items: ['Liderazgo regional', 'Innovación operacional', 'Expansión sostenible'],
+          'Ser una empresa referente en aviación ejecutiva privada, reconocida por su excelencia operativa, atención de alto nivel y desarrollo estratégico dentro del sector aeronáutico, consolidando una cultura basada en liderazgo, experiencia y crecimiento sostenible.',
+        items: ['Liderazgo', 'Experiencia', 'Crecimiento sostenible'],
       },
       {
-        titulo: 'Nuestros Valores',
+        titulo: 'Valores Corporativos',
         descripcion:
-          'Aquí puedes hablarle al cliente de forma directa sobre transparencia, responsabilidad y excelencia, para que entienda cómo trabajas antes incluso de hablar con un asesor.',
-        items: ['Transparencia', 'Responsabilidad', 'Excelencia técnica', 'Integridad'],
+          'Nuestra forma de trabajar se guía por principios que protegen cada operación, fortalecen las relaciones y elevan continuamente la calidad del servicio.',
+        items: [
+          'Seguridad: priorizamos estándares aeronáuticos y responsabilidad operativa.',
+          'Experiencia exclusiva: creamos servicios memorables, no solo soluciones.',
+          'Profesionalismo: actuamos con ética, preparación y compromiso.',
+          'Confianza: construimos relaciones sólidas con clientes, equipo y aliados.',
+          'Innovación: mejoramos constantemente procesos, tecnología y servicio.',
+          'Trabajo en equipo: operamos con coordinación, respeto y liderazgo compartido.',
+        ],
       },
       {
-        titulo: 'Liderazgo',
+        titulo: 'Cultura Organizacional',
         descripcion:
-          'Tu visitante necesita saber que detrás de la marca hay personas capaces de coordinar escenarios complejos con criterio y calma.',
-        items: ['Dirección estratégica', 'Experiencia sectorial', 'Capacidad de ejecución'],
+          'Red Aviation Company promueve un ambiente profesional donde la comunicación estratégica entre Dirección General y Dirección Administrativa fortalece la toma de decisiones. Priorizamos el crecimiento interno, la organización estructurada y el desarrollo del talento especializado.',
+        items: ['Comunicación estratégica', 'Crecimiento interno', 'Talento especializado'],
       },
       {
-        titulo: 'Presencia en Latinoamérica',
+        titulo: 'Promesa de Marca',
         descripcion:
-          'Aquí conviertes la cobertura regional en una ventaja clara para el cliente que busca proximidad operativa y conocimiento local.',
-        items: ['México', 'Centroamérica', 'Caribe', 'Sudamérica', 'Estados Unidos'],
-      },
-      {
-        titulo: 'Certificaciones y Cumplimiento',
-        descripcion:
-          'Esta parte refuerza que no solo proyectas imagen premium, sino también disciplina operativa y respeto por estándares de la industria.',
-        items: ['Cumplimiento regulatorio', 'Documentación técnica', 'Procesos auditables'],
+          'Ofrecer soluciones aeronáuticas ejecutivas con atención personalizada, eficiencia operativa y una experiencia exclusiva que refleje confianza, seguridad y excelencia.',
+        items: ['Atención personalizada', 'Eficiencia operativa', 'Confianza y excelencia'],
       },
     ],
   },
@@ -120,24 +121,31 @@ export const vistas = [
     ruta: '/servicios',
     menu: 'Servicios',
     seo: {
-      titulo: 'Soluciones Integrales de Aviación Ejecutiva | Red Aviation Co.',
+      titulo: 'Representación Aeronáutica Integral | Red Aviation Company',
       descripcion:
-        'Compra y venta de aeronaves, charter privado, gestión de aeronaves, mantenimiento y consultoría aeronáutica para propietarios y operadores.',
-      palabrasClave: ['servicios de aviación ejecutiva', 'charter privado', 'compra de aeronaves', 'gestión de aeronaves'],
+        'Representación, compra y venta, gestión, mantenimiento, vuelos privados y consultoría para propietarios y operadores de aeronaves.',
+      palabrasClave: [
+        'representación aeronáutica',
+        'compra y venta de aeronaves',
+        'gestión de aeronaves',
+        'mantenimiento aeronáutico',
+        'vuelos privados',
+        'consultoría aeronáutica',
+      ],
     },
     pretitulo: 'Servicios',
-    titulo: 'Soluciones Integrales de Aviación Ejecutiva',
-    subtitulo: 'Servicios diseñados para acompañarte desde la estrategia hasta la operación',
+    titulo: 'Representación Aeronáutica Integral',
+    subtitulo: 'Una estructura para todo el ciclo de vida de su aeronave',
     descripcion:
-      'Aquí organizas la oferta del grupo para que tu visitante entienda de inmediato qué servicio necesita y por qué puede resolverlo contigo sin saltar entre proveedores desconectados.',
+      'Integramos capacidades comerciales, técnicas y operativas para representar, gestionar y proteger activos aeronáuticos de alto valor.',
     visual: {
       etiqueta: 'Servicios integrados',
       tipo: 'imagen principal conectada',
-      detalle: 'Reserva este bloque para visuales de cabina, jets, mantenimiento o tecnología comercial.',
+      detalle: 'Capacidad para coordinar la operación completa sin fragmentar la responsabilidad entre proveedores.',
       imagen: heroPrincipal,
       alt: 'Visual de servicios de Red Aviation Co',
     },
-    animaciones: ['Transición entre categorías', 'Cards con hover premium', 'Entrada escalonada de servicios'],
+    animaciones: ['Evaluación del requerimiento', 'Estructuración de la solución', 'Seguimiento especializado'],
   },
   {
     id: 'flota',
@@ -146,22 +154,22 @@ export const vistas = [
     seo: {
       titulo: 'Nuestra Flota Disponible | Red Aviation Co.',
       descripcion:
-        'Conoce la flota disponible de Red Aviation Co. con jets ligeros, medianos, pesados y helicópteros, con fichas listas para cotización.',
-      palabrasClave: ['flota privada', 'jets ejecutivos', 'helicópteros', 'cotización de aeronaves'],
+        'Conoce la flota disponible de Red Aviation Co. con aeronaves ligeras, medianas, de largo alcance y helicópteros, con fichas listas para cotización.',
+      palabrasClave: ['flota privada', 'aeronaves ejecutivas', 'helicópteros', 'cotización de aeronaves'],
     },
     pretitulo: 'Flota',
     titulo: 'Nuestra Flota Disponible',
     subtitulo: 'Aeronaves presentadas para ayudarte a comparar, evaluar y cotizar mejor',
     descripcion:
-      'En esta vista le das a tu cliente una experiencia clara para filtrar aeronaves, revisar especificaciones y avanzar hacia una cotización sin fricción.',
+      'Selección de aeronaves con información operativa y comercial para facilitar comparaciones, evaluación y solicitud de propuestas.',
     visual: {
       etiqueta: 'Galería de flota',
       tipo: 'imagen conectada',
-      detalle: 'Espacio para foto hero de aeronaves o carrusel premium.',
+      detalle: 'Aeronaves presentadas con especificaciones, alcance, capacidad y disponibilidad comercial.',
       imagen: heroPrincipal,
       alt: 'Visual de la flota disponible',
     },
-    animaciones: ['Filtros activos con transición', 'Cambio de tarjetas por categoría', 'Hover sobre aeronaves'],
+    animaciones: ['Comparación de aeronaves', 'Información operativa', 'Solicitud de propuesta'],
   },
   {
     id: 'venta-aeronaves',
@@ -171,21 +179,21 @@ export const vistas = [
       titulo: 'Aeronaves Disponibles para Venta | Red Aviation Co.',
       descripcion:
         'Explora aeronaves disponibles para venta con fichas detalladas, especificaciones técnicas y contacto inmediato con asesores especializados.',
-      palabrasClave: ['venta de aeronaves', 'aeronaves ejecutivas en venta', 'aircraft sales Latin America'],
+      palabrasClave: ['venta de aeronaves', 'aeronaves ejecutivas en venta', 'venta internacional de aeronaves'],
     },
     pretitulo: 'Aeronaves en Venta',
     titulo: 'Aeronaves Disponibles para Venta',
     subtitulo: 'Fichas comerciales preparadas para facilitar tu evaluación',
     descripcion:
-      'Aquí presentas inventario, especificaciones y argumentos comerciales para que tu visitante sienta que la conversación puede avanzar con información concreta desde el primer contacto.',
+      'Activos aeronáuticos representados con información técnica, condición documentada y una estrategia comercial definida.',
     visual: {
       etiqueta: 'Inventario comercial',
       tipo: 'imagen conectada',
-      detalle: 'Espacio ideal para fotografía editorial de aeronave y ficha destacada.',
+      detalle: 'Presentación comercial orientada a compradores calificados y procesos confidenciales.',
       imagen: heroPrincipal,
       alt: 'Visual de aeronaves en venta',
     },
-    animaciones: ['Cambio de galería principal', 'Hover de fichas', 'Destello sutil en CTA de información'],
+    animaciones: ['Presentación del activo', 'Revisión de condición', 'Contacto con compradores calificados'],
   },
   {
     id: 'mantenimiento',
@@ -194,27 +202,27 @@ export const vistas = [
     seo: {
       titulo: 'Servicios de Mantenimiento Aeronáutico | Red Aviation Co.',
       descripcion:
-        'Capacidades, certificaciones, instalaciones, soporte técnico y enfoque MRO para el mantenimiento aeronáutico de Red Aviation Co.',
-      palabrasClave: ['mantenimiento aeronáutico', 'MRO', 'soporte técnico aeronáutico', 'certificaciones aeronáuticas'],
+        'Capacidades, certificaciones, instalaciones y soporte técnico para el mantenimiento, reparación y revisión de aeronaves de Red Aviation Co.',
+      palabrasClave: ['mantenimiento aeronáutico', 'reparación de aeronaves', 'soporte técnico aeronáutico', 'certificaciones aeronáuticas'],
     },
     pretitulo: 'Mantenimiento',
     titulo: 'Servicios de Mantenimiento Aeronáutico',
-    subtitulo: 'MRO y soporte técnico diseñado para proteger disponibilidad y confianza',
+    subtitulo: 'Mantenimiento, reparación y soporte técnico para proteger disponibilidad y confianza',
     descripcion:
       'Esta vista le muestra a tu cliente que puede confiar en procesos técnicos, instalaciones, certificaciones y soporte real cuando la aeronave exige intervención profesional.',
     visual: {
-      etiqueta: 'MRO y soporte técnico',
+      etiqueta: 'Mantenimiento y soporte técnico',
       tipo: 'imagen conectada',
       detalle: 'Espacio reservado para instalaciones, estructura o entorno técnico industrial.',
       imagen: heroPrincipal,
       alt: 'Visual de mantenimiento aeronáutico',
     },
-    animaciones: ['Scroll reveal de capacidades', 'Timeline de soporte técnico', 'Fade de certificaciones'],
+    animaciones: ['Trazabilidad técnica', 'Continuidad operativa', 'Cumplimiento documental'],
     bloques: [
       {
         titulo: 'Capacidades',
         descripcion:
-          'Aquí explicas con claridad qué puedes intervenir y por qué tu estructura técnica genera confianza antes incluso de una visita comercial.',
+          'Capacidad para coordinar mantenimiento preventivo, correctivo, inspecciones y soporte especializado.',
         items: ['Preventivo', 'Correctivo', 'Inspecciones', 'Componentes', 'Soporte técnico'],
       },
       {
@@ -226,19 +234,19 @@ export const vistas = [
       {
         titulo: 'Instalaciones',
         descripcion:
-          'Aquí conviertes infraestructura física en argumento de venta, demostrando que tu operación tiene capacidad instalada real.',
+          'Infraestructura, herramientas y áreas de diagnóstico respaldan la ejecución técnica de cada intervención.',
         items: ['Hangar', 'Herramientas', 'Áreas de diagnóstico'],
       },
       {
         titulo: 'Soporte Técnico',
         descripcion:
           'Esta sección te ayuda a hablar de respuesta, continuidad y acompañamiento cuando la situación operativa no admite retrasos.',
-        items: ['AOG', 'Atención especializada', 'Continuidad operativa'],
+        items: ['Asistencia para aeronaves inmovilizadas', 'Atención especializada', 'Continuidad operativa'],
       },
       {
         titulo: 'Galería',
         descripcion:
-          'Aquí puedes integrar fotografía real para que la calidad percibida de tu servicio técnico aumente de inmediato.',
+          'Instalaciones, equipo técnico y procesos documentados demuestran capacidad instalada real.',
         items: ['Hangar', 'Equipo técnico', 'Procesos en ejecución'],
       },
     ],
@@ -248,29 +256,29 @@ export const vistas = [
     ruta: '/cobertura',
     menu: 'Cobertura',
     seo: {
-      titulo: 'Operamos en Toda Latinoamérica | Red Aviation Co.',
+      titulo: 'Cobertura Regional | Red Aviation Co.',
       descripcion:
         'Cobertura regional en México, Centroamérica, Caribe, Sudamérica y Estados Unidos para servicios integrales de aviación ejecutiva.',
-      palabrasClave: ['Latinoamérica aviación ejecutiva', 'aviation Latin America', 'cobertura regional aeronáutica'],
+      palabrasClave: ['aviación ejecutiva regional', 'servicios internacionales de aviación', 'cobertura regional aeronáutica'],
     },
     pretitulo: 'Cobertura Regional',
-    titulo: 'Operamos en Toda Latinoamérica',
+    titulo: 'Cobertura Regional',
     subtitulo: 'Una presencia regional pensada para acercarte soporte, negocio y ejecución',
     descripcion:
-      'Aquí dejas claro que no solo entiendes la región, sino que puedes moverte dentro de ella con lógica operativa, relaciones locales y capacidad de respuesta.',
+      'Coordinamos operaciones, inspecciones y relaciones comerciales en distintos mercados con conocimiento regulatorio y capacidad de respuesta.',
     visual: {
       etiqueta: 'Mapa interactivo',
       tipo: 'imagen conectada',
-      detalle: 'Reserva este espacio para mapa de Latinoamérica con rutas y puntos activos.',
+      detalle: 'Cobertura operativa para conectar activos, compradores, talleres, operadores y autoridades.',
       imagen: heroPrincipal,
       alt: 'Visual de cobertura regional',
     },
-    animaciones: ['Mapa interactivo con regiones', 'Iluminación progresiva por zonas', 'Rutas aéreas dinámicas'],
+    animaciones: ['Conocimiento regulatorio', 'Relaciones locales', 'Coordinación entre mercados'],
     bloques: [
       {
         titulo: 'México',
         descripcion:
-          'Aquí puedes explicar cómo centralizas parte importante de tu operación y por qué eso beneficia tiempos, coordinación y confianza.',
+          'Centro estratégico para coordinar operaciones, mantenimiento y oportunidades comerciales.',
       },
       {
         titulo: 'Centroamérica',
@@ -280,12 +288,12 @@ export const vistas = [
       {
         titulo: 'Caribe',
         descripcion:
-          'Aquí conviertes complejidad logística en una promesa de coordinación más simple para el cliente.',
+          'Coordinación logística y operativa para atender mercados con necesidades particulares.',
       },
       {
         titulo: 'Sudamérica',
         descripcion:
-          'Aquí posicionas al grupo como un aliado que entiende mercado, distancias y particularidades de operación regional.',
+          'Experiencia para operar entre distancias, regulaciones y condiciones comerciales diversas.',
       },
       {
         titulo: 'Estados Unidos',
@@ -297,31 +305,31 @@ export const vistas = [
   {
     id: 'blog',
     ruta: '/blog',
-    menu: 'Blog',
+    menu: 'Videos y contenido',
     seo: {
-      titulo: 'Noticias y Actualidad Aeronáutica | Red Aviation Co.',
+      titulo: 'Videos y Contenido Aeronáutico | Red Aviation Co.',
       descripcion:
-        'Contenido sobre aviación ejecutiva, mercado aeronáutico, charter privado, seguridad aérea y regulación para fortalecer autoridad de marca.',
-      palabrasClave: ['blog aviación ejecutiva', 'noticias aeronáuticas', 'mercado aeronáutico'],
+        'Videos y contenido sobre aviación ejecutiva, aeronaves, mantenimiento, operaciones y mercado aeronáutico.',
+      palabrasClave: ['videos de aviación ejecutiva', 'contenido aeronáutico', 'mercado aeronáutico'],
     },
-    pretitulo: 'Blog / Noticias',
-    titulo: 'Noticias y Actualidad Aeronáutica',
-    subtitulo: 'Contenido que te ayuda a construir autoridad, SEO y relación con tu audiencia',
+    pretitulo: 'Videos y contenido',
+    titulo: 'Contenido Audiovisual Aeronáutico',
+    subtitulo: 'Aeronaves, operaciones, mantenimiento y actividad de Red Aviation',
     descripcion:
-      'Aquí conviertes conocimiento sectorial en posicionamiento digital, porque cada artículo puede atraer búsquedas, responder dudas y reforzar la percepción de expertise.',
+      'Videos de operaciones, aeronaves, mantenimiento y gestión para conocer de cerca la capacidad de Red Aviation.',
     visual: {
       etiqueta: 'Contenido editorial',
       tipo: 'imagen conectada',
-      detalle: 'Espacio para banner editorial, mockup de artículo o visual de newsroom.',
+      detalle: 'Información especializada para propietarios, compradores, operadores e inversionistas.',
       imagen: heroPrincipal,
-      alt: 'Visual del blog aeronáutico',
+      alt: 'Visual de noticias aeronáuticas',
     },
-    animaciones: ['Aparición progresiva de artículos', 'Hover editorial', 'Cambio de categorías activas'],
+    animaciones: ['Análisis de mercado', 'Conocimiento técnico', 'Información para decisiones'],
     bloques: [
       {
         titulo: 'Aviación ejecutiva',
         descripcion:
-          'Aquí puedes hablar de tendencias, decisiones de propiedad, rutas y experiencia premium para atraer a un público comercial y operativo.',
+          'Tendencias, decisiones de propiedad, operación y evolución del mercado de aeronaves ejecutivas.',
       },
       {
         titulo: 'Mercado aeronáutico',
@@ -329,9 +337,9 @@ export const vistas = [
           'Esta categoría te permite publicar análisis que ayuden a tus clientes a tomar mejores decisiones sobre compra, venta o expansión.',
       },
       {
-        titulo: 'Charter privado',
+        titulo: 'Vuelos privados',
         descripcion:
-          'Aquí conectas con usuarios que buscan flexibilidad, seguridad y servicio personalizado.',
+          'Información para quienes requieren movilidad flexible, seguridad y atención personalizada.',
       },
       {
         titulo: 'Seguridad aérea',
@@ -341,7 +349,7 @@ export const vistas = [
       {
         titulo: 'Regulación',
         descripcion:
-          'Aquí transformas complejidad normativa en contenido útil, posicionable y relevante para quienes operan en varios mercados.',
+          'Lectura práctica de requisitos y cambios normativos relevantes para operaciones en distintos mercados.',
       },
     ],
   },
@@ -359,15 +367,15 @@ export const vistas = [
     titulo: 'Contacte a Nuestro Equipo',
     subtitulo: 'La conversación comercial empieza con una experiencia clara y profesional',
     descripcion:
-      'Esta vista debe ayudarte a convertir interés en conversación real, con un formulario claro, información directa y señales de confianza para que escribirte o llamarte se sienta natural.',
+      'Nuestro equipo atiende solicitudes de representación, adquisición, comercialización, mantenimiento y gestión con absoluta discreción.',
     visual: {
       etiqueta: 'Cierre comercial',
       tipo: 'imagen conectada',
-      detalle: 'Espacio para pista, hangar nocturno o visual institucional de cierre.',
+      detalle: 'Toda conversación comienza con una revisión confidencial de objetivos, activo y alcance del mandato.',
       imagen: heroPrincipal,
       alt: 'Visual de contacto de Red Aviation Co',
     },
-    animaciones: ['Entrada suave del formulario', 'Brillo sutil en CTA', 'Fade de datos de contacto'],
+    animaciones: ['Atención confidencial', 'Respuesta especializada', 'Definición del mandato'],
   },
 ]
 
@@ -375,28 +383,50 @@ export const navegacion = [
   { ruta: '/', nombre: 'Inicio' },
   { ruta: '/nosotros', nombre: 'Nosotros' },
   {
+    ruta: '/ecosistema',
+    nombre: 'Ecosistema',
+    submenu: [
+      { ruta: '/ecosistema', nombre: 'Vista General' },
+      { ruta: '/gesa', nombre: 'GESA' },
+      { ruta: '/excel-turbines', nombre: 'Excel Turbines' },
+      { ruta: '/cesa', nombre: 'CESA' },
+      { ruta: '/sky-group', nombre: 'Sky Group' },
+    ],
+  },
+  {
     ruta: '/servicios',
     nombre: 'Servicios',
     submenu: [
       { ruta: '/servicios', nombre: 'Vista General' },
-      { ruta: '/aeronaves-en-venta', nombre: 'Compra y Venta' },
-      { ruta: '/flota', nombre: 'Charter y Flota' },
-      { ruta: '/mantenimiento', nombre: 'Mantenimiento' },
-      { ruta: '/contacto', nombre: 'Consultoría' },
+      { ruta: '/servicios/compra-venta-aeronaves', nombre: 'Compra y Venta' },
+      { ruta: '/servicios/administracion-aeronaves', nombre: 'Administración' },
+      { ruta: '/servicios/inspecciones-precompra', nombre: 'Inspecciones Precompra' },
+      { ruta: '/servicios/taxi-aereo', nombre: 'Taxi Aéreo' },
+      { ruta: '/servicios/taller-motores', nombre: 'Taller de Motores' },
+      { ruta: '/cotizador', nombre: 'Cotiza Tu Vuelo' },
+      { ruta: '/flota', nombre: 'Aeronaves' },
     ],
   },
-  { ruta: '/flota', nombre: 'Flota' },
-  { ruta: '/aeronaves-en-venta', nombre: 'Aeronaves en Venta' },
-  { ruta: '/cobertura', nombre: 'Cobertura' },
-  { ruta: '/blog', nombre: 'Blog' },
+  {
+    ruta: '/soluciones-digitales',
+    nombre: 'Más',
+    submenu: [
+      { ruta: '/soluciones-digitales', nombre: 'Soluciones Digitales' },
+      { ruta: '/ciclo-de-vida', nombre: 'Ciclo de Vida' },
+      { ruta: '/socios-internacionales', nombre: 'Socios Internacionales' },
+      { ruta: '/redes-sociales', nombre: 'Medios y Redes' },
+      { ruta: '/blog', nombre: 'Videos y contenido' },
+    ],
+  },
+  { ruta: '/blog', nombre: 'Videos y contenido' },
   { ruta: '/contacto', nombre: 'Contacto' },
 ]
 
 export const pieSitio = {
   descripcion:
-    'Red Aviation Co. integra experiencia visual, posicionamiento de marca, conversión comercial y soluciones ejecutivas para Latinoamérica.',
-  navegacionRapida: ['Inicio', 'Nosotros', 'Servicios', 'Flota', 'Cobertura', 'Blog', 'Contacto'],
-  servicios: ['Compra y Venta', 'Charter Privado', 'Gestión de Aeronaves', 'Mantenimiento', 'Consultoría'],
+    'Firma aeronáutica privada para representación, comercialización, gestión y soporte de activos de alto valor.',
+  navegacionRapida: ['Inicio', 'Nosotros', 'Ecosistema', 'Servicios', 'Soluciones Digitales', 'Videos y contenido', 'Contacto'],
+  servicios: ['Compra y Venta', 'Vuelos Privados', 'Gestión de Aeronaves', 'Mantenimiento', 'Consultoría'],
   contacto: ['ventas@redaviationcorp.com', 'sales@redskyg.com', '+52 55 8618 6576', 'WhatsApp disponible'],
   legales: ['Aviso de Privacidad', 'Política de Cookies', 'Términos y Condiciones'],
 }

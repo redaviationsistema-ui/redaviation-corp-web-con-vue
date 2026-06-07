@@ -10,7 +10,7 @@ defineProps({
   },
   detalle: {
     type: String,
-    default: 'Espacio reservado para implementar recursos visuales.',
+    default: 'Capacidad, activo o proceso respaldado por evidencia visual.',
   },
   imagen: {
     type: String,
@@ -33,7 +33,7 @@ defineProps({
       <img :src="imagen" :alt="alt" class="marcador__imagen" />
     </div>
 
-    <div v-else class="marcador__espacio">Aquí implementas la imagen o el video</div>
+    <div v-else class="marcador__espacio">Registro visual de la operación</div>
   </aside>
 </template>
 
@@ -86,7 +86,7 @@ defineProps({
 .marcador__imagen {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.32));
 }
 

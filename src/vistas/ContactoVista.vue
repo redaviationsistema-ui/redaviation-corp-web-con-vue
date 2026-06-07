@@ -11,7 +11,7 @@ const campos = [
   'Servicio requerido',
 ]
 
-const datos = ['Dirección', 'Teléfono', 'Correo', 'WhatsApp', 'Redes Sociales']
+const datos = ['Correo', 'Teléfono', 'WhatsApp', 'Redes Sociales']
 </script>
 
 <template>
@@ -37,7 +37,7 @@ const datos = ['Dirección', 'Teléfono', 'Correo', 'WhatsApp', 'Redes Sociales'
     <section class="contacto__grid">
       <form class="panel formulario">
         <p class="panel__etiqueta">Formulario</p>
-        <h2>Haz que escribirte sea fácil y confiable.</h2>
+        <h2>Inicie una conversación confidencial.</h2>
         <div class="formulario__rejilla">
           <label v-for="campo in campos" :key="campo" class="campo">
             <span>{{ campo }}</span>
@@ -48,27 +48,28 @@ const datos = ['Dirección', 'Teléfono', 'Correo', 'WhatsApp', 'Redes Sociales'
             <textarea placeholder="Cuéntanos cómo podemos ayudarte"></textarea>
           </label>
         </div>
-        <button type="button" class="boton">Solicitar Cotización</button>
+        <button type="button" class="boton">Agendar una Reunión</button>
       </form>
 
       <article class="panel">
         <p class="panel__etiqueta">Información</p>
-        <h2>Todo lo que tu cliente espera encontrar en un punto de contacto serio.</h2>
+        <h2>Atención directa para propietarios, compradores y operadores.</h2>
         <div class="datos">
           <span v-for="dato in datos" :key="dato">{{ dato }}</span>
           <span>ventas@redaviationcorp.com</span>
           <span>sales@redskyg.com</span>
           <span>+52 55 8618 6576</span>
+          <span>+1 305 464 6394</span>
         </div>
       </article>
     </section>
 
     <article class="panel">
       <p class="panel__etiqueta">Mapa</p>
-      <h2>Deja este bloque listo para tu ubicación o cobertura visual.</h2>
+      <h2>Coordinación comercial y operativa en distintos mercados.</h2>
       <p>
-        Aquí puedes integrar mapa, oficina, hangar o una visual de presencia regional para darle
-        más confianza al cierre comercial.
+        Nuestra red conecta oportunidades, activos, talleres, operadores y especialistas para
+        ejecutar cada mandato con alcance regional.
       </p>
     </article>
   </section>

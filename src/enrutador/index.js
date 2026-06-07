@@ -9,6 +9,10 @@ import MantenimientoVista from '../vistas/MantenimientoVista.vue'
 import CoberturaVista from '../vistas/CoberturaVista.vue'
 import BlogVista from '../vistas/BlogVista.vue'
 import ContactoVista from '../vistas/ContactoVista.vue'
+import CotizadorVista from '../vistas/CotizadorVista.vue'
+import VistaEstructura from '../vistas/VistaEstructura.vue'
+import EcosistemaVista from '../vistas/EcosistemaVista.vue'
+import { carruselEmpresas, carruselMultimedia, paginasNuevas, serviciosIndividuales } from '../datos/contenidoNuevo'
 
 const componentesPorId = {
   inicio: InicioVista,
@@ -33,9 +37,47 @@ const rutas = vistas.map((vista) => ({
   },
 }))
 
+const rutasNuevas = [...paginasNuevas, ...serviciosIndividuales].map((pagina) => ({
+  path: pagina.ruta,
+  name: pagina.id,
+  component: pagina.id === 'ecosistema' ? EcosistemaVista : VistaEstructura,
+  props: {
+    pagina: {
+      ...pagina,
+      carrusel:
+        pagina.id === 'ecosistema'
+          ? carruselEmpresas
+          : pagina.id === 'redes-sociales'
+            ? carruselMultimedia
+            : undefined,
+      tituloCarrusel:
+        pagina.id === 'ecosistema' ? 'Empresas del grupo' : 'Galería de contenidos',
+    },
+  },
+  meta: {
+    titulo: pagina.seo.titulo,
+    descripcion: pagina.seo.descripcion,
+    palabrasClave: pagina.seo.palabrasClave?.join(', ') ?? '',
+  },
+}))
+
+const rutasHerramientas = [
+  {
+    path: '/cotizador',
+    name: 'cotizador',
+    component: CotizadorVista,
+    meta: {
+      titulo: 'Cotizador de Vuelo Privado | Red Aviation Co.',
+      descripcion:
+        'Solicite una cotización de vuelo privado con ruta, fecha, pasajeros y aeronave preferida.',
+      palabrasClave: 'cotizador vuelo privado, cotización jet privado, vuelos privados',
+    },
+  },
+]
+
 const enrutador = createRouter({
   history: createWebHistory(),
-  routes: rutas,
+  routes: [...rutas, ...rutasNuevas, ...rutasHerramientas],
   scrollBehavior() {
     return { top: 0, behavior: 'smooth' }
   },

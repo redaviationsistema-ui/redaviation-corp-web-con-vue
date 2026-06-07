@@ -10,7 +10,7 @@ const capacidades = [
   'Mantenimiento programado',
   'Mantenimiento pesado',
   'Ensamblaje y desensamblaje',
-  'Soporte AOG',
+  'Asistencia para aeronaves inmovilizadas',
   'Consultoría técnica',
 ]
 </script>
@@ -21,7 +21,7 @@ const capacidades = [
       <div class="cesa__texto">
         <p class="cesa__pretitulo">CESA</p>
         <h1>Aquí dejas claro que tu mantenimiento mayor sí tiene estructura y método.</h1>
-        <p class="cesa__subtitulo">MRO, estructura y disciplina operativa</p>
+        <p class="cesa__subtitulo">Mantenimiento, reparación, estructura y disciplina operativa</p>
         <p class="cesa__descripcion">
           Esta vista te ayuda a explicarle a tu cliente que puede confiar en una unidad preparada
           para ejecutar mantenimiento complejo con orden, visibilidad y criterio técnico.
@@ -30,7 +30,7 @@ const capacidades = [
 
       <article class="cesa__visual">
         <span class="cesa__etiqueta">Imagen local conectada</span>
-        <strong>Timeline de mantenimiento</strong>
+        <strong>Línea temporal de mantenimiento</strong>
         <p>
           Este módulo ya usa una imagen desde <code>src/assets/</code> y puedes sustituirla cuando
           tengas fotografía real de taller, hangar o estructura.
@@ -55,8 +55,9 @@ const capacidades = [
         <p class="panel__etiqueta">Animación sugerida</p>
         <h2>Haz visible el proceso paso a paso.</h2>
         <p>
-          Puedes animar la línea de mantenimiento con activación por scroll, tarjetas industriales
-          con reveal progresivo y pequeños acentos rojos para destacar cada fase crítica.
+          Puedes animar la línea de mantenimiento durante el desplazamiento, con tarjetas
+          industriales de aparición progresiva y pequeños acentos rojos para destacar cada fase
+          crítica.
         </p>
       </article>
     </section>

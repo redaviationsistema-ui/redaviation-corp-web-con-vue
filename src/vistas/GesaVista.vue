@@ -10,13 +10,13 @@ const capacidades = [
   'Instalación de aviónica',
   'Actualizaciones de aviónica',
   'Almacén de partes',
-  'Soporte AOG',
+  'Asistencia para aeronaves inmovilizadas',
 ]
 
 const diferenciales = [
   {
     titulo: 'Cabina ejecutiva',
-    descripcion: 'Espacio para mostrar acabados, detalle interior y experiencia premium.',
+    descripcion: 'Espacio para mostrar acabados, detalle interior y una experiencia personalizada.',
   },
   {
     titulo: 'Integración técnica',
@@ -24,7 +24,7 @@ const diferenciales = [
   },
   {
     titulo: 'Respuesta operativa',
-    descripcion: 'Zona ideal para comunicar soporte AOG y disponibilidad de partes.',
+    descripcion: 'Zona ideal para comunicar asistencia a aeronaves inmovilizadas y disponibilidad de partes.',
   },
 ]
 </script>
@@ -53,7 +53,7 @@ const diferenciales = [
 
       <article class="tarjeta">
         <p class="tarjeta__etiqueta">Sección para imagen secundaria</p>
-        <h2>Bloque reservado para blueprint, taller o detalle interior.</h2>
+        <h2>Bloque reservado para plano técnico, taller o detalle interior.</h2>
         <p>
           Puedes usar aquí una imagen más cerrada de paneles, materiales, aviónica o soporte de
           partes sin rediseñar la página.

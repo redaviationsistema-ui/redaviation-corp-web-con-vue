@@ -65,7 +65,7 @@ defineProps({
 
     <section v-if="animaciones.length" class="animaciones">
       <article class="animacion">
-        <p class="animacion__etiqueta">Animación sugerida</p>
+        <p class="animacion__etiqueta">Capacidades destacadas</p>
         <div class="animacion__lista">
           <span v-for="animacion in animaciones" :key="animacion">{{ animacion }}</span>
         </div>
@@ -82,7 +82,7 @@ defineProps({
       <a
         v-for="contacto in contactos"
         :key="contacto"
-        :href="contacto.includes('@') ? `mailto:${contacto}` : `tel:${contacto.replace(/\\s+/g, '')}`"
+        :href="contacto.includes('@') ? `mailto:${contacto}` : `tel:${contacto.replace(/\s+/g, '')}`"
         class="contacto"
       >
         {{ contacto }}
@@ -117,10 +117,9 @@ defineProps({
 .animacion,
 .proceso__paso,
 .contacto {
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .vista__texto {
@@ -190,6 +189,14 @@ h2 {
   padding: 22px;
 }
 
+.metrica {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.metrica:first-child {
+  border-left: 0;
+}
+
 .metrica strong {
   display: block;
   font-size: 2rem;
@@ -198,6 +205,11 @@ h2 {
 
 .bloques {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.bloque {
+  padding: 30px 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .bloque__items,
@@ -224,9 +236,8 @@ h2 {
   min-height: 120px;
   display: flex;
   align-items: end;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.03)),
-    radial-gradient(circle at top left, rgba(200, 16, 46, 0.15), transparent 30%);
+  border-top: 2px solid #c8102e;
+  background: transparent;
 }
 
 .proceso__paso span {

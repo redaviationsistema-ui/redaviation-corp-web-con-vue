@@ -6,9 +6,9 @@ const capacidades = [
   'Remoción e instalación',
   'Mantenimiento de turbinas',
   'Diagnósticos',
-  'Overhaul',
-  'Hot section',
-  'Respuesta AOG',
+  'Revisión general',
+  'Inspección de sección caliente',
+  'Asistencia para aeronaves inmovilizadas',
 ]
 
 const diferenciales = [
@@ -36,7 +36,7 @@ const diferenciales = [
       <div class="excel__texto">
         <p class="excel__pretitulo">Excel Turbines</p>
         <h1>Aquí descubres cómo puedes tomar mejores decisiones sobre motores de turbina.</h1>
-        <p class="excel__subtitulo">Motores, diagnóstico, overhaul y respuesta AOG</p>
+        <p class="excel__subtitulo">Motores, diagnóstico, revisión general y asistencia inmediata</p>
         <p class="excel__descripcion">
           Esta vista te habla directamente para que entiendas que tu operación necesita algo más
           que mantenimiento genérico: necesita diagnóstico, intervención técnica y continuidad bajo
@@ -48,8 +48,8 @@ const diferenciales = [
         <span class="excel__etiqueta">Imagen local conectada</span>
         <strong>Motor de turbina</strong>
         <p>
-          Este bloque ya renderiza una imagen desde <code>src/assets/</code> y después puedes
-          reemplazarla por una foto o render técnico definitivo.
+          Este bloque ya muestra una imagen desde <code>src/assets/</code> y después puedes
+          reemplazarla por una fotografía o representación técnica definitiva.
         </p>
         <div class="excel__media">
           <img :src="heroPrincipal" alt="Visual local para Excel Turbines" />
@@ -72,7 +72,7 @@ const diferenciales = [
         <h2>Haz que el motor se sienta vivo y técnico.</h2>
         <p>
           Puedes aplicar rotación lenta del recurso visual, iluminación progresiva de componentes y
-          un scroll técnico que revele etapas del servicio conforme el usuario avanza.
+          un recorrido técnico que revele etapas del servicio conforme el usuario avanza.
         </p>
       </article>
     </section>
