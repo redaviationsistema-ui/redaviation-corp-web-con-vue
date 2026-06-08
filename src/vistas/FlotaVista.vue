@@ -2,7 +2,6 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import { obtenerVista } from '../datos/sitio'
-import { supabase } from '../supabase'
 
 const vista = obtenerVista('flota')
 const aeronaves = ref([])
@@ -78,6 +77,19 @@ async function observarCargaProgresiva() {
 
 async function cargarFlota() {
   cargando.value = true
+  errorCarga.value = ''
+
+  const {
+    mensajeConfiguracionSupabase,
+    supabase,
+    supabaseConfigurado,
+  } = await import('../supabase')
+
+  if (!supabaseConfigurado || !supabase) {
+    errorCarga.value = mensajeConfiguracionSupabase
+    cargando.value = false
+    return
+  }
 
   const { data, error } = await supabase
     .from('aircraft_fleet')

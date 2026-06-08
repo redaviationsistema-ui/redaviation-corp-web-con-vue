@@ -27,6 +27,11 @@ const diferenciales = [
     descripcion: 'Zona ideal para comunicar asistencia a aeronaves inmovilizadas y disponibilidad de partes.',
   },
 ]
+
+const logoTitulo = {
+  src: '/imagenes/LOGOS/Logo%20GESA.png',
+  alt: 'Logo de GESA',
+}
 </script>
 
 <template>
@@ -34,12 +39,21 @@ const diferenciales = [
     <header class="gesa__hero">
       <div class="gesa__texto">
         <p class="gesa__pretitulo">{{ vista.pretitulo }}</p>
-        <h1>{{ vista.titulo }}</h1>
+        <div class="gesa__titulo">
+          <h1>{{ vista.titulo }}</h1>
+          <img :src="logoTitulo.src" :alt="logoTitulo.alt" class="gesa__titulo-logo" />
+        </div>
         <p class="gesa__subtitulo">{{ vista.subtitulo }}</p>
         <p class="gesa__descripcion">{{ vista.descripcion }}</p>
       </div>
 
-      <MarcadorVisual v-bind="vista.visual" />
+      <div class="gesa__visual">
+        <div class="gesa__logo-panel">
+          <img :src="logoTitulo.src" :alt="logoTitulo.alt" class="gesa__logo-lateral" />
+        </div>
+
+        <MarcadorVisual v-bind="vista.visual" />
+      </div>
     </header>
 
     <section class="gesa__contenido">
@@ -110,9 +124,16 @@ const diferenciales = [
 }
 
 .gesa__texto,
+.gesa__visual,
 .tarjeta,
 .servicio {
   padding: 26px;
+}
+
+.gesa__visual {
+  display: grid;
+  gap: 18px;
+  align-content: start;
 }
 
 .gesa__pretitulo,
@@ -122,6 +143,13 @@ const diferenciales = [
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.76rem;
+}
+
+.gesa__titulo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 18px;
 }
 
 h1,
@@ -139,6 +167,32 @@ h2 {
 h1 {
   font-size: clamp(2.8rem, 5vw, 5rem);
   line-height: 0.96;
+}
+
+.gesa__titulo-logo {
+  width: clamp(82px, 10vw, 126px);
+  max-height: 82px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.28));
+  justify-self: end;
+}
+
+.gesa__logo-panel {
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at center, rgba(200, 16, 46, 0.18), transparent 56%),
+    rgba(255, 255, 255, 0.02);
+}
+
+.gesa__logo-lateral {
+  width: min(100%, 360px);
+  max-height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.32));
 }
 
 h2 {
@@ -222,6 +276,14 @@ h3 {
   .servicios__rejilla,
   .lista-capacidades {
     grid-template-columns: 1fr;
+  }
+
+  .gesa__titulo {
+    grid-template-columns: 1fr;
+  }
+
+  .gesa__titulo-logo {
+    justify-self: start;
   }
 }
 </style>

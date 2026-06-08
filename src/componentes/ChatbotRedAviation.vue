@@ -71,7 +71,6 @@ function seleccionarFlujo(flujo) {
   respuestas.value = {}
   paso.value = 'preguntas'
   agregarMensaje('usuario', flujo.titulo)
-  agregarMensaje('bot', flujo.descripcion, flujo.imagen, flujo.alt)
   agregarMensaje('bot', flujo.preguntas[0].texto)
 }
 
@@ -158,16 +157,33 @@ onBeforeUnmount(() => {
 <template>
   <div class="asistente">
     <Transition name="burbuja">
-      <aside v-if="mostrarBurbuja && !abierto" class="burbuja" aria-live="polite">
-        <button type="button" class="burbuja__contenido" @click="abrirDesdeBurbuja">
-          <strong>
-            <img src="/LOGO.png" alt="" aria-hidden="true" />
-            Red Aviation
-          </strong>
-          <span>{{ mensajeBurbuja }}</span>
-          <small>Iniciar conversación →</small>
-        </button>
-      </aside>
+      <div v-if="mostrarBurbuja && !abierto" class="burbujas-flotantes" aria-live="polite">
+        <aside class="burbuja burbuja--whatsapp">
+          <button type="button" class="burbuja__contenido" @click="abrirWhatsApp">
+            <strong>
+              <span class="burbuja__icono burbuja__icono--whatsapp" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <use href="/icons.svg#whatsapp-icon-real"></use>
+                </svg>
+              </span>
+              WhatsApp
+            </strong>
+            <span>Envíenos un mensaje directo y le atendemos de inmediato.</span>
+            <small>Escribir por WhatsApp →</small>
+          </button>
+        </aside>
+
+        <aside class="burbuja" aria-live="polite">
+          <button type="button" class="burbuja__contenido" @click="abrirDesdeBurbuja">
+            <strong>
+              <img src="/LOGO.png" alt="" aria-hidden="true" />
+              Red Aviation
+            </strong>
+            <span>{{ mensajeBurbuja }}</span>
+            <small>Iniciar conversación →</small>
+          </button>
+        </aside>
+      </div>
     </Transition>
 
     <button
@@ -281,11 +297,17 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.burbuja {
+.burbujas-flotantes {
   position: fixed;
   z-index: 1000;
   right: 98px;
   bottom: 30px;
+  display: grid;
+  gap: 14px;
+}
+
+.burbuja {
+  position: relative;
   width: min(300px, calc(100vw - 125px));
   border: 1px solid rgba(255, 113, 135, 0.28);
   border-radius: 18px;
@@ -333,6 +355,37 @@ onBeforeUnmount(() => {
   height: 19px;
   object-fit: cover;
   object-position: center;
+}
+
+.burbuja__icono {
+  display: inline-grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+}
+
+.burbuja__icono--whatsapp {
+  color: #fff;
+  background: #168a45;
+}
+
+.burbuja__icono svg {
+  width: 16px;
+  height: 16px;
+}
+
+.burbuja--whatsapp {
+  border-color: rgba(22, 138, 69, 0.42);
+}
+
+.burbuja--whatsapp::after {
+  border-top-color: rgba(22, 138, 69, 0.42);
+  border-right-color: rgba(22, 138, 69, 0.42);
+}
+
+.burbuja--whatsapp .burbuja__contenido small {
+  color: #61d38e;
 }
 
 .burbuja__contenido small {
@@ -630,6 +683,43 @@ onBeforeUnmount(() => {
   }
 }
 
+@media (max-width: 640px) {
+  .burbujas-flotantes {
+    right: 14px;
+    bottom: 96px;
+    left: 14px;
+    gap: 10px;
+    justify-items: end;
+  }
+
+  .burbuja {
+    width: min(100%, 320px);
+    border-radius: 20px;
+  }
+
+  .burbuja::after {
+    display: none;
+  }
+
+  .burbuja__contenido {
+    gap: 6px;
+    padding: 14px 15px;
+  }
+
+  .burbuja__contenido strong {
+    font-size: 0.86rem;
+  }
+
+  .burbuja__contenido > span {
+    font-size: 0.83rem;
+    line-height: 1.35;
+  }
+
+  .burbuja__contenido small {
+    font-size: 0.71rem;
+  }
+}
+
 @media (max-width: 520px) {
   .chat {
     right: 10px;
@@ -645,10 +735,29 @@ onBeforeUnmount(() => {
     height: 58px;
   }
 
+  .burbujas-flotantes {
+    right: 12px;
+    bottom: 86px;
+    left: 12px;
+  }
+
   .burbuja {
-    right: 82px;
-    bottom: 20px;
-    width: min(270px, calc(100vw - 105px));
+    width: min(100%, 292px);
+  }
+
+  .burbuja__contenido {
+    padding: 13px 14px;
+  }
+
+  .burbuja__icono,
+  .burbuja__contenido strong img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .burbuja__icono svg {
+    width: 14px;
+    height: 14px;
   }
 }
 </style>

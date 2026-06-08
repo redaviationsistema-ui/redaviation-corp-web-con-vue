@@ -881,16 +881,17 @@ h3 {
 
 @media (max-width: 720px) {
   .servicios {
-    gap: 18px;
+    gap: 14px;
   }
 
   .hero {
-    min-height: 670px;
+    min-height: 500px;
     border-radius: 22px;
   }
 
   .hero__contenido {
-    padding: 40px 24px 100px;
+    min-height: auto;
+    padding: 34px 18px 92px;
   }
 
   .hero__velo {
@@ -898,7 +899,64 @@ h3 {
   }
 
   .hero__controles {
-    left: 24px;
+    left: 18px;
+    right: 18px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    bottom: 18px;
+  }
+
+  h1 {
+    max-width: 11ch;
+    margin-bottom: 14px;
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    line-height: 0.94;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 8vw, 2.7rem);
+  }
+
+  h3 {
+    font-size: clamp(1.35rem, 6vw, 2rem);
+  }
+
+  .hero__subtitulo {
+    font-size: 0.98rem;
+  }
+
+  .hero__descripcion {
+    max-width: none;
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .seccion,
+  .cierre {
+    padding: 28px 14px;
+  }
+
+  .encabezado {
+    margin-bottom: 20px;
+  }
+
+  .catalogo__selector {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 0 0 14px;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .catalogo__selector button {
+    min-width: 0;
+    min-height: 42px;
+    justify-content: flex-start;
+    padding: 10px 12px;
+    font-size: 0.84rem;
+    text-align: left;
+    white-space: normal;
   }
 
   .metricas,
@@ -919,25 +977,56 @@ h3 {
     border-top: 0;
   }
 
+  .metricas article {
+    gap: 4px;
+    padding: 18px 14px;
+  }
+
+  .metricas strong {
+    font-size: 1.02rem;
+  }
+
+  .metricas span {
+    font-size: 0.78rem;
+  }
+
   .catalogo__destacado {
     min-height: 0;
     border-radius: 22px;
   }
 
   .catalogo__imagen {
-    min-height: 250px;
+    min-height: 220px;
+  }
+
+  .catalogo__contenido {
+    padding: 18px 14px 20px;
+  }
+
+  .catalogo__contenido ul {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .catalogo__contenido li {
+    font-size: 0.72rem;
   }
 
   .proceso__rejilla li {
     min-height: 0;
+    padding: 18px 14px;
   }
 
   .proceso__rejilla span {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
   }
 
   .especializado {
-    min-height: 280px;
+    min-height: 210px;
+  }
+
+  .especializado__contenido {
+    padding: 16px 14px;
   }
 
   .cierre {
@@ -950,8 +1039,79 @@ h3 {
   }
 
   .hero__acciones .boton,
-  .cierre__acciones .boton {
+  .cierre__acciones .boton,
+  .franja .boton {
     width: 100%;
+  }
+
+  .franja {
+    gap: 22px;
+    padding: 24px 14px;
+    border-radius: 22px;
+  }
+
+  .franja h2 {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+}
+
+@media (max-width: 460px) {
+  .hero {
+    min-height: 460px;
+  }
+
+  .hero__contenido {
+    padding: 28px 14px 78px;
+  }
+
+  .hero__acciones,
+  .cierre__acciones {
+    gap: 10px;
+  }
+
+  .boton {
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+  }
+
+  .encabezado > p:last-child,
+  .proceso p,
+  .franja > p,
+  .cierre p,
+  .catalogo__contenido p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .catalogo__selector {
+    grid-template-columns: 1fr;
+  }
+
+  .catalogo__selector button span {
+    font-size: 0.64rem;
+  }
+
+  .hero__controles button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero__controles .hero__punto {
+    width: 18px;
+  }
+
+  .hero__controles .hero__punto--activo {
+    width: 34px;
+  }
+
+  .proceso__rejilla h3 {
+    font-size: 1.28rem;
+  }
+
+  .especializado__contenido strong {
+    font-size: 1rem;
   }
 }
 

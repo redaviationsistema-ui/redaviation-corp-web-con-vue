@@ -370,10 +370,10 @@ export const vistas = [
       'Nuestro equipo atiende solicitudes de representación, adquisición, comercialización, mantenimiento y gestión con absoluta discreción.',
     visual: {
       etiqueta: 'Cierre comercial',
-      tipo: 'imagen conectada',
+      tipo: '',
       detalle: 'Toda conversación comienza con una revisión confidencial de objetivos, activo y alcance del mandato.',
-      imagen: heroPrincipal,
-      alt: 'Visual de contacto de Red Aviation Co',
+      imagen: '/imagenes/nosotros/imagen-institucional.png',
+      alt: 'Imagen institucional de Red Aviation Co. para la vista de contacto',
     },
     animaciones: ['Atención confidencial', 'Respuesta especializada', 'Definición del mandato'],
   },
@@ -401,8 +401,17 @@ export const navegacion = [
       { ruta: '/servicios/compra-venta-aeronaves', nombre: 'Compra y Venta' },
       { ruta: '/servicios/administracion-aeronaves', nombre: 'Administración' },
       { ruta: '/servicios/inspecciones-precompra', nombre: 'Inspecciones Precompra' },
+      { ruta: '/servicios/importaciones-exportaciones', nombre: 'Importaciones y Exportaciones' },
       { ruta: '/servicios/taxi-aereo', nombre: 'Taxi Aéreo' },
+      { ruta: '/servicios/ambulancia-aerea', nombre: 'Ambulancia Aérea' },
+      { ruta: '/servicios/carga-aerea', nombre: 'Carga Aérea' },
+      { ruta: '/servicios/venta-partes', nombre: 'Venta de Partes' },
       { ruta: '/servicios/taller-motores', nombre: 'Taller de Motores' },
+      {
+        ruta: '/servicios/avionica-componentes-instrumentos',
+        nombre: 'Aviónica e Instrumentos',
+      },
+      { ruta: '/servicios/mantenimiento-militar', nombre: 'Mantenimiento Militar' },
       { ruta: '/cotizador', nombre: 'Cotiza Tu Vuelo' },
       { ruta: '/flota', nombre: 'Aeronaves' },
     ],
@@ -411,9 +420,9 @@ export const navegacion = [
     ruta: '/soluciones-digitales',
     nombre: 'Más',
     submenu: [
-      { ruta: '/soluciones-digitales', nombre: 'Soluciones Digitales' },
+/*       { ruta: '/soluciones-digitales', nombre: 'Soluciones Digitales' },*/
       { ruta: '/ciclo-de-vida', nombre: 'Ciclo de Vida' },
-      { ruta: '/socios-internacionales', nombre: 'Socios Internacionales' },
+     /*  { ruta: '/socios-internacionales', nombre: 'Socios Internacionales' }, */
       { ruta: '/redes-sociales', nombre: 'Medios y Redes' },
       { ruta: '/blog', nombre: 'Videos y contenido' },
     ],

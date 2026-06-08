@@ -10,10 +10,14 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+dist.zip
 *.local
 .env
 .env.*
 !.env.example
+
+# Large local-only media that should not be committed to GitHub
+public/imagenes/servicios/RA 1.mp4
 
 # Editor directories and files
 .vscode/*

@@ -12,21 +12,21 @@ const empresasSuperiores = [
   {
     nombre: 'GESA',
     ruta: '/gesa',
-    imagen: '/imagenes/inicio/gesa.png',
+    imagen: '/imagenes/LOGOS/Logo%20GESA.png',
     alt: 'Logotipo de GESA',
     especialidad: 'Aviónica e interiores',
   },
   {
     nombre: 'CESA',
     ruta: '/cesa',
-    imagen: '/imagenes/inicio/cesa.png',
+    imagen: '/imagenes/LOGOS/Logo%20CESA.png',
     alt: 'Logotipo de CESA',
     especialidad: 'Mantenimiento estructural',
   },
   {
     nombre: 'Excel Turbines',
     ruta: '/excel-turbines',
-    imagen: '/imagenes/inicio/excel.png',
+    imagen: '/imagenes/LOGOS/Logo%20EXCEL.png',
     alt: 'Logotipo de Excel Turbines',
     especialidad: 'Motores de turbina',
   },
@@ -70,7 +70,7 @@ const empresasSuperiores = [
         <div class="conector conector--inferior" aria-hidden="true" />
 
         <RouterLink to="/sky-group" class="empresa empresa--sky">
-          <img src="/imagenes/inicio/sky-group-logo.png" alt="Logotipo de Sky Group" />
+          <img src="/imagenes/LOGOS/Logo%20SKYGROUP.png" alt="Logotipo de Sky Group" />
           <strong>Sky Group</strong>
           <span>Comercialización y consultoría</span>
         </RouterLink>

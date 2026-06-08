@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { ref } from 'vue'
+
+const props = defineProps({
   titulo: {
     type: String,
     default: 'Recurso multimedia',
@@ -28,7 +30,43 @@ defineProps({
     type: String,
     default: '',
   },
+  duracionMaxima: {
+    type: Number,
+    default: 0,
+  },
+  mostrarControles: {
+    type: Boolean,
+    default: true,
+  },
+  silenciado: {
+    type: Boolean,
+    default: false,
+  },
+  reproduccionAutomatica: {
+    type: Boolean,
+    default: false,
+  },
+  repetir: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+const videoRef = ref(null)
+
+function limitarVideo() {
+  if (!props.duracionMaxima || !videoRef.value) return
+
+  if (videoRef.value.currentTime >= props.duracionMaxima) {
+    videoRef.value.currentTime = 0
+
+    if (!props.repetir) {
+      videoRef.value.pause()
+    } else {
+      videoRef.value.play().catch(() => {})
+    }
+  }
+}
 </script>
 
 <template>
@@ -47,7 +85,17 @@ defineProps({
         allowtransparency="true"
         allowfullscreen
       />
-      <video v-else-if="tipo === 'video' && fuente" controls playsinline :poster="portada">
+      <video
+        v-else-if="tipo === 'video' && fuente"
+        ref="videoRef"
+        :controls="mostrarControles"
+        playsinline
+        :poster="portada"
+        :muted="silenciado"
+        :autoplay="reproduccionAutomatica"
+        :loop="repetir && !duracionMaxima"
+        @timeupdate="limitarVideo"
+      >
         <source :src="fuente" />
         Tu navegador no puede reproducir este video.
       </video>

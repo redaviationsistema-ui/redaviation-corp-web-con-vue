@@ -1,14 +1,63 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { navegacion } from '../datos/sitio'
 
 const rutaActual = useRoute()
 const enlaces = computed(() => navegacion)
+const submenuAbierto = ref(null)
 
 function estaActivo(ruta) {
   return rutaActual.path === ruta
 }
+
+function esMovil() {
+  return typeof window !== 'undefined' && window.innerWidth <= 1080
+}
+
+function alternarSubmenu(nombre, evento) {
+  if (!esMovil()) return
+
+  evento.preventDefault()
+  submenuAbierto.value = submenuAbierto.value === nombre ? null : nombre
+}
+
+function cerrarMenus() {
+  submenuAbierto.value = null
+
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur()
+  }
+}
+
+function manejarClickExterior(evento) {
+  if (!esMovil()) return
+
+  const objetivo = evento.target
+  if (!(objetivo instanceof Node)) return
+
+  const dentroDeNavegacion = objetivo.parentElement?.closest('.navegacion')
+  if (!dentroDeNavegacion) {
+    cerrarMenus()
+  }
+}
+
+watch(
+  () => rutaActual.path,
+  () => {
+    cerrarMenus()
+  },
+)
+
+onMounted(() => {
+  document.addEventListener('click', manejarClickExterior)
+  window.addEventListener('resize', cerrarMenus)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', manejarClickExterior)
+  window.removeEventListener('resize', cerrarMenus)
+})
 </script>
 
 <template>
@@ -26,16 +75,22 @@ function estaActivo(ruta) {
               :to="enlace.ruta"
               class="menu__enlace"
               :class="{ 'menu__enlace--activo': estaActivo(enlace.ruta) }"
+              @click="alternarSubmenu(enlace.nombre, $event)"
             >
               {{ enlace.nombre }}
             </RouterLink>
 
-            <div class="submenu">
+            <div
+              class="submenu"
+              :class="{ 'submenu--abierto': submenuAbierto === enlace.nombre }"
+              :aria-hidden="submenuAbierto === enlace.nombre ? 'false' : 'true'"
+            >
               <RouterLink
                 v-for="subenlace in enlace.submenu"
                 :key="subenlace.ruta"
                 :to="subenlace.ruta"
                 class="submenu__enlace"
+                @click="cerrarMenus"
               >
                 {{ subenlace.nombre }}
               </RouterLink>
@@ -47,13 +102,14 @@ function estaActivo(ruta) {
             :to="enlace.ruta"
             class="menu__enlace"
             :class="{ 'menu__enlace--activo': estaActivo(enlace.ruta) }"
+            @click="cerrarMenus"
           >
             {{ enlace.nombre }}
           </RouterLink>
         </template>
       </nav>
 
-      <RouterLink to="/contacto" class="cta">Solicitar Cotización</RouterLink>
+      <RouterLink to="/contacto" class="cta" @click="cerrarMenus">Solicitar Cotización</RouterLink>
     </div>
   </header>
 </template>
@@ -205,6 +261,24 @@ function estaActivo(ruta) {
     top: auto;
     left: 10px;
     right: 10px;
+    display: grid;
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+    pointer-events: none;
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .menu__grupo:hover .submenu,
+  .menu__grupo:focus-within .submenu {
+    display: grid;
+  }
+
+  .submenu--abierto {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
   }
 }
 

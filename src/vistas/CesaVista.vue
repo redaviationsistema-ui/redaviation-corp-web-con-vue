@@ -13,6 +13,11 @@ const capacidades = [
   'Asistencia para aeronaves inmovilizadas',
   'Consultoría técnica',
 ]
+
+const logoTitulo = {
+  src: '/imagenes/LOGOS/Logo%20CESA.png',
+  alt: 'Logo de CESA',
+}
 </script>
 
 <template>
@@ -20,7 +25,10 @@ const capacidades = [
     <header class="cesa__hero">
       <div class="cesa__texto">
         <p class="cesa__pretitulo">CESA</p>
-        <h1>Aquí dejas claro que tu mantenimiento mayor sí tiene estructura y método.</h1>
+        <div class="cesa__titulo">
+          <h1>Aquí dejas claro que tu mantenimiento mayor sí tiene estructura y método.</h1>
+          <img :src="logoTitulo.src" :alt="logoTitulo.alt" class="cesa__titulo-logo" />
+        </div>
         <p class="cesa__subtitulo">Mantenimiento, reparación, estructura y disciplina operativa</p>
         <p class="cesa__descripcion">
           Esta vista te ayuda a explicarle a tu cliente que puede confiar en una unidad preparada
@@ -131,6 +139,13 @@ const capacidades = [
   font-size: 0.76rem;
 }
 
+.cesa__titulo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 18px;
+}
+
 h1,
 h2,
 h3,
@@ -147,6 +162,14 @@ h2 {
 h1 {
   font-size: clamp(2.8rem, 5vw, 5rem);
   line-height: 0.96;
+}
+
+.cesa__titulo-logo {
+  width: clamp(82px, 10vw, 126px);
+  max-height: 82px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.28));
+  justify-self: end;
 }
 
 h2 {
@@ -249,6 +272,14 @@ h3 {
   .cesa__grid,
   .servicios__rejilla {
     grid-template-columns: 1fr;
+  }
+
+  .cesa__titulo {
+    grid-template-columns: 1fr;
+  }
+
+  .cesa__titulo-logo {
+    justify-self: start;
   }
 }
 </style>

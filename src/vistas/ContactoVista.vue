@@ -1,5 +1,6 @@
 <script setup>
 import { obtenerVista } from '../datos/sitio'
+import FichaGoogleBusiness from '../componentes/FichaGoogleBusiness.vue'
 
 const vista = obtenerVista('contacto')
 
@@ -56,8 +57,8 @@ const datos = ['Correo', 'Teléfono', 'WhatsApp', 'Redes Sociales']
         <h2>Atención directa para propietarios, compradores y operadores.</h2>
         <div class="datos">
           <span v-for="dato in datos" :key="dato">{{ dato }}</span>
-          <span>ventas@redaviationcorp.com</span>
           <span>sales@redskyg.com</span>
+          <span>ventas@redaviationcorp.com</span>
           <span>+52 55 8618 6576</span>
           <span>+1 305 464 6394</span>
         </div>
@@ -72,6 +73,8 @@ const datos = ['Correo', 'Teléfono', 'WhatsApp', 'Redes Sociales']
         ejecutar cada mandato con alcance regional.
       </p>
     </article>
+
+    <FichaGoogleBusiness />
   </section>
 </template>
 

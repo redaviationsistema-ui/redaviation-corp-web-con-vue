@@ -6,6 +6,10 @@ defineProps({
   titulo: String,
   subtitulo: String,
   descripcion: String,
+  logoTitulo: {
+    type: Object,
+    default: null,
+  },
   visual: {
     type: Object,
     default: () => ({}),
@@ -38,7 +42,15 @@ defineProps({
     <header class="vista__hero">
       <div class="vista__texto">
         <p class="vista__pretitulo">{{ pretitulo }}</p>
-        <h1>{{ titulo }}</h1>
+        <div class="vista__titulo-bloque" :class="{ 'vista__titulo-bloque--con-logo': logoTitulo }">
+          <h1>{{ titulo }}</h1>
+          <img
+            v-if="logoTitulo?.src"
+            :src="logoTitulo.src"
+            :alt="logoTitulo.alt"
+            class="vista__titulo-logo"
+          />
+        </div>
         <p class="vista__subtitulo">{{ subtitulo }}</p>
         <p class="vista__descripcion">{{ descripcion }}</p>
       </div>
@@ -135,6 +147,17 @@ defineProps({
   margin: 0 0 14px;
 }
 
+.vista__titulo-bloque {
+  display: block;
+}
+
+.vista__titulo-bloque--con-logo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 18px;
+}
+
 h1,
 h2,
 strong {
@@ -151,6 +174,14 @@ h1 {
   font-size: clamp(2.6rem, 6vw, 5.6rem);
   line-height: 0.96;
   letter-spacing: -0.03em;
+}
+
+.vista__titulo-logo {
+  width: clamp(82px, 10vw, 126px);
+  max-height: 82px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.28));
+  justify-self: end;
 }
 
 h2 {
@@ -258,6 +289,14 @@ h2 {
   .metricas,
   .bloques {
     grid-template-columns: 1fr;
+  }
+
+  .vista__titulo-bloque--con-logo {
+    grid-template-columns: 1fr;
+  }
+
+  .vista__titulo-logo {
+    justify-self: start;
   }
 }
 </style>

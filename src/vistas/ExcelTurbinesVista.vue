@@ -28,6 +28,11 @@ const diferenciales = [
       'Aquí refuerzas que el objetivo no es solo reparar un componente, sino devolver confianza a la operación completa.',
   },
 ]
+
+const logoTitulo = {
+  src: '/imagenes/LOGOS/Logo%20EXCEL.png',
+  alt: 'Logo de Excel Turbines de México',
+}
 </script>
 
 <template>
@@ -35,7 +40,10 @@ const diferenciales = [
     <header class="excel__hero">
       <div class="excel__texto">
         <p class="excel__pretitulo">Excel Turbines</p>
-        <h1>Aquí descubres cómo puedes tomar mejores decisiones sobre motores de turbina.</h1>
+        <div class="excel__titulo">
+          <h1>Aquí descubres cómo puedes tomar mejores decisiones sobre motores de turbina.</h1>
+          <img :src="logoTitulo.src" :alt="logoTitulo.alt" class="excel__titulo-logo" />
+        </div>
         <p class="excel__subtitulo">Motores, diagnóstico, revisión general y asistencia inmediata</p>
         <p class="excel__descripcion">
           Esta vista te habla directamente para que entiendas que tu operación necesita algo más
@@ -146,6 +154,13 @@ const diferenciales = [
   font-size: 0.76rem;
 }
 
+.excel__titulo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 18px;
+}
+
 h1,
 h2,
 h3,
@@ -162,6 +177,14 @@ h2 {
 h1 {
   font-size: clamp(2.8rem, 5vw, 5rem);
   line-height: 0.96;
+}
+
+.excel__titulo-logo {
+  width: clamp(82px, 10vw, 126px);
+  max-height: 82px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.28));
+  justify-self: end;
 }
 
 h2 {
@@ -248,6 +271,14 @@ h3 {
   .diferenciales,
   .servicios__rejilla {
     grid-template-columns: 1fr;
+  }
+
+  .excel__titulo {
+    grid-template-columns: 1fr;
+  }
+
+  .excel__titulo-logo {
+    justify-self: start;
   }
 }
 </style>

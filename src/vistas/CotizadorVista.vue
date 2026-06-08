@@ -1,7 +1,11 @@
 <script setup>
 import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { supabase } from '../supabase'
+import {
+  mensajeConfiguracionSupabase,
+  supabase,
+  supabaseConfigurado,
+} from '../supabase'
 
 const route = useRoute()
 const cargando = ref(true)
@@ -393,6 +397,11 @@ function fechaBloqueadaLocalmente(fecha, aeronaveId) {
 }
 
 async function validarDisponibilidad() {
+  if (!supabaseConfigurado || !supabase) {
+    errorMensaje.value = mensajeConfiguracionSupabase
+    return false
+  }
+
   const primera = rutas.value[0]
   if (!primera.aircraft_id || !primera.start_date || !primera.end_date) return false
 
@@ -481,6 +490,11 @@ async function confirmarCotizacion() {
   mensajeExito.value = false
 
   try {
+    if (!supabaseConfigurado || !supabase) {
+      errorMensaje.value = mensajeConfiguracionSupabase
+      return
+    }
+
     if (!(await validarDisponibilidad())) {
       vistaPrevia.value = false
       return
@@ -586,6 +600,12 @@ function moneda(valor) {
 
 async function cargarDatos() {
   cargando.value = true
+
+  if (!supabaseConfigurado || !supabase) {
+    errorMensaje.value = mensajeConfiguracionSupabase
+    cargando.value = false
+    return
+  }
 
   const [nacionales, internacionales, flota, bloqueos] = await Promise.all([
     supabase.from('aeropuertos_mexico').select('*'),

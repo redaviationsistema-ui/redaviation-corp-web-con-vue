@@ -24,6 +24,10 @@ export const paginasNuevas = [
       imagen: '/imagenes/ecosistema/gesa-componentes.png',
       alt: 'Especialista de GESA trabajando con componentes aeronáuticos',
     },
+    logoTitulo: {
+      src: '/imagenes/LOGOS/Logo%20GESA.png',
+      alt: 'Logo de GESA',
+    },
     galeria: [
       { fuente: '/imagenes/ecosistema/gesa-componentes.png', alt: 'Trabajo técnico con componentes aeronáuticos' },
       { fuente: '/imagenes/ecosistema/gesa-avionica.png', alt: 'Inspección de aviónica en laboratorio' },
@@ -54,6 +58,10 @@ export const paginasNuevas = [
       tipo: 'Motores de turbina',
       imagen: '/imagenes/ecosistema/excel-motor.png',
       alt: 'Especialista trabajando en un motor de turbina',
+    },
+    logoTitulo: {
+      src: '/imagenes/LOGOS/Logo%20EXCEL.png',
+      alt: 'Logo de Excel Turbines',
     },
     galeria: [
       { fuente: '/imagenes/ecosistema/excel-motor.png', alt: 'Intervención técnica en motor de turbina' },
@@ -87,6 +95,10 @@ export const paginasNuevas = [
       imagen: '/imagenes/ecosistema/cesa-inspeccion.png',
       alt: 'Equipo técnico inspeccionando una aeronave',
     },
+    logoTitulo: {
+      src: '/imagenes/LOGOS/Logo%20CESA.png',
+      alt: 'Logo de CESA',
+    },
     galeria: [
       { fuente: '/imagenes/ecosistema/cesa-aeronave.png', alt: 'Aeronave dentro de instalaciones de mantenimiento' },
       { fuente: '/imagenes/ecosistema/cesa-inspeccion.png', alt: 'Inspección técnica de una aeronave' },
@@ -118,6 +130,10 @@ export const paginasNuevas = [
       tipo: 'Consultoría estratégica',
       imagen: '/imagenes/ecosistema/sky-group-consultoria.png',
       alt: 'Reunión de consultoría estratégica de Sky Group',
+    },
+    logoTitulo: {
+      src: '/imagenes/LOGOS/Logo%20SKYGROUP.png',
+      alt: 'Logo de Sky Group',
     },
     galeria: [
       { fuente: '/imagenes/ecosistema/sky-group-consultoria.png', alt: 'Consultoría estratégica de Sky Group' },
@@ -224,8 +240,19 @@ export const paginasNuevas = [
       descripcion: 'Publicaciones, videos, noticias y galería multimedia de Red Aviation Co.',
       palabrasClave: ['noticias aeronáuticas', 'videos de aviación', 'galería aeronáutica'],
     },
+    ocultarMultimedia: true,
     visual: { etiqueta: 'Contenido multimedia', tipo: 'Video, fotografía y publicaciones' },
     bloques: [
+      {
+        titulo: 'Landing Red Sky G',
+        descripcion: 'Acceso directo a la landing comercial institucional para presentar servicios, operación y propuesta de valor.',
+        enlace: 'https://redskyg.com/landing/es-mx',
+      },
+      {
+        titulo: 'Sell Your Aircraft',
+        descripcion: 'Página especializada para propietarios que desean comercializar su aeronave con acompañamiento estratégico.',
+        enlace: 'https://redskyg.com/sellyouraircraft/es-mx',
+      },
       {
         titulo: 'LinkedIn',
         descripcion: 'Publicaciones corporativas, alianzas, proyectos, logros y actividad profesional.',
@@ -246,10 +273,7 @@ export const paginasNuevas = [
         descripcion: 'Videos corporativos, operaciones, mantenimiento, proyectos y contenido breve.',
         ruta: '/blog',
       },
-      {
-        titulo: 'Actividad corporativa',
-        descripcion: 'Proyectos, alianzas, eventos y nuevas capacidades de Red Aviation.',
-      },
+     
     ],
   },
 ]
@@ -263,6 +287,20 @@ const contenidoServiciosEspeciales = {
       imagen: '/imagenes/servicios/taller-motores/tallermotores.png',
       alt: 'Técnico de Red Aviation realizando mantenimiento a un motor aeronáutico',
     },
+    tituloMultimedia: 'Galería multimedia',
+    descripcionMultimedia:
+      'Observe una muestra visual del trabajo técnico realizado dentro del taller de motores de Red Aviation.',
+    multimedia: {
+      tipo: 'video',
+      fuente: '/imagenes/servicios/taller-motores/C0445.MP4',
+      portada: '/imagenes/servicios/taller-motores/tallermotores.png',
+      alt: 'Video del taller de motores de Red Aviation',
+      duracionMaxima: 7,
+      mostrarControles: false,
+      silenciado: true,
+      reproduccionAutomatica: true,
+      repetir: true,
+    },
   },
   'taxi-aereo': {
     visual: {
@@ -271,6 +309,36 @@ const contenidoServiciosEspeciales = {
       detalle: 'Vuelos privados coordinados con flexibilidad, seguridad y atención personalizada.',
       imagen: '/imagenes/servicios/taxi%20aereo/taxi-aereo.png',
       alt: 'Servicio de taxi aéreo ejecutivo coordinado por Red Aviation',
+    },
+    etiquetaMultimedia: 'Operaciones de vuelo',
+    tituloMultimedia: 'Experiencia de Taxi Aéreo',
+    descripcionMultimedia:
+      'Movilidad aérea privada diseñada para ejecutivos, empresas y clientes que requieren flexibilidad, privacidad y eficiencia operativa.',
+    multimediaDestacada: {
+      titulo: 'Operación de Taxi Aéreo Ejecutivo',
+      descripcion:
+        'Desde la coordinación del vuelo hasta la llegada al destino, cada operación se desarrolla bajo estándares de atención personalizada, seguridad y eficiencia para clientes corporativos y privados.',
+      puntos: [
+        'Jet ejecutivo en plataforma.',
+        'Pasajeros abordando.',
+        'Interior de cabina premium.',
+        'Encendido de motores.',
+        'Rodaje.',
+        'Despegue.',
+        'Toma aérea en vuelo.',
+        'Aterrizaje.',
+        'Recepción en plataforma.',
+      ],
+      ctaTitulo: '¿Necesita una solución de movilidad aérea privada?',
+      ctaDescripcion:
+        'Coordinamos vuelos ejecutivos adaptados a sus necesidades operativas, empresariales y personales.',
+      ctaTexto: 'Solicitar Vuelo Privado',
+      ctaRuta: '/cotizador',
+      video: {
+        tipo: 'imagen',
+        fuente: '/imagenes/servicios/taxi%20aereo/taxi-aereo.png',
+        alt: 'Operación de taxi aéreo ejecutivo de Red Aviation',
+      },
     },
   },
   'administracion-aeronaves': {
@@ -426,7 +494,7 @@ export const carruselEmpresas = [
     titulo: 'GESA',
     descripcion: 'Servicios de aviónica, interiores, partes e instrumentos.',
     ruta: '/gesa',
-    imagen: '/imagenes/inicio/gesa.png',
+    imagen: '/imagenes/LOGOS/Logo%20GESA.png',
     alt: 'Logotipo de GESA',
     ajuste: 'contener',
   },
@@ -435,7 +503,7 @@ export const carruselEmpresas = [
     titulo: 'CESA',
     descripcion: 'Mantenimiento estructural, reparaciones e inspecciones.',
     ruta: '/cesa',
-    imagen: '/imagenes/inicio/cesa.png',
+    imagen: '/imagenes/LOGOS/Logo%20CESA.png',
     alt: 'Logotipo de CESA',
     ajuste: 'contener',
   },
@@ -444,7 +512,7 @@ export const carruselEmpresas = [
     titulo: 'Excel Turbines',
     descripcion: 'Diagnóstico, inspección y revisión de motores.',
     ruta: '/excel-turbines',
-    imagen: '/imagenes/inicio/excel.png',
+    imagen: '/imagenes/LOGOS/Logo%20EXCEL.png',
     alt: 'Logotipo de Excel Turbines de México',
     ajuste: 'contener',
   },
@@ -453,7 +521,7 @@ export const carruselEmpresas = [
     titulo: 'Sky Group',
     descripcion: 'Venta, adquisición, corretaje y consultoría.',
     ruta: '/sky-group',
-    imagen: '/imagenes/inicio/sky-group-logo.png',
+    imagen: '/imagenes/LOGOS/Logo%20SKYGROUP.png',
     alt: 'Logotipo de Sky Group',
     ajuste: 'contener',
   },

@@ -1,9 +1,13 @@
 <script setup>
-import { onBeforeUnmount, onMounted } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { obtenerVista } from '../datos/sitio'
 
 const vista = obtenerVista('nosotros')
+const videoInstitucional = ref(null)
+const inicioVideoInstitucional = 23
+const finVideoInstitucional = 27
+const velocidadVideoInstitucional = 0.7
 
 const metricas = [
   { icono: '◈', valor: '4', etiqueta: 'empresas especializadas' },
@@ -40,11 +44,39 @@ const principios = [
 ]
 
 const trayectoria = [
-  { anio: '2018', hito: 'Inicio de operaciones' },
-  { anio: '2020', hito: 'Expansión comercial' },
-  { anio: '2022', hito: 'Desarrollo de nuevas unidades' },
-  { anio: '2024', hito: 'Consolidación operativa' },
-  { anio: '2026', hito: 'Ecosistema Red Aviation' },
+  {
+    anio: '2001',
+    nombre: 'CESA',
+    subtitulo: 'Centro de Servicio Aeronáutico',
+    logo: '/imagenes/LOGOS/Logo%20CESA.png',
+    alt: 'Logo de CESA',
+    posicion: 'inferior',
+  },
+  {
+    anio: '2007',
+    nombre: 'Excel Turbines de México',
+    subtitulo: 'Especialistas en motores de turbina',
+    logo: '/imagenes/LOGOS/Logo%20EXCEL.png',
+    alt: 'Logo de Excel Turbines de México',
+    posicion: 'superior',
+  },
+  {
+    anio: '2009',
+    nombre: 'GESA',
+    subtitulo: 'Grupo Especializado en Servicios Aéreos',
+    logo: '/imagenes/LOGOS/Logo%20GESA.png',
+    alt: 'Logo de GESA',
+    posicion: 'inferior',
+  },
+  {
+    anio: '2024',
+    nombre: 'Sky Group LLC',
+    subtitulo: 'Plataforma comercial y de expansión',
+    logo: '/imagenes/LOGOS/Logo%20SKYGROUP.png',
+    alt: 'Logo de Sky Group',
+    posicion: 'superior',
+    destacado: true,
+  },
 ]
 
 const especialidades = [
@@ -78,6 +110,55 @@ const galeria = [
 ]
 
 let observador
+let animacionVideoInstitucional
+
+function reiniciarTramoVideoInstitucional() {
+  const video = videoInstitucional.value
+
+  if (!video) return
+
+  video.currentTime = inicioVideoInstitucional
+  video.playbackRate = velocidadVideoInstitucional
+  video.play().catch(() => {})
+}
+
+function sincronizarVideoInstitucional() {
+  const video = videoInstitucional.value
+
+  if (!video) return
+
+  video.playbackRate = velocidadVideoInstitucional
+
+  if (
+    Number.isFinite(video.duration)
+    && (video.currentTime < inicioVideoInstitucional || video.currentTime >= finVideoInstitucional - 0.05)
+  ) {
+    video.currentTime = inicioVideoInstitucional
+  }
+
+  video.play().catch(() => {})
+}
+
+function vigilarVideoInstitucional() {
+  const video = videoInstitucional.value
+
+  if (video) {
+    video.playbackRate = velocidadVideoInstitucional
+
+    if (video.paused && !video.ended) {
+      video.play().catch(() => {})
+    }
+
+    if (
+      Number.isFinite(video.duration)
+      && video.currentTime >= finVideoInstitucional - 0.05
+    ) {
+      reiniciarTramoVideoInstitucional()
+    }
+  }
+
+  animacionVideoInstitucional = window.requestAnimationFrame(vigilarVideoInstitucional)
+}
 
 onMounted(() => {
   const elementos = document.querySelectorAll('.nosotros .revelar')
@@ -95,9 +176,27 @@ onMounted(() => {
   )
 
   elementos.forEach((elemento) => observador.observe(elemento))
+
+  videoInstitucional.value?.addEventListener('loadedmetadata', sincronizarVideoInstitucional)
+  videoInstitucional.value?.addEventListener('canplay', sincronizarVideoInstitucional)
+  videoInstitucional.value?.addEventListener('play', sincronizarVideoInstitucional)
+  videoInstitucional.value?.addEventListener('ended', reiniciarTramoVideoInstitucional)
+
+  if (videoInstitucional.value?.readyState >= 1) {
+    reiniciarTramoVideoInstitucional()
+  }
+
+  animacionVideoInstitucional = window.requestAnimationFrame(vigilarVideoInstitucional)
 })
 
-onBeforeUnmount(() => observador?.disconnect())
+onBeforeUnmount(() => {
+  observador?.disconnect()
+  videoInstitucional.value?.removeEventListener('loadedmetadata', sincronizarVideoInstitucional)
+  videoInstitucional.value?.removeEventListener('canplay', sincronizarVideoInstitucional)
+  videoInstitucional.value?.removeEventListener('play', sincronizarVideoInstitucional)
+  videoInstitucional.value?.removeEventListener('ended', reiniciarTramoVideoInstitucional)
+  window.cancelAnimationFrame(animacionVideoInstitucional)
+})
 </script>
 
 <template>
@@ -120,7 +219,15 @@ onBeforeUnmount(() => observador?.disconnect())
         </div>
       </div>
       <div class="hero__imagen">
-        <img :src="vista.visual.imagen" :alt="vista.visual.alt" />
+        <video
+          ref="videoInstitucional"
+          src="/imagenes/nosotros/RA%202.mp4"
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+          aria-label="Video institucional de Red Aviation Co."
+        ></video>
         <span>{{ vista.visual.tipo }}</span>
         <div class="hero__instrumentos" aria-hidden="true">
           <small>RED AVIATION OPS</small>
@@ -189,12 +296,32 @@ onBeforeUnmount(() => observador?.disconnect())
         <p class="etiqueta">Nuestra trayectoria</p>
         <h2>Crecimiento con estructura.</h2>
       </div>
-      <div class="trayectoria">
-        <article v-for="(hito, indice) in trayectoria" :key="hito.anio">
-          <span class="trayectoria__nodo">{{ String(indice + 1).padStart(2, '0') }}</span>
-          <i class="trayectoria__avion" aria-hidden="true">✈</i>
-          <strong>{{ hito.anio }}</strong>
-          <span>{{ hito.hito }}</span>
+      <div class="trayectoria-corporativa">
+        <div class="trayectoria-corporativa__linea" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="trayectoria-corporativa__linea-final"></span>
+        </div>
+
+        <article
+          v-for="hito in trayectoria"
+          :key="hito.anio"
+          class="trayectoria-corporativa__hito"
+          :class="[
+            `trayectoria-corporativa__hito--${hito.posicion}`,
+            { 'trayectoria-corporativa__hito--destacado': hito.destacado },
+          ]"
+        >
+          <p class="trayectoria-corporativa__anio">{{ hito.anio }}</p>
+          <div class="trayectoria-corporativa__conector" aria-hidden="true"></div>
+          <figure class="trayectoria-corporativa__logo">
+            <img :src="hito.logo" :alt="hito.alt" />
+          </figure>
+          <div class="trayectoria-corporativa__texto">
+            <strong>{{ hito.nombre }}</strong>
+            <span>{{ hito.subtitulo }}</span>
+          </div>
         </article>
       </div>
     </section>
@@ -369,6 +496,7 @@ onBeforeUnmount(() => observador?.disconnect())
 }
 
 .hero__imagen img,
+.hero__imagen video,
 .galeria img {
   width: 100%;
   height: 100%;
@@ -376,7 +504,8 @@ onBeforeUnmount(() => observador?.disconnect())
   transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1), filter 350ms ease;
 }
 
-.hero__imagen:hover img {
+.hero__imagen:hover img,
+.hero__imagen:hover video {
   filter: saturate(1.08) contrast(1.04);
   transform: scale(1.035);
 }
@@ -662,91 +791,142 @@ h2 {
   grid-column: 1 / -1;
 }
 
-.trayectoria {
+.trayectoria-corporativa {
   position: relative;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
-  padding-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  min-height: 640px;
+  padding: 28px 0 12px;
 }
 
-.trayectoria::before {
+.trayectoria-corporativa__linea {
   position: absolute;
-  top: 39px;
-  right: 10%;
-  left: 10%;
-  height: 2px;
-  background: linear-gradient(90deg, #c8102e, #ff7187);
-  content: '';
-  transform-origin: left;
-  animation: trazar-ruta 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  top: 50%;
+  right: 4%;
+  left: 4%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 56px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
-.trayectoria article {
+.trayectoria-corporativa__linea span {
   position: relative;
+  display: block;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.trayectoria-corporativa__linea span::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.08);
+  content: '';
+}
+
+.trayectoria-corporativa__linea-final {
+  background: #d81f2d !important;
+}
+
+.trayectoria-corporativa__linea-final::after {
+  display: none;
+}
+
+.trayectoria-corporativa__hito {
+  position: absolute;
   z-index: 1;
   display: grid;
   justify-items: center;
-  gap: 12px;
-  min-height: 150px;
+  gap: 14px;
+  width: min(230px, 100%);
   text-align: center;
-  transition: transform 200ms ease;
+  transform: translateX(-50%);
 }
 
-.trayectoria article:hover {
-  transform: translateY(-7px);
+.trayectoria-corporativa__hito:nth-of-type(1) {
+  left: 11%;
 }
 
-.trayectoria__avion {
-  position: absolute;
-  top: 18px;
-  right: calc(50% - 38px);
-  color: rgba(255, 77, 104, 0);
-  font-size: 0.8rem;
-  font-style: normal;
-  transform: rotate(90deg);
-  transition: color 180ms ease, transform 180ms ease;
+.trayectoria-corporativa__hito:nth-of-type(2) {
+  left: 36%;
 }
 
-.trayectoria article:hover .trayectoria__avion {
-  color: #ff7187;
-  transform: rotate(90deg) translateY(-5px);
+.trayectoria-corporativa__hito:nth-of-type(3) {
+  left: 58%;
 }
 
-.trayectoria strong,
-.trayectoria article > span {
-  display: block;
+.trayectoria-corporativa__hito:nth-of-type(4) {
+  left: 82%;
 }
 
-.trayectoria .trayectoria__nodo {
+.trayectoria-corporativa__hito--superior {
+  top: 0;
+}
+
+.trayectoria-corporativa__hito--inferior {
+  bottom: 0;
+}
+
+.trayectoria-corporativa__anio {
+  margin: 0;
+  color: #fff;
+  font-family: var(--fuente-titulo);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+.trayectoria-corporativa__conector {
+  width: 18px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.trayectoria-corporativa__hito--inferior .trayectoria-corporativa__conector {
+  order: -1;
+}
+
+.trayectoria-corporativa__logo {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
-  border: 2px solid #ff4d68;
+  width: 210px;
+  height: 210px;
+  margin: 0;
   border-radius: 50%;
-  color: #fff;
-  background: #111;
-  box-shadow: 0 0 0 7px #111, 0 0 24px rgba(200, 16, 46, 0.28);
-  font-size: 0.76rem;
-  font-weight: 700;
-  transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  background: #fff;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
 }
 
-.trayectoria article:hover .trayectoria__nodo {
-  background: #c8102e;
-  box-shadow: 0 0 0 7px #111, 0 0 34px rgba(255, 77, 104, 0.5);
-  transform: scale(1.08);
+.trayectoria-corporativa__hito--destacado .trayectoria-corporativa__logo {
+  background: #d81f2d;
 }
 
-.trayectoria strong {
-  margin-top: 8px;
-  color: #ff7187;
-  font-size: 1.7rem;
+.trayectoria-corporativa__logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
 }
 
-.trayectoria article > span:last-child {
-  max-width: 150px;
-  color: rgba(217, 217, 217, 0.78);
+.trayectoria-corporativa__texto {
+  display: grid;
+  gap: 10px;
+}
+
+.trayectoria-corporativa__texto strong {
+  font-family: var(--fuente-ui);
+  font-size: clamp(1.15rem, 1.7vw, 2rem);
+  line-height: 1.06;
+}
+
+.trayectoria-corporativa__texto span {
+  max-width: 220px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
 
 .galeria {
@@ -878,12 +1058,28 @@ h2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .trayectoria {
+  .trayectoria-corporativa {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: auto;
+    gap: 30px 18px;
+    padding-top: 12px;
   }
 
-  .trayectoria::before {
+  .trayectoria-corporativa__linea {
     display: none;
+  }
+
+  .trayectoria-corporativa__hito {
+    position: relative;
+    left: auto !important;
+    top: auto;
+    bottom: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .trayectoria-corporativa__hito--inferior .trayectoria-corporativa__conector {
+    order: 0;
   }
 
   .hero__radar {
@@ -894,60 +1090,152 @@ h2 {
 @media (max-width: 620px) {
   .metricas,
   .pilares,
-  .trayectoria,
+  .trayectoria-corporativa,
   .galeria {
     grid-template-columns: 1fr;
   }
 
-  .trayectoria {
-    gap: 0;
-    padding-top: 0;
+  .nosotros {
+    gap: 24px;
   }
 
-  .trayectoria::before {
-    display: block;
-    top: 24px;
-    bottom: 24px;
-    left: 23px;
-    width: 2px;
-    height: auto;
-    background: linear-gradient(180deg, #c8102e, #ff7187);
+  .hero {
+    min-height: auto;
   }
 
-  .trayectoria article {
-    grid-template-columns: 48px auto;
-    justify-items: start;
-    gap: 4px 18px;
-    min-height: 100px;
-    text-align: left;
+  .hero__contenido,
+  .seccion,
+  .cierre,
+  .metricas article,
+  .pilares article,
+  .acreditacion {
+    padding-right: 18px;
+    padding-left: 18px;
   }
 
-  .trayectoria .trayectoria__nodo {
-    grid-row: 1 / 3;
+  .hero__contenido {
+    padding-top: 20px;
+    padding-bottom: 8px;
   }
 
-  .trayectoria strong {
-    align-self: end;
-    margin-top: 0;
-  }
-
-  .trayectoria article > span:last-child {
+  h1 {
     max-width: none;
+    font-size: clamp(2.4rem, 12vw, 3.5rem);
+    line-height: 0.98;
   }
 
-  .galeria__encabezado {
-    grid-column: auto;
+  h2 {
+    font-size: clamp(1.7rem, 8vw, 2.3rem);
+  }
+
+  .hero__descripcion {
+    max-width: none;
+    margin-top: 16px;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .hero__acciones {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .hero__acciones .boton {
     width: 100%;
   }
 
-  .hero__instrumentos {
-    display: none;
+  .hero__imagen {
+    min-height: 280px;
   }
 
-  .trayectoria__avion {
+  .metricas {
+    gap: 0;
+  }
+
+  .metricas article {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .metricas article:first-child {
+    border-top: 0;
+  }
+
+  .metricas strong {
+    font-size: 2.2rem;
+  }
+
+  .esencia,
+  .liderazgo,
+  .acreditacion {
+    gap: 16px;
+  }
+
+  .trayectoria-corporativa {
+    gap: 34px;
+    padding: 8px 0 0;
+  }
+
+  .trayectoria-corporativa__hito {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .trayectoria-corporativa__anio {
+    font-size: 2.7rem;
+  }
+
+  .trayectoria-corporativa__logo {
+    width: 170px;
+    height: 170px;
+  }
+
+  .trayectoria-corporativa__texto strong {
+    font-size: 1.4rem;
+  }
+
+  .trayectoria-corporativa__texto span {
+    max-width: none;
+    font-size: 0.92rem;
+  }
+
+  .galeria__encabezado {
+    grid-column: auto;
+  }
+
+  .principios,
+  .especialidades {
+    gap: 8px;
+  }
+
+  .principios span,
+  .especialidades span {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 13px;
+    font-size: 0.92rem;
+  }
+
+  .acreditacion {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .acreditacion__distintivo {
+    min-height: 240px;
+    padding: 20px;
+  }
+
+  .cierre__avion {
+    right: -8px;
+    bottom: -10px;
+    font-size: 5.5rem;
+  }
+
+  .hero__instrumentos {
     display: none;
   }
 }
@@ -961,7 +1249,6 @@ h2 {
 
   .hero__radar i,
   .etiqueta > span,
-  .trayectoria::before,
   .acreditacion::before {
     animation: none;
   }

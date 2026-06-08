@@ -2,7 +2,7 @@ export const chatbotConfig = {
   nombreEmpresa: 'Red Aviation Company',
   tituloBot: 'Asistente Red Aviation',
   subtitulo: 'Atención aeronáutica confidencial',
-  whatsapp: '527292807596',
+  whatsapp: '+527221126671',
   correo: 'ventas@redaviationcorp.com',
-  telefono: '+527292807596',
+  telefono: '+527221126671',
 }

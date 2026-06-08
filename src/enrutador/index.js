@@ -1,30 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { vistas } from '../datos/sitio'
-import InicioVista from '../vistas/InicioVista.vue'
-import NosotrosVista from '../vistas/NosotrosVista.vue'
-import ServiciosVista from '../vistas/ServiciosVista.vue'
-import FlotaVista from '../vistas/FlotaVista.vue'
-import VentaAeronavesVista from '../vistas/VentaAeronavesVista.vue'
-import MantenimientoVista from '../vistas/MantenimientoVista.vue'
-import CoberturaVista from '../vistas/CoberturaVista.vue'
-import BlogVista from '../vistas/BlogVista.vue'
-import ContactoVista from '../vistas/ContactoVista.vue'
-import CotizadorVista from '../vistas/CotizadorVista.vue'
-import VistaEstructura from '../vistas/VistaEstructura.vue'
-import EcosistemaVista from '../vistas/EcosistemaVista.vue'
 import { carruselEmpresas, carruselMultimedia, paginasNuevas, serviciosIndividuales } from '../datos/contenidoNuevo'
 
+const DOMINIO_BASE = 'https://redaviationcorp.com'
+
 const componentesPorId = {
-  inicio: InicioVista,
-  nosotros: NosotrosVista,
-  servicios: ServiciosVista,
-  flota: FlotaVista,
-  'venta-aeronaves': VentaAeronavesVista,
-  mantenimiento: MantenimientoVista,
-  cobertura: CoberturaVista,
-  blog: BlogVista,
-  contacto: ContactoVista,
+  inicio: () => import('../vistas/InicioVista.vue'),
+  nosotros: () => import('../vistas/NosotrosVista.vue'),
+  servicios: () => import('../vistas/ServiciosVista.vue'),
+  flota: () => import('../vistas/FlotaVista.vue'),
+  'venta-aeronaves': () => import('../vistas/VentaAeronavesVista.vue'),
+  mantenimiento: () => import('../vistas/MantenimientoVista.vue'),
+  cobertura: () => import('../vistas/CoberturaVista.vue'),
+  blog: () => import('../vistas/BlogVista.vue'),
+  contacto: () => import('../vistas/ContactoVista.vue'),
 }
+
+const componenteVistaEstructura = () => import('../vistas/VistaEstructura.vue')
+const componenteEcosistema = () => import('../vistas/EcosistemaVista.vue')
+const componenteRedesSociales = () => import('../vistas/RedesSocialesVista.vue')
+const componenteVentaPartes = () => import('../vistas/VentaPartesVista.vue')
+const componenteCotizador = () => import('../vistas/CotizadorVista.vue')
 
 const rutas = vistas.map((vista) => ({
   path: vista.ruta,
@@ -40,16 +36,21 @@ const rutas = vistas.map((vista) => ({
 const rutasNuevas = [...paginasNuevas, ...serviciosIndividuales].map((pagina) => ({
   path: pagina.ruta,
   name: pagina.id,
-  component: pagina.id === 'ecosistema' ? EcosistemaVista : VistaEstructura,
+  component:
+    pagina.id === 'ecosistema'
+      ? componenteEcosistema
+      : pagina.id === 'redes-sociales'
+        ? componenteRedesSociales
+        : pagina.id === 'venta-partes'
+          ? componenteVentaPartes
+          : componenteVistaEstructura,
   props: {
     pagina: {
       ...pagina,
       carrusel:
         pagina.id === 'ecosistema'
           ? carruselEmpresas
-          : pagina.id === 'redes-sociales'
-            ? carruselMultimedia
-            : undefined,
+          : undefined,
       tituloCarrusel:
         pagina.id === 'ecosistema' ? 'Empresas del grupo' : 'Galería de contenidos',
     },
@@ -65,7 +66,7 @@ const rutasHerramientas = [
   {
     path: '/cotizador',
     name: 'cotizador',
-    component: CotizadorVista,
+    component: componenteCotizador,
     meta: {
       titulo: 'Cotizador de Vuelo Privado | Red Aviation Co.',
       descripcion:
@@ -95,10 +96,44 @@ function asegurarMeta(nombre) {
   return meta
 }
 
+function asegurarMetaProperty(propiedad) {
+  let meta = document.querySelector(`meta[property="${propiedad}"]`)
+
+  if (!meta) {
+    meta = document.createElement('meta')
+    meta.setAttribute('property', propiedad)
+    document.head.appendChild(meta)
+  }
+
+  return meta
+}
+
+function asegurarCanonical() {
+  let canonical = document.querySelector('link[rel="canonical"]')
+
+  if (!canonical) {
+    canonical = document.createElement('link')
+    canonical.setAttribute('rel', 'canonical')
+    document.head.appendChild(canonical)
+  }
+
+  return canonical
+}
+
 enrutador.afterEach((to) => {
+  const urlCanonica = new URL(to.fullPath, DOMINIO_BASE).toString()
+
   document.title = to.meta.titulo ?? 'Red Aviation Co.'
   asegurarMeta('description').setAttribute('content', to.meta.descripcion ?? '')
   asegurarMeta('keywords').setAttribute('content', to.meta.palabrasClave ?? '')
+  asegurarCanonical().setAttribute('href', urlCanonica)
+
+  asegurarMetaProperty('og:title').setAttribute('content', to.meta.titulo ?? 'Red Aviation Co.')
+  asegurarMetaProperty('og:description').setAttribute('content', to.meta.descripcion ?? '')
+  asegurarMetaProperty('og:url').setAttribute('content', urlCanonica)
+  asegurarMetaProperty('og:type').setAttribute('content', 'website')
+  asegurarMetaProperty('og:site_name').setAttribute('content', 'Red Aviation Co.')
+  asegurarMetaProperty('og:locale').setAttribute('content', 'es_MX')
 })
 
 export default enrutador

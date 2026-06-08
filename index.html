@@ -4,7 +4,64 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/LOGO.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Red Aviation Co. | Aviación Ejecutiva</title>
+    <title>Red Aviation Co. | Aviación Ejecutiva Integral en Latinoamérica</title>
+    <meta
+      name="description"
+      content="Soluciones integrales de aviación ejecutiva en Latinoamérica. Compra y venta de aeronaves, vuelos chárter, mantenimiento, gestión y consultoría aeronáutica."
+    />
+    <meta
+      name="keywords"
+      content="aviación ejecutiva, charter privado, vuelos privados, gestión de aeronaves, compra de aeronaves, venta de aeronaves, mantenimiento aeronáutico, aviation services Mexico, private jet charter Mexico, aircraft management Latin America"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://redaviationcorp.com/" />
+
+    <meta property="og:site_name" content="Red Aviation Co." />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Red Aviation Co. | Aviación Ejecutiva Integral en Latinoamérica" />
+    <meta
+      property="og:description"
+      content="Soluciones integrales de aviación ejecutiva en Latinoamérica. Compra y venta de aeronaves, vuelos chárter, mantenimiento, gestión y consultoría aeronáutica."
+    />
+    <meta property="og:url" content="https://redaviationcorp.com/" />
+    <meta property="og:image" content="https://redaviationcorp.com/LOGO.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Red Aviation Co. | Aviación Ejecutiva Integral en Latinoamérica" />
+    <meta
+      name="twitter:description"
+      content="Soluciones integrales de aviación ejecutiva en Latinoamérica. Compra y venta de aeronaves, vuelos chárter, mantenimiento, gestión y consultoría aeronáutica."
+    />
+    <meta name="twitter:image" content="https://redaviationcorp.com/LOGO.png" />
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag() {
+        window.dataLayer.push(arguments);
+      };
+
+      const iniciarGoogleAnalytics = () => {
+        if (window.__ga_cargado__) return;
+        window.__ga_cargado__ = true;
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-N8068QVMZ8';
+        document.head.appendChild(script);
+
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-N8068QVMZ8');
+      };
+
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(iniciarGoogleAnalytics, { timeout: 2500 });
+      } else {
+        window.addEventListener('load', () => window.setTimeout(iniciarGoogleAnalytics, 1200), {
+          once: true,
+        });
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>

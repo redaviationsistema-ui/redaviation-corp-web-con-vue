@@ -23,7 +23,7 @@ defineProps({
 })
 </script>
 
-<template>
+<!-- <template>
   <aside class="marcador">
     <span class="marcador__etiqueta">{{ etiqueta }}</span>
     <strong class="marcador__tipo">{{ tipo }}</strong>
@@ -35,7 +35,7 @@ defineProps({
 
     <div v-else class="marcador__espacio">Registro visual de la operación</div>
   </aside>
-</template>
+</template> -->
 
 <style scoped>
 .marcador {

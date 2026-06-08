@@ -45,11 +45,10 @@ const empresas = [
 ]
 
 const redes = [
-  { nombre: 'LinkedIn', icono: 'in' },
-  { nombre: 'Instagram', icono: '◎' },
-  { nombre: 'Facebook', icono: 'f' },
-  { nombre: 'YouTube', icono: '▶' },
-  { nombre: 'X', icono: '𝕏' },
+  { nombre: 'LinkedIn', icono: 'linkedin-icon-real' },
+  { nombre: 'Instagram', icono: 'instagram-icon-real' },
+  { nombre: 'Facebook', icono: 'facebook-icon-real' },
+  { nombre: 'YouTube', icono: 'youtube-icon-real' },
 ]
 
 const iconosMetricas = ['⌖', '360°', '◆']
@@ -193,7 +192,11 @@ onBeforeUnmount(() => observador?.disconnect())
           to="/redes-sociales"
           class="tarjeta tarjeta--icono"
         >
-          <span class="tarjeta__icono">{{ red.icono }}</span>
+          <span class="tarjeta__icono tarjeta__icono--svg">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <use :href="`/icons.svg#${red.icono}`"></use>
+            </svg>
+          </span>
           <h3>{{ red.nombre }}</h3>
           <p>Proyectos, operaciones, capacidades técnicas y noticias relevantes de la firma.</p>
           <span class="tarjeta__flecha">Explorar →</span>
@@ -714,6 +717,12 @@ blockquote p,
   font-size: 1rem;
   font-weight: 700;
   transition: transform 220ms ease, background 220ms ease;
+}
+
+.tarjeta__icono--svg svg {
+  width: 20px;
+  height: 20px;
+  color: #ff7187;
 }
 
 .tarjeta:hover .tarjeta__icono {
