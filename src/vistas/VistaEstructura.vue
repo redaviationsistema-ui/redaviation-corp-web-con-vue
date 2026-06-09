@@ -36,7 +36,7 @@ defineProps({
         <p>{{ pagina.descripcion }}</p>
       </div>
 
-      <div class="estructura__hero-visual">
+      <div v-if="!pagina.ocultarVisual" class="estructura__hero-visual">
         <div v-if="pagina.logoTitulo?.src" class="estructura__logo-panel">
           <img
             :src="pagina.logoTitulo.src"
@@ -85,10 +85,17 @@ defineProps({
     <section v-if="pagina.galeria?.length" class="galeria">
       <div class="galeria__encabezado">
         <p class="estructura__etiqueta">Capacidad en operación</p>
-        <h2>Instalaciones, equipo y procesos técnicos.</h2>
+        <h2>{{ pagina.galeriaTitulo ?? 'Instalaciones, equipo y procesos técnicos.' }}</h2>
+        <p v-if="pagina.galeriaDescripcion" class="galeria__descripcion">
+          {{ pagina.galeriaDescripcion }}
+        </p>
       </div>
       <figure v-for="imagen in pagina.galeria" :key="imagen.fuente">
         <img :src="imagen.fuente" :alt="imagen.alt" />
+        <figcaption v-if="imagen.titulo || imagen.descripcion" class="galeria__caption">
+          <strong v-if="imagen.titulo">{{ imagen.titulo }}</strong>
+          <span v-if="imagen.descripcion">{{ imagen.descripcion }}</span>
+        </figcaption>
       </figure>
     </section>
 
@@ -268,7 +275,13 @@ defineProps({
   padding: 24px 0 8px;
 }
 
+.galeria__descripcion,
+.galeria__caption span {
+  color: rgba(217, 217, 217, 0.78);
+}
+
 .galeria figure {
+  position: relative;
   margin: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -284,6 +297,22 @@ defineProps({
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.galeria__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(6, 6, 6, 0) 0%, rgba(6, 6, 6, 0.82) 100%);
+}
+
+.galeria__caption strong {
+  color: #fff;
+  font-size: 1rem;
 }
 
 .estructura__hero {

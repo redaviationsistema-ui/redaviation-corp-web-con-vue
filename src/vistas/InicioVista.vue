@@ -154,6 +154,19 @@ onBeforeUnmount(() => observador?.disconnect())
       automatico
     />
 
+    <MedioVisual
+      class="revelar"
+      titulo=""
+      descripcion=""
+      tipo="video"
+      fuente="/imagenes/inicio/PremiosPatria.mp4"
+      alt="Video Premios Patria de Red Aviation"
+      :mostrar-controles="false"
+      :silenciado="true"
+      :reproduccion-automatica="true"
+      :repetir="true"
+    />
+
     <section class="bloque bloque--doble revelar">
       <article class="panel">
         <p class="panel__etiqueta">¿Quiénes Somos?</p>

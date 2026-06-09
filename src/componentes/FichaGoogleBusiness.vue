@@ -2,19 +2,41 @@
 const calificacion = 4.6
 const totalOpiniones = 25
 const negocio = {
-  nombre: 'Red Aviation - Renta de aviones',
-  categoria: 'Avión en San Nicolás Tolentino',
-  direccion: 'San Nicolás Tolentino, Ciudad de México, México',
-  telefonoPrincipal: '+52 55 8618 6576',
+  nombre: 'Red Aviation - Talleres Aeronauticos',
+  categoria: 'Servicio en Toluca',
+  direccion: 'Toluca Estado de Mexico, Mexico',
+  telefonoPrincipal: '5586186576',
   telefonoAlterno: '+1 305 464 6394',
   horario: 'Abierto · Atención comercial y operativa bajo coordinación previa',
-  productoDestacado: 'Ambulancia Aérea',
+  productoDestacado: 'Talleres aeronauticos, Avionics solutions, Helicopter Shop, Landing Gear Services, Brakes sistemas',
   sitioWeb: 'https://redaviationcorp.com/',
   comoLlegar: 'https://www.google.com/maps/search/?api=1&query=Red+Aviation+San+Nicol%C3%A1s+Tolentino',
   opiniones: 'https://www.google.com/search?q=Red+Aviation+Google+Reviews',
   compartir: 'https://redaviationcorp.com/contacto',
   portada: '/imagenes/Portada%20del%20negocio.png',
   portadaAlt: 'Portada del negocio Red Aviation en Google',
+}
+
+const ubicacionToluca = {
+  titulo: 'Ubicación adicional',
+  nombre: 'ICCS Toluca FBO',
+  direccion: 'Boulevard Aeropuerto Hangar 28, San Pedro Totoltepec, 50200 Toluca de Lerdo, Méx.',
+  enlace: 'https://maps.app.goo.gl/3X4oF7RNWSc4S1c7A',
+}
+
+const excelTurbines = {
+  titulo: 'Ubicación adicional',
+  nombre: 'Excel Turbines De México',
+  direccion: 'Cto. Alfonso G. de Orozco Manzana 007, 50225 San Miguel Totoltepec, Méx.',
+  enlace: 'https://maps.app.goo.gl/6G17gUr1WatrchDa6',
+}
+
+const skygroup = {
+  titulo: 'Contacto adicional',
+  nombre: 'Skygroup',
+  enlace: 'https://maps.app.goo.gl/6G17gUr1WatrchDa6',
+  direccion: 'Cto. Alfonso G. de Orozco Manzana 007, 50225 San Miguel Totoltepec, Méx.',
+  telefonos: ['722 112 6671', '+52 5586186576'],
 }
 
 const estrellas = Array.from({ length: 5 }, (_, index) => index < Math.round(calificacion))
@@ -25,10 +47,11 @@ const estrellas = Array.from({ length: 5 }, (_, index) => index < Math.round(cal
     <div class="google__encabezado">
       <div>
         <p class="google__etiqueta">Encuéntranos en Google</p>
-        <h2>Ubicación, reputación y datos de contacto en un solo bloque de confianza.</h2>
+        <h2>Toda la información que necesita para validar nuestra presencia, reputación y contacto directo</h2>
         <p class="google__descripcion">
-          Esta sección funciona como una ficha de negocio tipo Google Business Profile para que tu
-          visitante valide rápido quién eres, dónde estás y cómo puede ponerse en contacto contigo.
+          Esta sección reúne la información esencial para que cada socio pueda validar nuestra
+          presencia, conocer nuestros canales y comunicarse directamente con el equipo de Red
+          Aviation
         </p>
       </div>
     </div>
@@ -60,7 +83,6 @@ const estrellas = Array.from({ length: 5 }, (_, index) => index < Math.round(cal
 
           <div class="google__acciones">
             <a :href="negocio.sitioWeb" target="_blank" rel="noreferrer">Sitio web</a>
-            <a :href="negocio.comoLlegar" target="_blank" rel="noreferrer">Cómo llegar</a>
             <a :href="negocio.opiniones" target="_blank" rel="noreferrer">Opiniones</a>
             <button type="button">Guardar</button>
             <a :href="negocio.compartir" target="_blank" rel="noreferrer">Compartir</a>
@@ -74,19 +96,57 @@ const estrellas = Array.from({ length: 5 }, (_, index) => index < Math.round(cal
           <p class="google__panel-etiqueta">Datos de contacto</p>
           <ul>
             <li><strong>Dirección:</strong> {{ negocio.direccion }}</li>
-            <li><strong>Teléfono:</strong> {{ negocio.telefonoPrincipal }}</li>
-            <li><strong>Alterno:</strong> {{ negocio.telefonoAlterno }}</li>
+            <li><strong>Teléfono dirección de Ventas:</strong> {{ negocio.telefonoPrincipal }}</li>
+            <li><strong>Internacional:</strong> {{ negocio.telefonoAlterno }}</li>
             <li><strong>Horario:</strong> {{ negocio.horario }}</li>
           </ul>
         </article>
 
         <article class="google__panel">
-          <p class="google__panel-etiqueta">Producto destacado</p>
-          <h4>{{ negocio.productoDestacado }}</h4>
-          <p>
-            Aquí puedes resaltar uno de los servicios visibles dentro de Google Business, como
-            ambulancia aérea, vuelos privados o soporte técnico especializado.
-          </p>
+          <p class="google__panel-etiqueta">{{ ubicacionToluca.titulo }}</p>
+          <h4>{{ ubicacionToluca.nombre }}</h4>
+          <p>{{ ubicacionToluca.direccion }}</p>
+          <a
+            :href="ubicacionToluca.enlace"
+            target="_blank"
+            rel="noreferrer"
+            class="google__panel-link"
+          >
+            Ver en Google Maps
+          </a>
+        </article>
+
+        <article class="google__panel">
+          <p class="google__panel-etiqueta">{{ excelTurbines.titulo }}</p>
+          <h4>{{ excelTurbines.nombre }}</h4>
+          <p>{{ excelTurbines.direccion }}</p>
+          <a
+            :href="excelTurbines.enlace"
+            target="_blank"
+            rel="noreferrer"
+            class="google__panel-link"
+          >
+            Ver en Google Maps
+          </a>
+        </article>
+
+        <article class="google__panel">
+          <p class="google__panel-etiqueta">{{ skygroup.titulo }}</p>
+          <h4>{{ skygroup.nombre }}</h4>
+          <p><strong>Dirección:</strong> {{ skygroup.direccion }}</p>
+          <ul>
+            <li v-for="telefono in skygroup.telefonos" :key="telefono">
+              <strong>Teléfono:</strong> {{ telefono }}
+            </li>
+          </ul>
+          <a
+            :href="skygroup.enlace"
+            target="_blank"
+            rel="noreferrer"
+            class="google__panel-link"
+          >
+            Ver en Google Maps
+          </a>
         </article>
       </div>
     </article>
@@ -244,6 +304,20 @@ const estrellas = Array.from({ length: 5 }, (_, index) => index < Math.round(cal
   padding: 0;
   display: grid;
   gap: 10px;
+}
+
+.google__panel-link {
+  margin-top: 14px;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 @media (max-width: 960px) {

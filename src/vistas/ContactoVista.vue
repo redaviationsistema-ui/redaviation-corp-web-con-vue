@@ -1,18 +1,108 @@
 <script setup>
+import { onBeforeUnmount, reactive, ref } from 'vue'
 import { obtenerVista } from '../datos/sitio'
 import FichaGoogleBusiness from '../componentes/FichaGoogleBusiness.vue'
 
 const vista = obtenerVista('contacto')
 
 const campos = [
-  'Nombre',
-  'Empresa',
-  'Correo',
-  'Teléfono',
-  'Servicio requerido',
+  { clave: 'name', etiqueta: 'Nombre', tipo: 'text' },
+  { clave: 'company', etiqueta: 'Empresa', tipo: 'text' },
+  { clave: 'email', etiqueta: 'Correo', tipo: 'email' },
+  { clave: 'phone', etiqueta: 'Teléfono', tipo: 'tel' },
+  { clave: 'service', etiqueta: 'Servicio requerido', tipo: 'text' },
 ]
 
 const datos = ['Correo', 'Teléfono', 'WhatsApp', 'Redes Sociales']
+const endpointFormulario =
+  import.meta.env.VITE_CONTACT_FORM_ENDPOINT || 'https://redaviationcorp.com/send-email.php'
+
+const formulario = reactive({
+  name: '',
+  company: '',
+  email: '',
+  phone: '',
+  service: '',
+  message: '',
+})
+
+const enviando = ref(false)
+const estadoEnvio = ref({ tipo: '', mensaje: '' })
+const mostrarModalExito = ref(false)
+const formularioRef = ref(null)
+let temporizadorModal = 0
+
+function intentarEnvio() {
+  if (!formularioRef.value?.reportValidity()) return
+  enviarFormulario()
+}
+
+async function enviarFormulario() {
+  enviando.value = true
+  estadoEnvio.value = { tipo: '', mensaje: '' }
+
+  try {
+    const response = await fetch(endpointFormulario, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formulario.name,
+        company: formulario.company,
+        email: formulario.email,
+        phone: formulario.phone,
+        service: formulario.service,
+        message: formulario.message,
+      }),
+    })
+
+    const respuestaTexto = await response.text()
+    let result = {}
+
+    try {
+      result = respuestaTexto ? JSON.parse(respuestaTexto) : {}
+    } catch {
+      throw new Error('El servidor no devolvio una respuesta JSON valida.')
+    }
+
+    console.log(result)
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'No fue posible enviar tu solicitud.')
+    }
+
+    estadoEnvio.value = {
+      tipo: 'exito',
+      mensaje: '',
+    }
+    mostrarModalExito.value = true
+    window.clearTimeout(temporizadorModal)
+    temporizadorModal = window.setTimeout(() => {
+      mostrarModalExito.value = false
+    }, 3500)
+
+    Object.assign(formulario, {
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: '',
+    })
+  } catch (error) {
+    estadoEnvio.value = {
+      tipo: 'error',
+      mensaje: error instanceof Error ? error.message : 'Ocurrió un error al enviar el formulario.',
+    }
+  } finally {
+    enviando.value = false
+  }
+}
+
+onBeforeUnmount(() => {
+  window.clearTimeout(temporizadorModal)
+})
 </script>
 
 <template>
@@ -36,20 +126,37 @@ const datos = ['Correo', 'Teléfono', 'WhatsApp', 'Redes Sociales']
     </header>
 
     <section class="contacto__grid">
-      <form class="panel formulario">
+      <form ref="formularioRef" class="panel formulario" @submit.prevent="intentarEnvio">
         <p class="panel__etiqueta">Formulario</p>
         <h2>Inicie una conversación confidencial.</h2>
         <div class="formulario__rejilla">
-          <label v-for="campo in campos" :key="campo" class="campo">
-            <span>{{ campo }}</span>
-            <input :placeholder="`Ingresa ${campo.toLowerCase()}`" type="text" />
+          <label v-for="campo in campos" :key="campo.clave" class="campo">
+            <span>{{ campo.etiqueta }}</span>
+            <input
+              v-model="formulario[campo.clave]"
+              :placeholder="`Ingresa ${campo.etiqueta.toLowerCase()}`"
+              :type="campo.tipo"
+              :required="campo.clave !== 'company'"
+            />
           </label>
           <label class="campo campo--completo">
             <span>Mensaje</span>
-            <textarea placeholder="Cuéntanos cómo podemos ayudarte"></textarea>
+            <textarea
+              v-model="formulario.message"
+              placeholder="Cuéntanos cómo podemos ayudarte"
+            ></textarea>
           </label>
         </div>
-        <button type="button" class="boton">Agendar una Reunión</button>
+        <p
+          v-if="estadoEnvio.tipo === 'error' && estadoEnvio.mensaje"
+          class="formulario__estado"
+          :class="`formulario__estado--${estadoEnvio.tipo}`"
+        >
+          {{ estadoEnvio.mensaje }}
+        </p>
+        <button type="button" class="boton" :disabled="enviando" @click="intentarEnvio">
+          {{ enviando ? 'Enviando...' : 'Agendar una Reunión' }}
+        </button>
       </form>
 
       <article class="panel">
@@ -65,16 +172,15 @@ const datos = ['Correo', 'Teléfono', 'WhatsApp', 'Redes Sociales']
       </article>
     </section>
 
-    <article class="panel">
-      <p class="panel__etiqueta">Mapa</p>
-      <h2>Coordinación comercial y operativa en distintos mercados.</h2>
-      <p>
-        Nuestra red conecta oportunidades, activos, talleres, operadores y especialistas para
-        ejecutar cada mandato con alcance regional.
-      </p>
-    </article>
-
     <FichaGoogleBusiness />
+
+    <div v-if="mostrarModalExito" class="modal-exito">
+      <div class="modal-exito__panel">
+        <p class="panel__etiqueta">Mensaje enviado</p>
+        <h2>Gracias por comunicarte con Red Aviation Corp.</h2>
+        <p class="modal-exito__texto">EXPERTOS EN AERONAUTICA</p>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -224,6 +330,56 @@ textarea {
   min-height: 48px;
   padding: 0 20px;
   background: linear-gradient(135deg, #c8102e, #8f0f28);
+}
+
+.boton:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.formulario__estado {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.formulario__estado--exito {
+  color: #b8ffd0;
+  background: rgba(37, 125, 70, 0.18);
+}
+
+.formulario__estado--error {
+  color: #ffd1d8;
+  background: rgba(200, 16, 46, 0.18);
+}
+
+.modal-exito {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(5, 5, 5, 0.76);
+  backdrop-filter: blur(10px);
+}
+
+.modal-exito__panel {
+  width: min(100%, 560px);
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at top left, rgba(200, 16, 46, 0.2), transparent 34%),
+    rgba(12, 12, 12, 0.96);
+  text-align: center;
+}
+
+.modal-exito__texto {
+  margin-top: 16px;
+  color: #ffffff;
+  letter-spacing: 0.16em;
 }
 
 .datos {

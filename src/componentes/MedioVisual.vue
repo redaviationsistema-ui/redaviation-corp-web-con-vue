@@ -70,8 +70,14 @@ function limitarVideo() {
 </script>
 
 <template>
-  <article class="medio" :class="{ 'medio--solo-video': tipo === 'instagram' }">
-    <div v-if="tipo !== 'instagram'" class="medio__encabezado">
+  <article
+    class="medio"
+    :class="{
+      'medio--solo-video': tipo === 'instagram',
+      'medio--sin-encabezado': tipo !== 'instagram' && !titulo && !descripcion,
+    }"
+  >
+    <div v-if="tipo !== 'instagram' && (titulo || descripcion)" class="medio__encabezado">
       <span>Imagen y video</span>
       <h2>{{ titulo }}</h2>
       <p>{{ descripcion }}</p>
@@ -125,6 +131,15 @@ function limitarVideo() {
   padding: 0;
   overflow: hidden;
   background: #fff;
+}
+
+.medio--sin-encabezado {
+  grid-template-columns: 1fr;
+}
+
+.medio--sin-encabezado .medio__contenedor {
+  width: min(100%, 1180px);
+  justify-self: center;
 }
 
 .medio--solo-video .medio__contenedor {

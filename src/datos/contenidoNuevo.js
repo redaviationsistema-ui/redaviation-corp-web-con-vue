@@ -335,9 +335,13 @@ const contenidoServiciosEspeciales = {
       ctaTexto: 'Solicitar Vuelo Privado',
       ctaRuta: '/cotizador',
       video: {
-        tipo: 'imagen',
-        fuente: '/imagenes/servicios/taxi%20aereo/taxi-aereo.png',
+        tipo: 'video',
+        fuente: '/imagenes/servicios/ra-1.mp4',
         alt: 'Operación de taxi aéreo ejecutivo de Red Aviation',
+        mostrarControles: false,
+        silenciado: true,
+        reproduccionAutomatica: true,
+        repetir: true,
       },
     },
   },
@@ -449,6 +453,65 @@ const contenidoServiciosEspeciales = {
       },
     ],
   },
+  'mantenimiento-militar': {
+    subtitulo: 'Soporte técnico y coordinación para aeronaves de misión especial',
+    descripcion:
+      'Capacidades técnicas para inspección, soporte y coordinación operativa de aeronaves de misión especial con criterio documental, técnico y de disponibilidad.',
+    seo: {
+      titulo: 'Mantenimiento Militar | Red Aviation Co.',
+      descripcion:
+        'Soporte, inspección y coordinación para aeronaves de misión especial bajo criterios técnicos y operativos.',
+      palabrasClave: ['mantenimiento militar', 'aeronaves de misión especial', 'soporte técnico aeronáutico'],
+    },
+    ocultarVisual: true,
+    visual: {
+      etiqueta: 'Capacidad tecnica especializada',
+      tipo: 'Soporte para aeronaves de mision especial',
+      detalle:
+        'Soporte, inspeccion y coordinacion para aeronaves de mision especial bajo criterios tecnicos y operativos.',
+      alt: 'Tecnico aeronautico inspeccionando una aeronave de mision especial dentro de hangar',
+    },
+    bloques: [
+      {
+        titulo: 'Instalaciones',
+        descripcion:
+          'Hangar, plataforma y zonas tecnicas preparadas para recibir aeronaves de operacion especial con orden documental y supervision profesional.',
+      },
+      {
+        titulo: 'Procesos',
+        descripcion:
+          'Inspeccion, revision de componentes, seguimiento documental y supervision tecnica orientados a mantener trazabilidad y control operativo.',
+      },
+      {
+        titulo: 'Aeronaves',
+        descripcion:
+          'Atencion a aeronaves militares o de mision especial con enfoque en disponibilidad, condicion tecnica y continuidad de servicio.',
+      },
+    ],
+    galeriaTitulo: 'Galeria multimedia de mantenimiento militar',
+    galeriaDescripcion:
+      'Contenido visual real de instalaciones, procesos y aeronaves vinculadas a operaciones de soporte especializado y mision especial.',
+    galeria: [
+      {
+        fuente: '/imagenes/servicios/FOTOS MILITAR/Militar1.png',
+        alt: 'Tecnico inspeccionando una aeronave dentro de hangar militar',
+        titulo: 'Instalaciones',
+        descripcion: 'Hangar, taller y entorno tecnico preparados para operaciones de soporte especializado.',
+      },
+      {
+        fuente: '/imagenes/servicios/FOTOS MILITAR/Militar2.png',
+        alt: 'Proceso de inspeccion y supervision tecnica en aeronave de mision especial',
+        titulo: 'Procesos',
+        descripcion: 'Inspeccion, documentacion, revision de componentes y supervision tecnica en campo.',
+      },
+      {
+        fuente: '/imagenes/servicios/FOTOS MILITAR/Militar3.png',
+        alt: 'Aeronave de mision especial en plataforma operativa',
+        titulo: 'Aeronaves',
+        descripcion: 'Aeronaves militares o de mision especial en plataforma y entorno operativo.',
+      },
+    ],
+  },
 }
 
 export const serviciosIndividuales = [
@@ -478,6 +541,7 @@ export const serviciosIndividuales = [
       descripcion,
       palabrasClave: [titulo.toLowerCase(), 'servicios aeronáuticos'],
     },
+    ocultarVisual: id === 'mantenimiento-militar',
     visual: { etiqueta: 'Capacidad especializada', tipo: 'Representación visual del servicio' },
     bloques: [
       { titulo: 'Alcance', descripcion: 'El mandato se define conforme al activo, los objetivos del cliente y las condiciones de la operación.' },

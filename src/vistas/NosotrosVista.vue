@@ -1,13 +1,9 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { obtenerVista } from '../datos/sitio'
 
 const vista = obtenerVista('nosotros')
-const videoInstitucional = ref(null)
-const inicioVideoInstitucional = 23
-const finVideoInstitucional = 27
-const velocidadVideoInstitucional = 0.7
 
 const metricas = [
   { icono: '◈', valor: '4', etiqueta: 'empresas especializadas' },
@@ -110,55 +106,6 @@ const galeria = [
 ]
 
 let observador
-let animacionVideoInstitucional
-
-function reiniciarTramoVideoInstitucional() {
-  const video = videoInstitucional.value
-
-  if (!video) return
-
-  video.currentTime = inicioVideoInstitucional
-  video.playbackRate = velocidadVideoInstitucional
-  video.play().catch(() => {})
-}
-
-function sincronizarVideoInstitucional() {
-  const video = videoInstitucional.value
-
-  if (!video) return
-
-  video.playbackRate = velocidadVideoInstitucional
-
-  if (
-    Number.isFinite(video.duration)
-    && (video.currentTime < inicioVideoInstitucional || video.currentTime >= finVideoInstitucional - 0.05)
-  ) {
-    video.currentTime = inicioVideoInstitucional
-  }
-
-  video.play().catch(() => {})
-}
-
-function vigilarVideoInstitucional() {
-  const video = videoInstitucional.value
-
-  if (video) {
-    video.playbackRate = velocidadVideoInstitucional
-
-    if (video.paused && !video.ended) {
-      video.play().catch(() => {})
-    }
-
-    if (
-      Number.isFinite(video.duration)
-      && video.currentTime >= finVideoInstitucional - 0.05
-    ) {
-      reiniciarTramoVideoInstitucional()
-    }
-  }
-
-  animacionVideoInstitucional = window.requestAnimationFrame(vigilarVideoInstitucional)
-}
 
 onMounted(() => {
   const elementos = document.querySelectorAll('.nosotros .revelar')
@@ -176,26 +123,10 @@ onMounted(() => {
   )
 
   elementos.forEach((elemento) => observador.observe(elemento))
-
-  videoInstitucional.value?.addEventListener('loadedmetadata', sincronizarVideoInstitucional)
-  videoInstitucional.value?.addEventListener('canplay', sincronizarVideoInstitucional)
-  videoInstitucional.value?.addEventListener('play', sincronizarVideoInstitucional)
-  videoInstitucional.value?.addEventListener('ended', reiniciarTramoVideoInstitucional)
-
-  if (videoInstitucional.value?.readyState >= 1) {
-    reiniciarTramoVideoInstitucional()
-  }
-
-  animacionVideoInstitucional = window.requestAnimationFrame(vigilarVideoInstitucional)
 })
 
 onBeforeUnmount(() => {
   observador?.disconnect()
-  videoInstitucional.value?.removeEventListener('loadedmetadata', sincronizarVideoInstitucional)
-  videoInstitucional.value?.removeEventListener('canplay', sincronizarVideoInstitucional)
-  videoInstitucional.value?.removeEventListener('play', sincronizarVideoInstitucional)
-  videoInstitucional.value?.removeEventListener('ended', reiniciarTramoVideoInstitucional)
-  window.cancelAnimationFrame(animacionVideoInstitucional)
 })
 </script>
 
@@ -219,15 +150,10 @@ onBeforeUnmount(() => {
         </div>
       </div>
       <div class="hero__imagen">
-        <video
-          ref="videoInstitucional"
-          src="/imagenes/nosotros/ra-2.mp4"
-          autoplay
-          muted
-          playsinline
-          preload="auto"
-          aria-label="Video institucional de Red Aviation Co."
-        ></video>
+        <img
+          src="/imagenes/nosotros/image.png"
+          alt="Identidad visual de Red Aviation"
+        />
         <span>{{ vista.visual.tipo }}</span>
         <div class="hero__instrumentos" aria-hidden="true">
           <small>RED AVIATION OPS</small>

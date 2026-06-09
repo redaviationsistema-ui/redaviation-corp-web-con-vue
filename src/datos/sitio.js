@@ -8,7 +8,7 @@ export const vistas = [
     seo: {
       titulo: 'Red Aviation Co. | Aviación Ejecutiva Integral',
       descripcion:
-        'Soluciones integrales de aviación ejecutiva. Compra y venta de aeronaves, vuelos chárter, mantenimiento, gestión y consultoría aeronáutica.',
+        'Soluciones integrales de aviación ejecutiva: mantenimiento, taller, consultoría aeronáutica, compra y venta de aeronaves, gestión de aeronaves y vuelos chárter.',
       palabrasClave: [
         'Aviación ejecutiva',
         'Vuelos privados',
@@ -23,7 +23,7 @@ export const vistas = [
       ],
     },
     pretitulo: 'Inicio',
-    titulo: 'Representación Privada para Activos Aeronáuticos',
+    titulo: 'Expertos en mantenimiento compra,venta, renta y adminsitracion aeronáutica',
     subtitulo: 'Estrategia comercial, respaldo técnico y ejecución confidencial',
     descripcion:
       'Red Aviation Co. representa a propietarios, compradores, operadores e inversionistas en operaciones de adquisición, comercialización, mantenimiento y gestión de aeronaves de alto valor.',
@@ -364,14 +364,15 @@ export const vistas = [
       palabrasClave: ['contacto Red Aviation', 'solicitar cotización aviación', 'asesor aeronáutico'],
     },
     pretitulo: 'Contacto',
-    titulo: 'Contacte a Nuestro Equipo',
-    subtitulo: 'La conversación comercial empieza con una experiencia clara y profesional',
-    descripcion:
-      'Nuestro equipo atiende solicitudes de representación, adquisición, comercialización, mantenimiento y gestión con absoluta discreción.',
+    titulo: 'Inicie una conversación confidencial con nuestro equipo',
+    subtitulo:
+      'Atendemos solicitudes de adquisición, venta, administración, mantenimiento y representación aeronáutica con absoluta discreción, criterio técnico y acompañamiento profesional desde el primer contacto.',
+    descripcion: '',
     visual: {
       etiqueta: 'Cierre comercial',
       tipo: '',
-      detalle: 'Toda conversación comienza con una revisión confidencial de objetivos, activo y alcance del mandato.',
+      detalle:
+        'Toda operación comienza con una revisión privada de sus objetivos, el activo involucrado y el alcance del mandato.',
       imagen: '/imagenes/nosotros/imagen-institucional.png',
       alt: 'Imagen institucional de Red Aviation Co. para la vista de contacto',
     },

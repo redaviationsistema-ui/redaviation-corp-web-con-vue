@@ -52,8 +52,7 @@ onBeforeUnmount(() => {
 
     <section v-if="mostrarDeclaracion" class="declaracion">
       <p>Representación aeronáutica privada</p>
-      <h2>Capacidad real para representar, evaluar y comercializar activos aeronáuticos de alto valor.</h2>
-      <span>Discreción, criterio técnico, inteligencia de mercado y ejecución comercial.</span>
+      <h2>Talleres aeronauticos, Avionics solutions, Helicopter Shop, Landing Gear Services, Brakes sistemas</h2>
     </section>
 
     <PieSitio />

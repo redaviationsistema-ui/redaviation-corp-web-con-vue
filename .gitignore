@@ -18,6 +18,7 @@ dist.zip
 
 # Large local-only media that should not be committed to GitHub
 public/imagenes/servicios/ra-1.mp4
+public/imagenes/inicio/PremiosPatria.mp4
 
 # Editor directories and files
 .vscode/*
