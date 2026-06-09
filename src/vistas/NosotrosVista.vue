@@ -221,7 +221,7 @@ onBeforeUnmount(() => {
       <div class="hero__imagen">
         <video
           ref="videoInstitucional"
-          src="/imagenes/nosotros/RA%202.mp4"
+          src="/imagenes/nosotros/ra-2.mp4"
           autoplay
           muted
           playsinline

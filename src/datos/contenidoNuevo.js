@@ -292,7 +292,7 @@ const contenidoServiciosEspeciales = {
       'Observe una muestra visual del trabajo técnico realizado dentro del taller de motores de Red Aviation.',
     multimedia: {
       tipo: 'video',
-      fuente: '/imagenes/servicios/taller-motores/C0445.MP4',
+      fuente: '/imagenes/servicios/taller-motores/c0445.mp4',
       portada: '/imagenes/servicios/taller-motores/tallermotores.png',
       alt: 'Video del taller de motores de Red Aviation',
       duracionMaxima: 7,
