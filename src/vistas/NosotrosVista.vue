@@ -89,7 +89,7 @@ const galeria = [
     etiqueta: 'Presencia operativa',
   },
   {
-    fuente: '/imagenes/inicio/inicio-hangar.png',
+    fuente: '/imagenes/inicio/iniciohangar.png',
     alt: 'Aeronaves ejecutivas dentro de un hangar',
     etiqueta: 'Capacidad instalada',
   },

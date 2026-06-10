@@ -336,7 +336,7 @@ const contenidoServiciosEspeciales = {
       ctaRuta: '/cotizador',
       video: {
         tipo: 'video',
-        fuente: '/imagenes/servicios/ra-1.mp4',
+        fuente: '/imagenes/servicios/RA1.mp4',
         alt: 'Operación de taxi aéreo ejecutivo de Red Aviation',
         mostrarControles: false,
         silenciado: true,
@@ -556,7 +556,7 @@ export const carruselEmpresas = [
   {
     etiqueta: 'Aviónica e interiores',
     titulo: 'GESA',
-    descripcion: 'Servicios de aviónica, interiores, partes e instrumentos.',
+    descripcion: 'Servicios especializados en , trenes de aterrizaje, frenos, vestiduras e interiores, venta de partes y rotables.',
     ruta: '/gesa',
     imagen: '/imagenes/LOGOS/Logo%20GESA.png',
     alt: 'Logotipo de GESA',
@@ -564,8 +564,8 @@ export const carruselEmpresas = [
   },
   {
     etiqueta: 'Estructuras',
-    titulo: 'CESA',
-    descripcion: 'Mantenimiento estructural, reparaciones e inspecciones.',
+    titulo: 'Cesa',
+    descripcion: 'Alta especialización en avionics solutions, desarrollo e innovación en sistemas digitales, mantenimiento a planeador, documentación e ingeniería.',
     ruta: '/cesa',
     imagen: '/imagenes/LOGOS/Logo%20CESA.png',
     alt: 'Logotipo de CESA',
@@ -582,8 +582,9 @@ export const carruselEmpresas = [
   },
   {
     etiqueta: 'Comercial',
-    titulo: 'Sky Group',
-    descripcion: 'Venta, adquisición, corretaje y consultoría.',
+    titulo: 'Sky group',
+    descripcion: 'Adquisicion, venta, corretaje y administración de aeronaves',
+    ctaTexto: 'Conoce mas',
     ruta: '/sky-group',
     imagen: '/imagenes/LOGOS/Logo%20SKYGROUP.png',
     alt: 'Logotipo de Sky Group',
@@ -594,9 +595,9 @@ export const carruselEmpresas = [
 export const carruselMultimedia = [
   {
     etiqueta: 'Instalaciones',
-    titulo: 'Capacidad Técnica',
-    descripcion: 'Hangares, talleres, herramientas y equipos que respaldan la ejecución.',
-    imagen: '/imagenes/inicio/inicio-hangar.png',
+    titulo: '',
+    descripcion: 'Capacidad técnica, hangares, herramientas especializadas y equipos operativos que respaldan la ejecución técnica, comercial y documental de cada mandato. ',
+    imagen: '/imagenes/inicio/iniciohangar.png',
     alt: 'Aeronaves ejecutivas dentro de un hangar de mantenimiento',
   },
   {

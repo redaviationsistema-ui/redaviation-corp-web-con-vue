@@ -9,17 +9,135 @@ const ruta = useRoute()
 const mostrarDeclaracion = computed(() => ruta.name !== 'nosotros')
 const mostrarIntro = ref(true)
 const ChatbotRedAviation = defineAsyncComponent(() => import('./componentes/ChatbotRedAviation.vue'))
+const introCanvas = ref(null)
 
 let temporizadorIntro
+let cuadroAnimacion
+let particulas = []
+let explosionesProgramadas = []
+
+const paletaFuegos = ['255, 214, 102', '255, 120, 140', '255, 255, 255', '255, 168, 76']
+const maximoParticulas = 140
+
+function crearExplosion(x, y, escala = 1) {
+  const cantidad = Math.round((14 + Math.random() * 12) * escala)
+
+  for (let indice = 0; indice < cantidad; indice += 1) {
+    const angulo = (Math.PI * 2 * indice) / cantidad + Math.random() * 0.16
+    const velocidad = (1.5 + Math.random() * 2.2) * escala
+
+    particulas.push({
+      x,
+      y,
+      dx: Math.cos(angulo) * velocidad,
+      dy: Math.sin(angulo) * velocidad,
+      vida: 38 + Math.random() * 18,
+      maxVida: 38 + Math.random() * 18,
+      tamano: 1.2 + Math.random() * 1.8,
+      color: paletaFuegos[Math.floor(Math.random() * paletaFuegos.length)],
+    })
+  }
+
+  if (particulas.length > maximoParticulas) {
+    particulas = particulas.slice(particulas.length - maximoParticulas)
+  }
+}
+
+function ajustarCanvas() {
+  const canvas = introCanvas.value
+  if (!canvas) return
+
+  const escala = Math.min(window.devicePixelRatio || 1, 1.4)
+  const ancho = window.innerWidth
+  const alto = window.innerHeight
+
+  canvas.width = ancho * escala
+  canvas.height = alto * escala
+  canvas.style.width = `${ancho}px`
+  canvas.style.height = `${alto}px`
+
+  const contexto = canvas.getContext('2d')
+  contexto?.setTransform(escala, 0, 0, escala, 0, 0)
+}
+
+function dibujarFuegos() {
+  const canvas = introCanvas.value
+  const contexto = canvas?.getContext('2d')
+  if (!canvas || !contexto) return
+
+  const ancho = window.innerWidth
+  const alto = window.innerHeight
+
+  contexto.clearRect(0, 0, ancho, alto)
+  contexto.globalCompositeOperation = 'lighter'
+
+  particulas = particulas.filter((particula) => particula.vida > 0)
+
+  particulas.forEach((particula) => {
+    particula.x += particula.dx
+    particula.y += particula.dy
+    particula.dx *= 0.99
+    particula.dy = particula.dy * 0.99 + 0.025
+    particula.vida -= 1
+
+    const opacidad = Math.max(particula.vida / particula.maxVida, 0)
+    const brillo = particula.tamano * 3.2
+
+    contexto.beginPath()
+    contexto.fillStyle = `rgba(${particula.color}, ${opacidad})`
+    contexto.shadowColor = `rgba(${particula.color}, ${opacidad * 0.95})`
+    contexto.shadowBlur = 8
+    contexto.arc(particula.x, particula.y, particula.tamano, 0, Math.PI * 2)
+    contexto.fill()
+
+    contexto.beginPath()
+    contexto.fillStyle = `rgba(${particula.color}, ${opacidad * 0.12})`
+    contexto.shadowBlur = 0
+    contexto.arc(particula.x, particula.y, brillo, 0, Math.PI * 2)
+    contexto.fill()
+  })
+
+  contexto.globalCompositeOperation = 'source-over'
+  cuadroAnimacion = window.requestAnimationFrame(dibujarFuegos)
+}
+
+function lanzarFuegos() {
+  const explosiones = [
+    { x: 0.76, y: 0.22, escala: 1 },
+    { x: 0.18, y: 0.27, escala: 0.82 },
+    { x: 0.58, y: 0.16, escala: 0.72 },
+  ]
+
+  explosiones.forEach((explosion, indice) => {
+    const temporizadorExplosion = window.setTimeout(() => {
+      crearExplosion(window.innerWidth * explosion.x, window.innerHeight * explosion.y, explosion.escala)
+    }, indice * 320)
+
+    explosionesProgramadas.push(temporizadorExplosion)
+  })
+}
+
+function detenerFuegos() {
+  explosionesProgramadas.forEach((temporizadorExplosion) => window.clearTimeout(temporizadorExplosion))
+  explosionesProgramadas = []
+  window.cancelAnimationFrame(cuadroAnimacion)
+}
 
 onMounted(() => {
+  ajustarCanvas()
+  dibujarFuegos()
+  lanzarFuegos()
   temporizadorIntro = window.setTimeout(() => {
     mostrarIntro.value = false
-  }, 1800)
+    detenerFuegos()
+  }, 2600)
+  window.addEventListener('resize', ajustarCanvas)
 })
 
 onBeforeUnmount(() => {
   window.clearTimeout(temporizadorIntro)
+  detenerFuegos()
+  window.removeEventListener('resize', ajustarCanvas)
 })
 </script>
 
@@ -27,19 +145,19 @@ onBeforeUnmount(() => {
   <div class="aplicacion">
     <Transition name="intro">
       <section v-if="mostrarIntro" class="intro" aria-label="Introducción de Red Aviation">
+        <canvas ref="introCanvas" class="intro__lienzo" aria-hidden="true"></canvas>
         <span class="intro__haz" aria-hidden="true"></span>
+        <span class="intro__destello intro__destello--uno" aria-hidden="true"></span>
+        <span class="intro__destello intro__destello--dos" aria-hidden="true"></span>
         <span class="intro__ruta" aria-hidden="true">
           <i class="intro__avion">✈</i>
         </span>
         <div class="intro__contenido">
-          <div class="intro__marca">
-            <img src="/LOGO.png" alt="Red Aviation" class="intro__logo" />
-          </div>
-          <span class="intro__separador" aria-hidden="true"></span>
-          <div class="intro__texto">
-            <span>Expertos en</span>
-            <strong>Aeronáutica</strong>
-          </div>
+          <img
+            src="/imagenes/25ANIVERSARIO.png"
+            alt="25 aniversario de Red Aviation"
+            class="intro__aniversario-imagen"
+          />
         </div>
       </section>
     </Transition>
@@ -76,7 +194,15 @@ onBeforeUnmount(() => {
     radial-gradient(circle at top center, rgba(200, 16, 46, 0.24), transparent 28%),
     linear-gradient(135deg, rgba(200, 16, 46, 0.08), transparent 34%),
     rgba(5, 5, 5, 0.98);
-  backdrop-filter: blur(10px);
+}
+
+.intro__lienzo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.72;
 }
 
 .intro::before,
@@ -108,9 +234,34 @@ onBeforeUnmount(() => {
   position: absolute;
   inset: -10% auto -10% -20%;
   width: 36%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
   transform: skewX(-22deg);
-  animation: barrido-intro 1600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: barrido-intro 2100ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.intro__destello {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 113, 135, 0.4), transparent 68%);
+  filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  animation: destello-aniversario 1900ms ease-out forwards;
+}
+
+.intro__destello--uno {
+  top: 16%;
+  right: 18%;
+  width: 180px;
+  height: 180px;
+}
+
+.intro__destello--dos {
+  bottom: 18%;
+  left: 12%;
+  width: 240px;
+  height: 240px;
+  animation-delay: 180ms;
 }
 
 .intro__ruta {
@@ -155,72 +306,24 @@ onBeforeUnmount(() => {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: auto auto auto;
-  align-items: center;
-  gap: 28px;
-  padding: 34px 42px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
-    rgba(255, 255, 255, 0.02);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.02) inset,
-    0 30px 90px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(18px);
+  place-items: center;
+  width: min(92vw, 1400px);
+  padding: 24px;
 }
 
-.intro__marca,
-.intro__separador,
-.intro__texto span,
-.intro__texto strong {
+.intro__aniversario-imagen {
   opacity: 0;
   animation: elevar-intro 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.intro__marca {
-  animation-delay: 180ms;
-}
-
-.intro__separador {
-  animation-delay: 320ms;
-}
-
-.intro__texto span {
-  animation-delay: 420ms;
-}
-
-.intro__texto strong {
-  animation-delay: 540ms;
-}
-
-.intro__separador {
-  width: 1px;
-  height: 88px;
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-}
-
-.intro__logo {
-  width: min(280px, 48vw);
+.intro__aniversario-imagen {
+  margin: 0;
+  width: min(92vw, 1200px);
+  max-height: 82vh;
   height: auto;
   object-fit: contain;
-}
-
-.intro__texto {
-  display: grid;
-  gap: 6px;
-  color: rgba(255, 255, 255, 0.82);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.intro__texto span,
-.intro__texto strong {
-  font-weight: 400;
-  font-size: clamp(1rem, 1.9vw, 2rem);
-}
-
-.intro__texto strong {
-  color: #ffffff;
+  filter: drop-shadow(0 0 40px rgba(255, 231, 186, 0.24));
+  animation-delay: 420ms;
 }
 
 .contenedor-principal {
@@ -327,23 +430,39 @@ onBeforeUnmount(() => {
   }
 }
 
+@keyframes destello-aniversario {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  30% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
 @media (max-width: 720px) {
   .intro__contenido {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 18px;
-    width: min(92vw, 420px);
-    text-align: center;
+    width: 100vw;
+    min-height: 100dvh;
+    padding: 0;
   }
 
-  .intro__separador {
-    width: 82px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  .intro__aniversario-imagen {
+    width: min(118vw, 760px);
+    max-width: none;
+    max-height: 100dvh;
   }
 
-  .intro__logo {
-    width: min(220px, 58vw);
+  .intro__haz,
+  .intro__destello,
+  .intro__ruta {
+    opacity: 0.55;
   }
 
   .intro__ruta {

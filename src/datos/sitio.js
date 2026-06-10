@@ -28,17 +28,26 @@ export const vistas = [
     descripcion:
       'Red Aviation Co. representa a propietarios, compradores, operadores e inversionistas en operaciones de adquisición, comercialización, mantenimiento y gestión de aeronaves de alto valor.',
     visual: {
-      etiqueta: 'Presentación corporativa',
-      tipo: 'Aeronave representada',
-      detalle:
-        'Cada operación se conduce con criterio de mercado, revisión técnica, control documental y absoluta discreción.',
+      etiqueta: '25 AÑOS',
+      tipo: 'Red Aviation se enogruellece de haber cumplido 25 años en operaciones, gracias a todos nuestros colaboradores clientes, administrativos y directivos gerenciales',
+      detalle: '',
       imagen: heroPrincipal,
       alt: 'Visual principal de Red Aviation Co',
     },
     metricas: [
-      { valor: 'Privada', etiqueta: 'Representación confidencial de propietarios y compradores' },
-      { valor: '360°', etiqueta: 'Cobertura comercial, técnica y operativa' },
-      { valor: 'Alto valor', etiqueta: 'Activos evaluados con criterio aeronáutico' },
+      {
+        valor: 'Privada',
+        etiqueta: 'Representación confidencial para propietarios, compradores e inversionistas aeronáuticos.',
+      },
+      {
+        valor: 'Integral',
+        etiqueta: 'Cobertura comercial, técnica, operativa y documental en cada servicio que prestamos.',
+      },
+      {
+        valor: 'Alto valor',
+        etiqueta:
+          'Una firma especializada con procesos, instalaciones, experiencia y confidencialidad para atender operaciones aeronáuticas de alto nivel',
+      },
     ],
     animaciones: [
       'Representación confidencial',

@@ -15,6 +15,14 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  tamanoTitulo: {
+    type: String,
+    default: 'normal',
+  },
+  tamanoContenido: {
+    type: String,
+    default: 'normal',
+  },
 })
 
 const indice = ref(0)
@@ -42,7 +50,7 @@ onBeforeUnmount(() => window.clearInterval(intervalo))
     <div class="carrusel__encabezado">
       <div>
         <p class="carrusel__etiqueta">Recorrido interactivo</p>
-        <h2>{{ titulo }}</h2>
+        <h2 :class="{ 'carrusel__titulo--compacto': tamanoTitulo === 'compacto' }">{{ titulo }}</h2>
       </div>
       <div class="carrusel__controles">
         <button type="button" aria-label="Elemento anterior" @click="irA(indice - 1)">←</button>
@@ -54,10 +62,12 @@ onBeforeUnmount(() => window.clearInterval(intervalo))
     <article class="carrusel__diapositiva" aria-live="polite">
       <div class="carrusel__contenido">
         <span>{{ elementoActual.etiqueta }}</span>
-        <h3>{{ elementoActual.titulo }}</h3>
+        <h3 :class="{ 'carrusel__contenido-titulo--compacto': tamanoContenido === 'compacto' }">
+          {{ elementoActual.titulo }}
+        </h3>
         <p>{{ elementoActual.descripcion }}</p>
         <RouterLink v-if="elementoActual.ruta" :to="elementoActual.ruta" class="carrusel__enlace">
-          Conocer más
+          {{ elementoActual.ctaTexto ?? 'Conocer más' }}
         </RouterLink>
       </div>
       <div class="carrusel__visual">
@@ -124,8 +134,20 @@ h2 {
   font-size: clamp(1.8rem, 3vw, 2.8rem);
 }
 
+.carrusel__titulo--compacto {
+  font-size: clamp(1.15rem, 2vw, 1.8rem);
+  line-height: 1.16;
+  max-width: 34ch;
+}
+
 h3 {
   font-size: clamp(1.7rem, 3vw, 2.6rem);
+}
+
+.carrusel__contenido-titulo--compacto {
+  font-size: clamp(1.45rem, 2.3vw, 2.2rem);
+  line-height: 1.18;
+  max-width: 24ch;
 }
 
 .carrusel__controles {

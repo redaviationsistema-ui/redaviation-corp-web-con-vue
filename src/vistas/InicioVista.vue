@@ -45,10 +45,26 @@ const empresas = [
 ]
 
 const redes = [
-  { nombre: 'LinkedIn', icono: 'linkedin-icon-real' },
-  { nombre: 'Instagram', icono: 'instagram-icon-real' },
-  { nombre: 'Facebook', icono: 'facebook-icon-real' },
-  { nombre: 'YouTube', icono: 'youtube-icon-real' },
+  {
+    nombre: 'LinkedIn',
+    icono: 'linkedin-icon-real',
+    descripcion: 'Actualizaciones institucionales, proyectos comerciales, capacidades técnicas y visión estratégica de la firma.',
+  },
+  {
+    nombre: 'Instagram',
+    icono: 'instagram-icon-real',
+    descripcion: 'Contenido visual sobre aeronaves, operaciones, instalaciones, experiencias privadas y momentos clave de Red Aviation.',
+  },
+  {
+    nombre: 'Facebook',
+    icono: 'facebook-icon-real',
+    descripcion: 'Noticias, servicios, actualizaciones comerciales y contenido de contacto para nuestra comunidad aeronáutica.',
+  },
+  {
+    nombre: 'YouTube',
+    icono: 'youtube-icon-real',
+    descripcion: 'Videos técnicos, recorridos, análisis de aeronaves, procesos de compra y contenido especializado de aviación privada.',
+  },
 ]
 
 const iconosMetricas = ['⌖', '360°', '◆']
@@ -121,7 +137,7 @@ onBeforeUnmount(() => observador?.disconnect())
         <strong>{{ vista.visual.tipo }}</strong>
         <p>{{ vista.visual.detalle }}</p>
         <div class="hero__media">
-          <img src="/imagenes/inicio/inicio1.jpg" :alt="vista.visual.alt" />
+          <img src="/imagenes/inicio/74-artguru.jpg" :alt="vista.visual.alt" />
           <div class="hero__media-datos" aria-hidden="true">
             <span>ALT 35,000 FT</span>
             <span>CRS 284°</span>
@@ -140,16 +156,16 @@ onBeforeUnmount(() => observador?.disconnect())
 
     <MedioVisual
       class="revelar"
-      titulo="Capacidad que se demuestra"
-      descripcion="Instalaciones, aeronaves, inspecciones y equipos especializados respaldan cada mandato comercial y técnico."
+      titulo="Capacidad demostrada desde hace 25 años"
+      descripcion="Instgalaciones, aeronaves, inspecciones y equipos especializados que demuestran nuestra capacidad para ejecutar mandatos comerciales, técnicos y operativos con Presicion,"
       tipo="imagen"
-      fuente="/imagenes/inicio/inicio-hangar.png"
+      fuente="/imagenes/inicio/iniciohangar.png"
       alt="Aeronaves ejecutivas dentro de un hangar de mantenimiento"
     />
 
     <CarruselContenido
       class="revelar"
-      titulo="Accesos rápidos a las empresas del grupo"
+      titulo="Empresas especializadas para cada etada de la aviación privada"
       :elementos="carruselEmpresas"
       automatico
     />
@@ -159,7 +175,7 @@ onBeforeUnmount(() => observador?.disconnect())
       titulo=""
       descripcion=""
       tipo="video"
-      fuente="/imagenes/inicio/PremiosPatria.mp4"
+      fuente="/imagenes/inicio/video1.mp4"
       alt="Video Premios Patria de Red Aviation"
       :mostrar-controles="false"
       :silenciado="true"
@@ -179,17 +195,19 @@ onBeforeUnmount(() => observador?.disconnect())
 
       <article class="panel">
         <p class="panel__etiqueta">Cobertura Regional</p>
-        <h2>Conocimiento local para ejecutar operaciones entre distintos mercados.</h2>
+        <h2>Conocimiento técnico aeronáutico para ejecutar operaciones entre distintos mercados</h2>
         <p>
-          Coordinamos oportunidades en México y Estados Unidos
-          mediante relaciones comerciales, soporte técnico y seguimiento documental.
+          Coordinamos oportunidades en mexico y estados unidos mediante relaciones
+          comerciales, soporte tecnico y seguimiento documental especializado
         </p>
       </article>
     </section>
 
     <CarruselContenido
       class="revelar"
-      titulo="Proyectos, instalaciones y capacidades"
+      titulo="Infraestructura, inmobiliario y capacidades que respaldan cada operación"
+      tamano-titulo="compacto"
+      tamano-contenido="compacto"
       :elementos="carruselMultimedia"
     />
 
@@ -198,7 +216,7 @@ onBeforeUnmount(() => observador?.disconnect())
         <p class="panel__etiqueta">Sigue a Red Aviation</p>
         <h2>Noticias, proyectos y actividad corporativa.</h2>
       </div>
-      <div class="rejilla">
+      <div class="rejilla rejilla--redes">
         <RouterLink
           v-for="red in redes"
           :key="red.nombre"
@@ -211,7 +229,7 @@ onBeforeUnmount(() => observador?.disconnect())
             </svg>
           </span>
           <h3>{{ red.nombre }}</h3>
-          <p>Proyectos, operaciones, capacidades técnicas y noticias relevantes de la firma.</p>
+          <p>{{ red.descripcion }}</p>
           <span class="tarjeta__flecha">Explorar →</span>
         </RouterLink>
       </div>
@@ -347,7 +365,7 @@ onBeforeUnmount(() => observador?.disconnect())
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
+  grid-template-columns: 1fr 1.08fr;
   gap: 18px;
   padding: 24px 0 54px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -446,7 +464,7 @@ h2 {
 }
 
 h1 {
-  font-size: clamp(3rem, 6vw, 5.8rem);
+  font-size: clamp(2.35rem, 4.7vw, 4.4rem);
   line-height: 0.95;
   text-wrap: balance;
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.48);
@@ -559,20 +577,21 @@ blockquote p,
 .hero__media {
   position: relative;
   flex: 1;
-  min-height: 260px;
+  min-height: 420px;
   display: grid;
   place-items: center;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(5, 5, 5, 0.46);
-  padding: 18px;
+  padding: 10px;
   transition: border-color 250ms ease, transform 250ms ease;
 }
 
 .hero__media img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 68%;
   transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1), filter 350ms ease;
 }
 
@@ -658,6 +677,10 @@ blockquote p,
 
 .rejilla {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rejilla--redes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .tags {
