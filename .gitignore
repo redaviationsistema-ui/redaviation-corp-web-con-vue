@@ -17,8 +17,9 @@ dist.zip
 !.env.example
 
 # Large local-only media that should not be committed to GitHub
-public/imagenes/servicios/RA1.mp4
-public/imagenes/inicio/video1.mp4
+public/videos/RA1.mp4
+public/videos/video1.mp4
+public/videos/video1.zip
 
 # Editor directories and files
 .vscode/*

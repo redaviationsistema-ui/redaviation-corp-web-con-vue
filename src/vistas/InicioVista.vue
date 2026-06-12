@@ -137,7 +137,7 @@ onBeforeUnmount(() => observador?.disconnect())
         <strong>{{ vista.visual.tipo }}</strong>
         <p>{{ vista.visual.detalle }}</p>
         <div class="hero__media">
-          <img src="/imagenes/inicio/74-artguru.jpg" :alt="vista.visual.alt" />
+          <img src="/imagenes/74-artguru.jpg?v=1" :alt="vista.visual.alt" />
           <div class="hero__media-datos" aria-hidden="true">
             <span>ALT 35,000 FT</span>
             <span>CRS 284°</span>
@@ -159,7 +159,7 @@ onBeforeUnmount(() => observador?.disconnect())
       titulo="Capacidad demostrada desde hace 25 años"
       descripcion="Instgalaciones, aeronaves, inspecciones y equipos especializados que demuestran nuestra capacidad para ejecutar mandatos comerciales, técnicos y operativos con Presicion,"
       tipo="imagen"
-      fuente="/imagenes/inicio/iniciohangar.png"
+      fuente="/imagenes/hangar2.png?v=1"
       alt="Aeronaves ejecutivas dentro de un hangar de mantenimiento"
     />
 
@@ -175,7 +175,7 @@ onBeforeUnmount(() => observador?.disconnect())
       titulo=""
       descripcion=""
       tipo="video"
-      fuente="/imagenes/inicio/video1.mp4"
+      fuente="/videos/video1.mp4"
       alt="Video Premios Patria de Red Aviation"
       :mostrar-controles="false"
       :silenciado="true"
@@ -209,6 +209,7 @@ onBeforeUnmount(() => observador?.disconnect())
       tamano-titulo="compacto"
       tamano-contenido="compacto"
       :elementos="carruselMultimedia"
+      automatico
     />
 
     <section class="bloque revelar">
@@ -225,7 +226,7 @@ onBeforeUnmount(() => observador?.disconnect())
         >
           <span class="tarjeta__icono tarjeta__icono--svg">
             <svg aria-hidden="true" viewBox="0 0 24 24">
-              <use :href="`/icons.svg#${red.icono}`"></use>
+              <use :href="`/imagenes/icons.svg#${red.icono}`"></use>
             </svg>
           </span>
           <h3>{{ red.nombre }}</h3>
@@ -876,6 +877,10 @@ blockquote footer {
 
   .hero__acciones .hero__boton {
     width: 100%;
+  }
+
+  .hero__media img {
+    object-position: 42% center;
   }
 
   .hero__media-datos {

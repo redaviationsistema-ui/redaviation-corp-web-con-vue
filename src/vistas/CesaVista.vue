@@ -1,5 +1,7 @@
 <script setup>
-import heroPrincipal from '../assets/hero.png'
+import CarruselContenido from '../componentes/CarruselContenido.vue'
+
+const heroPrincipal = '/imagenes/hero.png?v=1'
 
 const etapas = ['Recepción', 'Inspección', 'Reparación', 'Certificación', 'Entrega']
 
@@ -14,8 +16,10 @@ const capacidades = [
   'Consultoría técnica',
 ]
 
+const carruselImagenes = []
+
 const logoTitulo = {
-  src: '/imagenes/LOGOS/Logo%20CESA.png',
+  src: '/imagenes/logo-cesa.png?v=1',
   alt: 'Logo de CESA',
 }
 </script>
@@ -40,7 +44,7 @@ const logoTitulo = {
         <span class="cesa__etiqueta">Imagen local conectada</span>
         <strong>Línea temporal de mantenimiento</strong>
         <p>
-          Este módulo ya usa una imagen desde <code>src/assets/</code> y puedes sustituirla cuando
+          Este módulo ya usa una imagen desde <code>public/imagenes/</code> y puedes sustituirla cuando
           tengas fotografía real de taller, hangar o estructura.
         </p>
         <div class="cesa__media">
@@ -75,6 +79,13 @@ const logoTitulo = {
         <span>{{ etapa }}</span>
       </article>
     </section>
+
+    <CarruselContenido
+      titulo="Galería técnica de CESA"
+      :elementos="carruselImagenes"
+      tamano-titulo="compacto"
+      tamano-contenido="compacto"
+    />
 
     <section class="servicios">
       <div class="servicios__encabezado">

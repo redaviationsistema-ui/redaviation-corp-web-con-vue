@@ -34,6 +34,13 @@ defineProps({
         <h1>{{ pagina.titulo }}</h1>
         <p class="estructura__subtitulo">{{ pagina.subtitulo }}</p>
         <p>{{ pagina.descripcion }}</p>
+
+        <figure v-if="pagina.imagenDebajoHero?.src" class="estructura__imagen-debajo">
+          <img
+            :src="pagina.imagenDebajoHero.src"
+            :alt="pagina.imagenDebajoHero.alt"
+          />
+        </figure>
       </div>
 
       <div v-if="!pagina.ocultarVisual" class="estructura__hero-visual">
@@ -82,7 +89,11 @@ defineProps({
       </article>
     </section>
 
-    <section v-if="pagina.galeria?.length" class="galeria">
+    <section
+      v-if="pagina.galeria?.length"
+      class="galeria"
+      :class="{ 'galeria--uniforme': pagina.galeriaUniforme }"
+    >
       <div class="galeria__encabezado">
         <p class="estructura__etiqueta">Capacidad en operación</p>
         <h2>{{ pagina.galeriaTitulo ?? 'Instalaciones, equipo y procesos técnicos.' }}</h2>
@@ -191,6 +202,11 @@ defineProps({
   gap: 12px;
 }
 
+.galeria--uniforme {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto 320px;
+}
+
 .destacado-video {
   display: grid;
   gap: 24px;
@@ -293,6 +309,10 @@ defineProps({
   grid-row: 2 / 4;
 }
 
+.galeria--uniforme figure:first-of-type {
+  grid-row: auto;
+}
+
 .galeria img {
   width: 100%;
   height: 100%;
@@ -334,6 +354,22 @@ defineProps({
   display: grid;
   gap: 20px;
   align-content: start;
+}
+
+.estructura__imagen-debajo {
+  margin: 28px 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.estructura__imagen-debajo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: cover;
 }
 
 .estructura__etiqueta {

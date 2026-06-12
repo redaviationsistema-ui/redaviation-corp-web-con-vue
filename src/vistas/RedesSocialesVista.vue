@@ -86,7 +86,7 @@ const atributosHero = [
 
       <div class="hero__visual">
         <img
-          src="/imagenes/servicios/preesenciadigital.png"
+          src="/imagenes/preesenciadigital.png?v=1"
           alt="Presencia digital de Red Aviation con enfoque corporativo y comercial"
         />
         <div class="hero__overlay">
@@ -117,7 +117,7 @@ const atributosHero = [
         <article v-for="canal in canales" :key="canal.nombre" class="tarjeta">
           <span class="tarjeta__icono">
             <svg aria-hidden="true" viewBox="0 0 24 24">
-              <use :href="`/icons.svg#${canal.icono}`"></use>
+              <use :href="`/imagenes/icons.svg#${canal.icono}`"></use>
             </svg>
           </span>
           <h3>{{ canal.nombre }}</h3>

@@ -6,7 +6,7 @@ import { pieSitio } from '../datos/sitio'
   <footer class="pie">
     <div class="pie__interior">
       <section class="pie__columna">
-        <img src="/LOGO.png" alt="Red Aviation Co." class="pie__logo" />
+        <img src="/imagenes/LOGO.png?v=1" alt="Red Aviation Co." class="pie__logo" />
         <p>{{ pieSitio.descripcion }}</p>
       </section>
 

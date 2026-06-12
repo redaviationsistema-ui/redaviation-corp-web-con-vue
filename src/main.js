@@ -3,4 +3,10 @@ import App from './App.vue'
 import enrutador from './enrutador'
 import './style.css'
 
-createApp(App).use(enrutador).mount('#app')
+const app = createApp(App)
+
+app.use(enrutador)
+
+enrutador.isReady().then(() => {
+  app.mount('#app')
+})

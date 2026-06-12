@@ -154,8 +154,8 @@ onBeforeUnmount(() => {
         </span>
         <div class="intro__contenido">
           <img
-            src="/imagenes/25ANIVERSARIO.png"
-            alt="25 aniversario de Red Aviation"
+            src="/imagenes/25ANIVERSARIO.png?v=1"
+            alt="Red Aviation 25 aniversario"
             class="intro__aniversario-imagen"
           />
         </div>
@@ -457,6 +457,10 @@ onBeforeUnmount(() => {
     width: min(118vw, 760px);
     max-width: none;
     max-height: 100dvh;
+    object-position: center center;
+    justify-self: center;
+    position: relative;
+    left: -10%;
   }
 
   .intro__haz,

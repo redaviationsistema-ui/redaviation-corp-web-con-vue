@@ -1,5 +1,7 @@
 <script setup>
-import heroPrincipal from '../assets/hero.png'
+import CarruselContenido from '../componentes/CarruselContenido.vue'
+
+const heroPrincipal = '/imagenes/hero.png?v=1'
 
 const capacidades = [
   'Inspecciones de motores',
@@ -29,8 +31,43 @@ const diferenciales = [
   },
 ]
 
+const carruselImagenes = [
+  {
+    etiqueta: 'Motores',
+    titulo: 'Inspección técnica en campo',
+    descripcion:
+      'Registro visual para reforzar diagnóstico, revisión especializada y lectura técnica de condición en Excel Turbines.',
+    imagen: '/imagenes/IMG_7684.jpg?v=1',
+    alt: 'Inspección técnica de motor en Excel Turbines',
+  },
+  {
+    etiqueta: 'Turbinas',
+    titulo: 'Trabajo especializado de mantenimiento',
+    descripcion:
+      'Visual adicional para comunicar intervención técnica, continuidad operativa y soporte industrial en motores de turbina.',
+    imagen: '/imagenes/IMG_7685.jpg?v=1',
+    alt: 'Mantenimiento especializado de turbinas en Excel Turbines',
+  },
+  {
+    etiqueta: 'Taller',
+    titulo: 'Capacidad técnica en taller',
+    descripcion:
+      'Imagen para comunicar infraestructura operativa, atención especializada y trabajo técnico aplicado en Excel Turbines.',
+    imagen: '/imagenes/EXCEL.jpg?v=1',
+    alt: 'Capacidad técnica en taller de Excel Turbines',
+  },
+  {
+    etiqueta: 'Operacion',
+    titulo: 'Soporte técnico y ejecución',
+    descripcion:
+      'Visual adicional para reforzar procesos de mantenimiento, revisión y soporte técnico en motores de turbina.',
+    imagen: '/imagenes/EXCELL.jpg?v=1',
+    alt: 'Soporte técnico y ejecución en Excel Turbines',
+  },
+]
+
 const logoTitulo = {
-  src: '/imagenes/LOGOS/Logo%20EXCEL.png',
+  src: '/imagenes/logo-excel.png?v=1',
   alt: 'Logo de Excel Turbines de México',
 }
 </script>
@@ -56,7 +93,7 @@ const logoTitulo = {
         <span class="excel__etiqueta">Imagen local conectada</span>
         <strong>Motor de turbina</strong>
         <p>
-          Este bloque ya muestra una imagen desde <code>src/assets/</code> y después puedes
+          Este bloque ya muestra una imagen desde <code>public/imagenes/</code> y después puedes
           reemplazarla por una fotografía o representación técnica definitiva.
         </p>
         <div class="excel__media">
@@ -92,6 +129,13 @@ const logoTitulo = {
         <p>{{ item.descripcion }}</p>
       </article>
     </section>
+
+    <CarruselContenido
+      titulo="Galería técnica de Excel Turbines"
+      :elementos="carruselImagenes"
+      tamano-titulo="compacto"
+      tamano-contenido="compacto"
+    />
 
     <section class="servicios">
       <div class="servicios__encabezado">

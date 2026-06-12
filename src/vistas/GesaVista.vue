@@ -1,4 +1,5 @@
 <script setup>
+import CarruselContenido from '../componentes/CarruselContenido.vue'
 import MarcadorVisual from '../componentes/MarcadorVisual.vue'
 import { obtenerVista } from '../datos/sitio'
 
@@ -28,8 +29,51 @@ const diferenciales = [
   },
 ]
 
+const carruselImagenes = [
+  {
+    etiqueta: 'Interiores',
+    titulo: 'Cabina e interiores ejecutivos',
+    descripcion:
+      'Visual para comunicar personalización de cabina, acabados interiores y atención al detalle en proyectos especiales de GESA.',
+    imagen: '/imagenes/Interiores2.jpg?v=1',
+    alt: 'Interiores ejecutivos y personalización de cabina en GESA',
+  },
+  {
+    etiqueta: 'Operacion',
+    titulo: 'Integración operativa en campo',
+    descripcion:
+      'Registro visual de trabajo aplicado para reforzar instalación, soporte técnico y continuidad operativa dentro de GESA.',
+    imagen: '/imagenes/IMG_7929.jpg?v=1',
+    alt: 'Integración operativa y soporte técnico en GESA',
+  },
+  {
+    etiqueta: 'Avionica',
+    titulo: 'Ingeniería y trabajo de aviónica',
+    descripcion:
+      'Registro visual de integración técnica, detalle de componentes y ejecución especializada dentro del entorno de GESA.',
+    imagen: '/imagenes/IngeAvionica.png?v=1',
+    alt: 'Ingeniería de aviónica en instalaciones de GESA',
+  },
+  {
+    etiqueta: 'Cabina',
+    titulo: 'Intervención técnica con enfoque operativo',
+    descripcion:
+      'Visual para reforzar personalización, instalación y mejora de sistemas con criterio técnico y continuidad operativa.',
+    imagen: '/imagenes/IngeAvionica1.png?v=1',
+    alt: 'Trabajo técnico de aviónica y componentes en GESA',
+  },
+  {
+    etiqueta: 'Prototipos',
+    titulo: 'Prototipos y desarrollo aplicado',
+    descripcion:
+      'Imagen adicional para comunicar capacidad de diseño, adaptación y ejecución en proyectos especializados.',
+    imagen: '/imagenes/Prototipos1.jpg?v=1',
+    alt: 'Prototipos y desarrollo técnico aplicado en GESA',
+  },
+]
+
 const logoTitulo = {
-  src: '/imagenes/LOGOS/Logo%20GESA.png',
+  src: '/imagenes/logo-gesa.png?v=1',
   alt: 'Logo de GESA',
 }
 </script>
@@ -82,6 +126,13 @@ const logoTitulo = {
         <p>{{ diferencial.descripcion }}</p>
       </article>
     </section>
+
+    <CarruselContenido
+      titulo="Galería técnica de GESA"
+      :elementos="carruselImagenes"
+      tamano-titulo="compacto"
+      tamano-contenido="compacto"
+    />
 
     <section class="servicios">
       <div class="servicios__encabezado">

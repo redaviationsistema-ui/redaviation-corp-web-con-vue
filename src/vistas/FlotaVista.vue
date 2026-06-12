@@ -179,7 +179,7 @@ onBeforeUnmount(() => observador?.disconnect())
             "
             class="aeronave__placeholder"
           >
-            <img src="/LOGO.png" alt="Red Aviation Company" />
+            <img src="/imagenes/LOGO.png?v=1" alt="Red Aviation Company" />
             <small>
               {{
                 imagenPrincipal(aeronave) && !imagenesConError[aeronave.id]
@@ -237,7 +237,7 @@ onBeforeUnmount(() => observador?.disconnect())
       class="cargador-progresivo"
       aria-live="polite"
     >
-      <img src="/LOGO.png" alt="" />
+      <img src="/imagenes/LOGO.png?v=1" alt="" />
       <span>Cargando más aeronaves...</span>
     </div>
   </section>

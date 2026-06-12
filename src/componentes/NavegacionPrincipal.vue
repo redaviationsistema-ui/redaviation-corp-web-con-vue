@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
   <header class="navegacion">
     <div class="navegacion__interior">
       <RouterLink to="/" class="marca">
-        <img src="/LOGO.png" alt="Red Aviation Co." class="marca__logo" />
+        <img src="/imagenes/LOGO.png?v=1" alt="Red Aviation Co." class="marca__logo" />
         <span class="marca__descripcion">EXPERTOS EN AERONÁUTICA</span>
       </RouterLink>
 

@@ -44,7 +44,7 @@ const trayectoria = [
     anio: '2001',
     nombre: 'CESA',
     subtitulo: 'Centro de Servicio Aeronáutico',
-    logo: '/imagenes/LOGOS/Logo%20CESA.png',
+    logo: '/imagenes/logo-cesa.png?v=1',
     alt: 'Logo de CESA',
     posicion: 'inferior',
   },
@@ -52,7 +52,7 @@ const trayectoria = [
     anio: '2007',
     nombre: 'Excel Turbines de México',
     subtitulo: 'Especialistas en motores de turbina',
-    logo: '/imagenes/LOGOS/Logo%20EXCEL.png',
+    logo: '/imagenes/logo-excel.png?v=1',
     alt: 'Logo de Excel Turbines de México',
     posicion: 'superior',
   },
@@ -60,7 +60,7 @@ const trayectoria = [
     anio: '2009',
     nombre: 'GESA',
     subtitulo: 'Grupo Especializado en Servicios Aéreos',
-    logo: '/imagenes/LOGOS/Logo%20GESA.png',
+    logo: '/imagenes/logo-gesa.png?v=1',
     alt: 'Logo de GESA',
     posicion: 'inferior',
   },
@@ -68,7 +68,7 @@ const trayectoria = [
     anio: '2024',
     nombre: 'Sky Group LLC',
     subtitulo: 'Plataforma comercial y de expansión',
-    logo: '/imagenes/LOGOS/Logo%20SKYGROUP.png',
+    logo: '/imagenes/logo-skygroup.png?v=1',
     alt: 'Logo de Sky Group',
     posicion: 'superior',
     destacado: true,
@@ -84,22 +84,22 @@ const especialidades = [
 
 const galeria = [
   {
-    fuente: '/imagenes/nosotros/imagen-institucional.png',
+    fuente: '/imagenes/imagen-institucional.png?v=1',
     alt: 'Personal operativo de Red Aviation Co. en plataforma',
     etiqueta: 'Presencia operativa',
   },
   {
-    fuente: '/imagenes/inicio/iniciohangar.png',
+    fuente: '/imagenes/hangar2.png?v=1',
     alt: 'Aeronaves ejecutivas dentro de un hangar',
     etiqueta: 'Capacidad instalada',
   },
   {
-    fuente: '/imagenes/inicio/proyectos-inicio.png',
+    fuente: '/imagenes/proyectos-inicio.png?v=1',
     alt: 'Técnico trabajando en una aeronave',
     etiqueta: 'Equipo técnico',
   },
   {
-    fuente: '/imagenes/inicio/noticias.png',
+    fuente: '/imagenes/noticias.png?v=1',
     alt: 'Aeronave ejecutiva dentro de instalaciones aeronáuticas',
     etiqueta: 'Operaciones',
   },
@@ -151,7 +151,7 @@ onBeforeUnmount(() => {
       </div>
       <div class="hero__imagen">
         <img
-          src="/imagenes/nosotros/image.png"
+          src="/imagenes/image.png?v=1"
           alt="Identidad visual de Red Aviation"
         />
         <span>{{ vista.visual.tipo }}</span>
@@ -270,7 +270,7 @@ onBeforeUnmount(() => {
       </div>
       <div class="acreditacion__distintivo">
         <img
-          src="/imagenes/nosotros/certificado.webp"
+          src="/imagenes/certificado.webp?v=1"
           alt="Distintivo de auditor acreditado IS-BAO"
         />
       </div>

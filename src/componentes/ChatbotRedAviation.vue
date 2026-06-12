@@ -14,7 +14,9 @@ const mensajesRef = ref(null)
 const mensajes = ref([{ tipo: 'bot', texto: 'Bienvenido a Red Aviation. ¿Qué servicio le interesa?' }])
 const mostrarBurbuja = ref(true)
 const indiceBurbuja = ref(0)
+const esMovil = ref(false)
 let temporizadorRotacion
+let mediaQueryMovil
 
 const mensajesBurbuja = [
   '¿Busca una aeronave para adquirir?',
@@ -48,9 +50,14 @@ function agregarMensaje(tipo, texto, imagen = '', alt = '') {
 }
 
 function alternarChat() {
+  if (esMovil.value && !abierto.value) {
+    mostrarBurbuja.value = !mostrarBurbuja.value
+    return
+  }
+
   if (abierto.value) {
     abierto.value = false
-    mostrarBurbuja.value = true
+    mostrarBurbuja.value = !esMovil.value
     reiniciar()
   } else {
     abierto.value = true
@@ -143,13 +150,29 @@ function reiniciar() {
   desplazar()
 }
 
+function actualizarVistaMovil(evento) {
+  esMovil.value = evento.matches
+
+  if (abierto.value) {
+    mostrarBurbuja.value = false
+    return
+  }
+
+  mostrarBurbuja.value = !esMovil.value
+}
+
 onMounted(() => {
+  mediaQueryMovil = window.matchMedia('(max-width: 640px)')
+  actualizarVistaMovil(mediaQueryMovil)
+  mediaQueryMovil.addEventListener('change', actualizarVistaMovil)
+
   temporizadorRotacion = window.setInterval(() => {
     indiceBurbuja.value = (indiceBurbuja.value + 1) % mensajesBurbuja.length
   }, 8000)
 })
 
 onBeforeUnmount(() => {
+  mediaQueryMovil?.removeEventListener('change', actualizarVistaMovil)
   window.clearInterval(temporizadorRotacion)
 })
 </script>
@@ -157,13 +180,27 @@ onBeforeUnmount(() => {
 <template>
   <div class="asistente">
     <Transition name="burbuja">
+      <button
+        v-if="!mostrarBurbuja && !abierto"
+        type="button"
+        class="burbuja-mini"
+        @click="mostrarBurbuja = true"
+      >
+        {{ mensajeBurbuja }}
+      </button>
+    </Transition>
+
+    <Transition name="burbuja">
       <div v-if="mostrarBurbuja && !abierto" class="burbujas-flotantes" aria-live="polite">
         <aside class="burbuja burbuja--whatsapp">
           <button type="button" class="burbuja__contenido" @click="abrirWhatsApp">
             <strong>
               <span class="burbuja__icono burbuja__icono--whatsapp" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
-                  <use href="/icons.svg#whatsapp-icon-real"></use>
+                  <path
+                    fill="currentColor"
+                    d="M20.5 3.5A11.8 11.8 0 0 0 12.1.1C5.6.1.3 5.4.3 11.9c0 2.1.6 4.2 1.6 6L.2 24l6.3-1.6a11.9 11.9 0 0 0 5.6 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.4-8.5ZM12.1 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 0 1-1.5-5.3c0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 6.9 2.9a9.8 9.8 0 0 1 2.9 7c0 5.4-4.4 9.8-9.8 9.8Zm5.4-7.3c-.3-.1-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.4-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 3 1.3 3.2c.1.2 2.2 3.4 5.4 4.7.8.3 1.3.5 1.8.6.8.2 1.5.2 2 .1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.5Z"
+                  />
                 </svg>
               </span>
               WhatsApp
@@ -176,7 +213,7 @@ onBeforeUnmount(() => {
         <aside class="burbuja" aria-live="polite">
           <button type="button" class="burbuja__contenido" @click="abrirDesdeBurbuja">
             <strong>
-              <img src="/LOGO.png" alt="" aria-hidden="true" />
+              <img src="/imagenes/LOGO.png?v=1" alt="" aria-hidden="true" />
               Red Aviation
             </strong>
             <span>{{ mensajeBurbuja }}</span>
@@ -189,12 +226,12 @@ onBeforeUnmount(() => {
     <button
       type="button"
       class="asistente__boton"
-      :aria-expanded="abierto"
+      :aria-expanded="esMovil ? mostrarBurbuja || abierto : abierto"
       aria-controls="chat-red-aviation"
-      :aria-label="abierto ? 'Cerrar asistente' : 'Abrir asistente'"
+      :aria-label="abierto ? 'Cerrar asistente' : esMovil ? 'Mostrar accesos de contacto' : 'Abrir asistente'"
       @click="alternarChat"
     >
-      <span aria-hidden="true">{{ abierto ? '×' : '✈' }}</span>
+      <span aria-hidden="true">{{ abierto || (esMovil && mostrarBurbuja) ? '×' : '✈' }}</span>
     </button>
 
     <Transition name="chat">
@@ -205,7 +242,7 @@ onBeforeUnmount(() => {
         aria-label="Asistente de Red Aviation"
       >
         <header class="chat__encabezado">
-          <img src="/LOGO.png" alt="" />
+          <img src="/imagenes/LOGO.png?v=1" alt="" />
           <div>
             <h2>{{ chatbotConfig.tituloBot }}</h2>
             <p>{{ chatbotConfig.subtitulo }}</p>
@@ -398,6 +435,25 @@ onBeforeUnmount(() => {
 
 .burbuja__contenido small {
   font-size: 0.72rem;
+}
+
+.burbuja-mini {
+  position: fixed;
+  z-index: 1000;
+  right: 92px;
+  bottom: 28px;
+  max-width: min(190px, calc(100vw - 112px));
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 113, 135, 0.3);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(20, 20, 20, 0.94);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  font-size: 0.76rem;
+  line-height: 1.25;
+  text-align: left;
 }
 
 .asistente__boton {
@@ -684,6 +740,14 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 640px) {
+  .burbuja-mini {
+    right: 84px;
+    bottom: 18px;
+    max-width: min(180px, calc(100vw - 108px));
+    padding: 9px 12px;
+    font-size: 0.72rem;
+  }
+
   .burbujas-flotantes {
     right: 14px;
     bottom: 96px;
@@ -733,6 +797,14 @@ onBeforeUnmount(() => {
     bottom: 16px;
     width: 58px;
     height: 58px;
+  }
+
+  .burbuja-mini {
+    right: 82px;
+    bottom: 20px;
+    max-width: min(160px, calc(100vw - 108px));
+    padding: 8px 11px;
+    font-size: 0.69rem;
   }
 
   .burbujas-flotantes {

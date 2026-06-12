@@ -12,21 +12,21 @@ const empresasSuperiores = [
   {
     nombre: 'GESA',
     ruta: '/gesa',
-    imagen: '/imagenes/LOGOS/Logo%20GESA.png',
+    imagen: '/imagenes/logo-gesa.png?v=1',
     alt: 'Logotipo de GESA',
     especialidad: 'Aviónica e interiores',
   },
   {
     nombre: 'CESA',
     ruta: '/cesa',
-    imagen: '/imagenes/LOGOS/Logo%20CESA.png',
+    imagen: '/imagenes/logo-cesa.png?v=1',
     alt: 'Logotipo de CESA',
     especialidad: 'Mantenimiento estructural',
   },
   {
     nombre: 'Excel Turbines',
     ruta: '/excel-turbines',
-    imagen: '/imagenes/LOGOS/Logo%20EXCEL.png',
+    imagen: '/imagenes/logo-excel.png?v=1',
     alt: 'Logotipo de Excel Turbines',
     especialidad: 'Motores de turbina',
   },
@@ -44,7 +44,7 @@ const empresasSuperiores = [
     <section class="diagrama" aria-label="Estructura del ecosistema Red Aviation">
       <div class="matriz">
         <article class="red-aviation">
-          <img src="/LOGO.png" alt="Red Aviation Company" />
+          <img src="/imagenes/LOGO.png?v=1" alt="Red Aviation Company" />
           <div>
             <span>Firma central</span>
             <h2>Red Aviation</h2>
@@ -70,7 +70,7 @@ const empresasSuperiores = [
         <div class="conector conector--inferior" aria-hidden="true" />
 
         <RouterLink to="/sky-group" class="empresa empresa--sky">
-          <img src="/imagenes/LOGOS/Logo%20SKYGROUP.png" alt="Logotipo de Sky Group" />
+          <img src="/imagenes/logo-skygroup.png?v=1" alt="Logotipo de Sky Group" />
           <strong>Sky Group</strong>
           <span>Comercialización y consultoría</span>
         </RouterLink>

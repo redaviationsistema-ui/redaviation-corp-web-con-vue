@@ -662,7 +662,7 @@ onMounted(cargarDatos)
 <template>
   <div class="cotizador">
     <section class="hero">
-      <img src="/imagenes/servicios/Vista%20general/Vueloprivado3.png" alt="Vuelo privado" />
+      <img src="/imagenes/Vueloprivado3.png?v=1" alt="Vuelo privado" />
       <div class="hero__velo"></div>
       <div class="hero__contenido">
         <p class="etiqueta">Cotización ejecutiva</p>
@@ -672,7 +672,7 @@ onMounted(cargarDatos)
     </section>
 
     <div v-if="cargando" class="cargando">
-      <img src="/LOGO.png" alt="Red Aviation Company" />
+      <img src="/imagenes/LOGO.png?v=1" alt="Red Aviation Company" />
       <span>Cargando flota y aeropuertos...</span>
     </div>
 
