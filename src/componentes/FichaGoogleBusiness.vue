@@ -13,7 +13,7 @@ const negocio = {
   comoLlegar: 'https://www.google.com/maps/search/?api=1&query=Red+Aviation+San+Nicol%C3%A1s+Tolentino',
   opiniones: 'https://www.google.com/search?q=Red+Aviation+Google+Reviews',
   compartir: 'https://redaviationcorp.com/contacto',
-  portada: '/imagenes/portada-del-negocio.png?v=1',
+  portada: '/imagenes/portada-del-negocio.png',
   portadaAlt: 'Portada del negocio Red Aviation en Google',
 }
 

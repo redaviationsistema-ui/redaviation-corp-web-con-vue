@@ -70,7 +70,7 @@ function seleccionarCategoria(categoria) {
   <main class="contenido">
     <header class="hero">
       <img
-        src="/imagenes/hangar2.png?v=1"
+        src="/imagenes/hangar2.png"
         alt="Aeronaves y operaciones técnicas de Red Aviation"
       />
       <div class="hero__contenido">

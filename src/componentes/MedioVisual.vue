@@ -84,10 +84,12 @@ function limitarVideo() {
     </div>
     <div class="medio__contenedor">
       <iframe
-        v-if="tipo === 'instagram' && fuente"
+        v-if="(tipo === 'instagram' || tipo === 'youtube') && fuente"
         :src="fuente"
         :title="alt || titulo"
         loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowtransparency="true"
         allowfullscreen
       />

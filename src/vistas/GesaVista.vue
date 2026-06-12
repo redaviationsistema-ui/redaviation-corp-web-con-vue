@@ -35,7 +35,7 @@ const carruselImagenes = [
     titulo: 'Cabina e interiores ejecutivos',
     descripcion:
       'Visual para comunicar personalización de cabina, acabados interiores y atención al detalle en proyectos especiales de GESA.',
-    imagen: '/imagenes/Interiores2.jpg?v=1',
+    imagen: '/imagenes/Interiores2.jpg',
     alt: 'Interiores ejecutivos y personalización de cabina en GESA',
   },
   {
@@ -43,7 +43,7 @@ const carruselImagenes = [
     titulo: 'Integración operativa en campo',
     descripcion:
       'Registro visual de trabajo aplicado para reforzar instalación, soporte técnico y continuidad operativa dentro de GESA.',
-    imagen: '/imagenes/IMG_7929.jpg?v=1',
+    imagen: '/imagenes/IMG_7929.jpg',
     alt: 'Integración operativa y soporte técnico en GESA',
   },
   {
@@ -51,7 +51,7 @@ const carruselImagenes = [
     titulo: 'Ingeniería y trabajo de aviónica',
     descripcion:
       'Registro visual de integración técnica, detalle de componentes y ejecución especializada dentro del entorno de GESA.',
-    imagen: '/imagenes/IngeAvionica.png?v=1',
+    imagen: '/imagenes/IngeAvionica.png',
     alt: 'Ingeniería de aviónica en instalaciones de GESA',
   },
   {
@@ -59,7 +59,7 @@ const carruselImagenes = [
     titulo: 'Intervención técnica con enfoque operativo',
     descripcion:
       'Visual para reforzar personalización, instalación y mejora de sistemas con criterio técnico y continuidad operativa.',
-    imagen: '/imagenes/IngeAvionica1.png?v=1',
+    imagen: '/imagenes/IngeAvionica1.png',
     alt: 'Trabajo técnico de aviónica y componentes en GESA',
   },
   {
@@ -67,13 +67,13 @@ const carruselImagenes = [
     titulo: 'Prototipos y desarrollo aplicado',
     descripcion:
       'Imagen adicional para comunicar capacidad de diseño, adaptación y ejecución en proyectos especializados.',
-    imagen: '/imagenes/Prototipos1.jpg?v=1',
+    imagen: '/imagenes/Prototipos1.jpg',
     alt: 'Prototipos y desarrollo técnico aplicado en GESA',
   },
 ]
 
 const logoTitulo = {
-  src: '/imagenes/logo-gesa.png?v=1',
+  src: '/imagenes/logo-gesa.png',
   alt: 'Logo de GESA',
 }
 </script>

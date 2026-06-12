@@ -1,4 +1,4 @@
-const heroPrincipal = '/imagenes/hero.png?v=1'
+const heroPrincipal = '/imagenes/hero.png'
 
 export const vistas = [
   {
@@ -75,7 +75,7 @@ export const vistas = [
       etiqueta: 'Historia y presencia',
       tipo: 'Presencia operativa',
       detalle: 'Nuestro equipo participa directamente en la coordinación y ejecución de operaciones aeronáuticas.',
-      imagen: '/imagenes/imagen-institucional.png?v=1',
+      imagen: '/imagenes/imagen-institucional.png',
       alt: 'Personal operativo de Red Aviation Co. en plataforma',
     },
     animaciones: ['Atención personalizada', 'Excelencia operativa', 'Desarrollo estratégico'],
@@ -382,7 +382,7 @@ export const vistas = [
       tipo: '',
       detalle:
         'Toda operación comienza con una revisión privada de sus objetivos, el activo involucrado y el alcance del mandato.',
-      imagen: '/imagenes/imagen-institucional.png?v=1',
+      imagen: '/imagenes/imagen-institucional.png',
       alt: 'Imagen institucional de Red Aviation Co. para la vista de contacto',
     },
     animaciones: ['Atención confidencial', 'Respuesta especializada', 'Definición del mandato'],

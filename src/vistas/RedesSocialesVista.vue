@@ -86,7 +86,7 @@ const atributosHero = [
 
       <div class="hero__visual">
         <img
-          src="/imagenes/preesenciadigital.png?v=1"
+          src="/imagenes/preesenciadigital.png"
           alt="Presencia digital de Red Aviation con enfoque corporativo y comercial"
         />
         <div class="hero__overlay">

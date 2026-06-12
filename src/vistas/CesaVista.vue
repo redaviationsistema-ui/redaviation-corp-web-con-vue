@@ -1,7 +1,7 @@
 <script setup>
 import CarruselContenido from '../componentes/CarruselContenido.vue'
 
-const heroPrincipal = '/imagenes/hero.png?v=1'
+const heroPrincipal = '/imagenes/hero.png'
 
 const etapas = ['Recepción', 'Inspección', 'Reparación', 'Certificación', 'Entrega']
 
@@ -19,7 +19,7 @@ const capacidades = [
 const carruselImagenes = []
 
 const logoTitulo = {
-  src: '/imagenes/logo-cesa.png?v=1',
+  src: '/imagenes/logo-cesa.png',
   alt: 'Logo de CESA',
 }
 </script>

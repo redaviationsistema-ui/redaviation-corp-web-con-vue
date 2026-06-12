@@ -6,7 +6,7 @@ import { pieSitio } from '../datos/sitio'
   <footer class="pie">
     <div class="pie__interior">
       <section class="pie__columna">
-        <img src="/imagenes/LOGO.png?v=1" alt="Red Aviation Co." class="pie__logo" />
+        <img src="/imagenes/logo-red-aviation-corp.png" alt="Red Aviation Co." class="pie__logo" />
         <p>{{ pieSitio.descripcion }}</p>
       </section>
 
@@ -81,11 +81,11 @@ import { pieSitio } from '../datos/sitio'
 
 .pie__logo {
   display: block;
-  width: 150px;
-  height: 92px;
-  margin: -12px 0 2px;
-  object-fit: cover;
-  object-position: center;
+  width: min(100%, 280px);
+  height: auto;
+  margin: -4px 0 10px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .pie ul {

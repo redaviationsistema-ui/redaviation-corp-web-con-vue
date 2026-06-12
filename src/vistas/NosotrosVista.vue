@@ -44,7 +44,7 @@ const trayectoria = [
     anio: '2001',
     nombre: 'CESA',
     subtitulo: 'Centro de Servicio Aeronáutico',
-    logo: '/imagenes/logo-cesa.png?v=1',
+    logo: '/imagenes/logo-cesa.png',
     alt: 'Logo de CESA',
     posicion: 'inferior',
   },
@@ -52,7 +52,7 @@ const trayectoria = [
     anio: '2007',
     nombre: 'Excel Turbines de México',
     subtitulo: 'Especialistas en motores de turbina',
-    logo: '/imagenes/logo-excel.png?v=1',
+    logo: '/imagenes/logo-excel.png',
     alt: 'Logo de Excel Turbines de México',
     posicion: 'superior',
   },
@@ -60,7 +60,7 @@ const trayectoria = [
     anio: '2009',
     nombre: 'GESA',
     subtitulo: 'Grupo Especializado en Servicios Aéreos',
-    logo: '/imagenes/logo-gesa.png?v=1',
+    logo: '/imagenes/logo-gesa.png',
     alt: 'Logo de GESA',
     posicion: 'inferior',
   },
@@ -68,7 +68,7 @@ const trayectoria = [
     anio: '2024',
     nombre: 'Sky Group LLC',
     subtitulo: 'Plataforma comercial y de expansión',
-    logo: '/imagenes/logo-skygroup.png?v=1',
+    logo: '/imagenes/logo-skygroup.png',
     alt: 'Logo de Sky Group',
     posicion: 'superior',
     destacado: true,
@@ -84,22 +84,22 @@ const especialidades = [
 
 const galeria = [
   {
-    fuente: '/imagenes/imagen-institucional.png?v=1',
+    fuente: '/imagenes/imagen-institucional.png',
     alt: 'Personal operativo de Red Aviation Co. en plataforma',
     etiqueta: 'Presencia operativa',
   },
   {
-    fuente: '/imagenes/hangar2.png?v=1',
+    fuente: '/imagenes/hangar2.png',
     alt: 'Aeronaves ejecutivas dentro de un hangar',
     etiqueta: 'Capacidad instalada',
   },
   {
-    fuente: '/imagenes/proyectos-inicio.png?v=1',
+    fuente: '/imagenes/proyectos-inicio.png',
     alt: 'Técnico trabajando en una aeronave',
     etiqueta: 'Equipo técnico',
   },
   {
-    fuente: '/imagenes/noticias.png?v=1',
+    fuente: '/imagenes/noticias.png',
     alt: 'Aeronave ejecutiva dentro de instalaciones aeronáuticas',
     etiqueta: 'Operaciones',
   },
@@ -151,7 +151,7 @@ onBeforeUnmount(() => {
       </div>
       <div class="hero__imagen">
         <img
-          src="/imagenes/image.png?v=1"
+          src="/imagenes/image.png"
           alt="Identidad visual de Red Aviation"
         />
         <span>{{ vista.visual.tipo }}</span>
@@ -270,7 +270,7 @@ onBeforeUnmount(() => {
       </div>
       <div class="acreditacion__distintivo">
         <img
-          src="/imagenes/certificado.webp?v=1"
+          src="/imagenes/certificado.webp"
           alt="Distintivo de auditor acreditado IS-BAO"
         />
       </div>

@@ -15,28 +15,28 @@ const diapositivas = [
     etiqueta: 'Comercialización',
     titulo: 'Representación de aeronaves',
     descripcion: 'Valuación, posicionamiento, negociación y cierre con criterio de mercado.',
-    imagen: '/imagenes/Aeronavelista.png?v=1',
+    imagen: '/imagenes/Aeronavelista.png',
     alt: 'Aeronave ejecutiva presentada para comercialización',
   },
   {
     etiqueta: 'Gestión',
     titulo: 'Administración coordinada',
     descripcion: 'Control operativo, documental y financiero para propietarios y operadores.',
-    imagen: '/imagenes/inspeccionando.png?v=1',
+    imagen: '/imagenes/inspeccionando.png',
     alt: 'Equipo coordinando la gestión de una aeronave ejecutiva',
   },
   {
     etiqueta: 'Mantenimiento',
     titulo: 'Capacidad técnica especializada',
     descripcion: 'Inspección, mantenimiento y seguimiento técnico con trazabilidad.',
-    imagen: '/imagenes/tecnicomotor.png?v=1',
+    imagen: '/imagenes/tecnicomotor.png',
     alt: 'Técnico realizando mantenimiento a una aeronave',
   },
   {
     etiqueta: 'Operaciones',
     titulo: 'Movilidad aérea privada',
     descripcion: 'Coordinación de vuelos, misiones especiales y requerimientos logísticos.',
-    imagen: '/imagenes/Vueloprivado2.png?v=1',
+    imagen: '/imagenes/Vueloprivado2.png',
     alt: 'Aeronave ejecutiva preparada para una operación aérea',
   },
 ]
@@ -46,7 +46,7 @@ const serviciosPrincipales = [
     numero: '01',
     titulo: 'Compra y venta',
     descripcion: 'Representación durante búsqueda, valuación, revisión, negociación y cierre.',
-    imagen: '/imagenes/Aeronavelista.png?v=1',
+    imagen: '/imagenes/Aeronavelista.png',
     ruta: '/servicios/compra-venta-aeronaves',
     items: ['Valuación', 'Difusión', 'Negociación', 'Revisión integral'],
   },
@@ -54,7 +54,7 @@ const serviciosPrincipales = [
     numero: '02',
     titulo: 'Administración de aeronaves',
     descripcion: 'Gestión de programación, tripulaciones, documentación, mantenimiento y costos.',
-    imagen: '/imagenes/Administracion.png?v=1',
+    imagen: '/imagenes/Administracion.png',
     ruta: '/servicios/administracion-aeronaves',
     items: ['Operación', 'Tripulación', 'Cumplimiento', 'Control de costos'],
   },
@@ -62,7 +62,7 @@ const serviciosPrincipales = [
     numero: '03',
     titulo: 'Inspección y mantenimiento',
     descripcion: 'Coordinación técnica para proteger seguridad, disponibilidad y valor del activo.',
-    imagen: '/imagenes/servicios1.png?v=1',
+    imagen: '/imagenes/servicios1.png',
     ruta: '/servicios/inspecciones-precompra',
     items: ['Inspecciones', 'Componentes', 'Motores', 'Aviónica'],
   },
@@ -70,7 +70,7 @@ const serviciosPrincipales = [
     numero: '04',
     titulo: 'Vuelos privados',
     descripcion: 'Movilidad aérea de acuerdo con la misión, el itinerario y la operación requerida.',
-    imagen: '/imagenes/Vueloprivado3.png?v=1',
+    imagen: '/imagenes/Vueloprivado3.png',
     ruta: '/servicios/taxi-aereo',
     items: ['Ejecutivo', 'Corporativo', 'Taxi aéreo', 'Ambulancia aérea'],
   },
@@ -78,7 +78,7 @@ const serviciosPrincipales = [
     numero: '05',
     titulo: 'Consultoría aeronáutica',
     descripcion: 'Análisis técnico, comercial y operativo para decisiones de alto impacto.',
-    imagen: '/imagenes/tecnicomotor.png?v=1',
+    imagen: '/imagenes/tecnicomotor.png',
     ruta: '/contacto',
     items: ['Planeación', 'Estrategia', 'Evaluación', 'Acompañamiento'],
   },
@@ -102,20 +102,6 @@ const proceso = [
     descripcion: 'Damos seguimiento hasta el cierre y la continuidad operativa.',
   },
 ]
-
-const imagenesServicios = {
-  'compra-venta-aeronaves': '/imagenes/Compra.png?v=1',
-  'administracion-aeronaves': '/imagenes/servicios-Servicios-especializados-Administracion.png?v=1',
-  'inspecciones-precompra': '/imagenes/Inspecciones.png?v=1',
-  'importaciones-exportaciones': '/imagenes/Importaciones.png?v=1',
-  'taxi-aereo': '/imagenes/taxi-aereo-servicio.png?v=1',
-  'ambulancia-aerea': '/imagenes/Ambulacia.png?v=1',
-  'carga-aerea': '/imagenes/Cargas.png?v=1',
-  'venta-partes': '/imagenes/Ventas.png?v=1',
-  'taller-motores': '/imagenes/Tallerdemotor.png?v=1',
-  'mantenimiento-militar': '/imagenes/Inspecciones.png?v=1',
-  'avionica-componentes-instrumentos': '/imagenes/Avionica.png?v=1',
-}
 
 const diapositiva = computed(() => diapositivas[diapositivaActual.value])
 const servicioSeleccionado = computed(() => serviciosPrincipales[servicioActivo.value])
@@ -317,12 +303,18 @@ onBeforeUnmount(() => {
           :to="servicio.ruta"
           class="especializado"
         >
-          <img :src="imagenesServicios[servicio.id]" :alt="servicio.titulo" loading="lazy" />
-          <div class="especializado__velo"></div>
           <div class="especializado__contenido">
-            <span>{{ String(indice + 1).padStart(2, '0') }}</span>
-            <strong>{{ servicio.titulo }}</strong>
-            <small>Ver servicio &rarr;</small>
+            <div class="especializado__superior">
+              <span>{{ String(indice + 1).padStart(2, '0') }}</span>
+              <small>Vista dedicada</small>
+            </div>
+            <div class="especializado__cuerpo">
+              <strong>{{ servicio.titulo }}</strong>
+              <p>{{ servicio.descripcion }}</p>
+            </div>
+            <div class="especializado__inferior">
+              <small>Ver servicio &rarr;</small>
+            </div>
           </div>
         </RouterLink>
       </div>
@@ -763,40 +755,72 @@ h3 {
 .especializados__rejilla {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 .especializado {
   position: relative;
-  min-height: 310px;
+  min-height: 280px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 22px;
-  background: #111;
+  background:
+    radial-gradient(circle at top right, rgba(255, 77, 104, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0.96), rgba(10, 10, 10, 1));
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.especializado img,
-.especializado__velo {
+.especializado::before {
   position: absolute;
-  inset: 0;
+  inset: 0 auto auto 0;
   width: 100%;
-  height: 100%;
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, rgba(255, 77, 104, 0.55), transparent 55%);
 }
 
-.especializado img {
-  object-fit: cover;
-  transition: transform 450ms ease;
+.especializado:nth-child(5n + 1),
+.especializado:nth-child(5n + 4) {
+  min-height: 330px;
 }
 
-.especializado__velo {
-  background: linear-gradient(0deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.08) 74%);
+.especializado:nth-child(5n + 2) {
+  background:
+    radial-gradient(circle at top right, rgba(98, 181, 255, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0.96), rgba(10, 10, 10, 1));
+}
+
+.especializado:nth-child(5n + 3) {
+  background:
+    radial-gradient(circle at top right, rgba(255, 190, 92, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0.96), rgba(10, 10, 10, 1));
 }
 
 .especializado__contenido {
-  position: absolute;
-  inset: auto 0 0;
   display: grid;
-  gap: 7px;
-  padding: 24px;
+  min-height: 100%;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+  padding: 24px 24px 22px;
+}
+
+.especializado__superior,
+.especializado__inferior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.especializado__superior {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.especializado__cuerpo {
+  display: grid;
+  align-content: end;
+  gap: 10px;
 }
 
 .especializado__contenido span,
@@ -807,13 +831,36 @@ h3 {
   text-transform: uppercase;
 }
 
-.especializado__contenido strong {
-  color: #fff;
-  font-size: 1.14rem;
+.especializado__superior small {
+  color: rgba(255, 255, 255, 0.46);
 }
 
-.especializado:hover img {
-  transform: scale(1.06);
+.especializado__contenido strong {
+  color: #fff;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.1;
+}
+
+.especializado__contenido p {
+  margin: 0;
+  color: rgba(217, 217, 217, 0.68);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+.especializado__inferior small {
+  display: inline-flex;
+  width: fit-content;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 77, 104, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 77, 104, 0.08);
+}
+
+.especializado:hover {
+  border-color: rgba(255, 77, 104, 0.34);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
 }
 
 .cierre {
@@ -876,6 +923,11 @@ h3 {
 
   .especializados__rejilla {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .especializado:nth-child(5n + 1),
+  .especializado:nth-child(5n + 4) {
+    min-height: 300px;
   }
 }
 
@@ -1027,6 +1079,11 @@ h3 {
 
   .especializado__contenido {
     padding: 16px 14px;
+  }
+
+  .especializado:nth-child(5n + 1),
+  .especializado:nth-child(5n + 4) {
+    min-height: 230px;
   }
 
   .cierre {

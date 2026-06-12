@@ -213,7 +213,7 @@ onBeforeUnmount(() => {
         <aside class="burbuja" aria-live="polite">
           <button type="button" class="burbuja__contenido" @click="abrirDesdeBurbuja">
             <strong>
-              <img src="/imagenes/LOGO.png?v=1" alt="" aria-hidden="true" />
+              <img src="/imagenes/logoss.png" alt="" aria-hidden="true" />
               Red Aviation
             </strong>
             <span>{{ mensajeBurbuja }}</span>
@@ -242,7 +242,7 @@ onBeforeUnmount(() => {
         aria-label="Asistente de Red Aviation"
       >
         <header class="chat__encabezado">
-          <img src="/imagenes/LOGO.png?v=1" alt="" />
+          <img src="/imagenes/logoss.png" alt="" />
           <div>
             <h2>{{ chatbotConfig.tituloBot }}</h2>
             <p>{{ chatbotConfig.subtitulo }}</p>

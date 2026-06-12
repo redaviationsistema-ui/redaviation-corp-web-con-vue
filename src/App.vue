@@ -154,7 +154,7 @@ onBeforeUnmount(() => {
         </span>
         <div class="intro__contenido">
           <img
-            src="/imagenes/25ANIVERSARIO.png?v=1"
+            src="/imagenes/25ANIVERSARIO.png"
             alt="Red Aviation 25 aniversario"
             class="intro__aniversario-imagen"
           />

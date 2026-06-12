@@ -1,7 +1,7 @@
 <script setup>
 import CarruselContenido from '../componentes/CarruselContenido.vue'
 
-const heroPrincipal = '/imagenes/hero.png?v=1'
+const heroPrincipal = '/imagenes/hero.png'
 
 const capacidades = [
   'Inspecciones de motores',
@@ -37,7 +37,7 @@ const carruselImagenes = [
     titulo: 'Inspección técnica en campo',
     descripcion:
       'Registro visual para reforzar diagnóstico, revisión especializada y lectura técnica de condición en Excel Turbines.',
-    imagen: '/imagenes/IMG_7684.jpg?v=1',
+    imagen: '/imagenes/IMG_7684.jpg',
     alt: 'Inspección técnica de motor en Excel Turbines',
   },
   {
@@ -45,7 +45,7 @@ const carruselImagenes = [
     titulo: 'Trabajo especializado de mantenimiento',
     descripcion:
       'Visual adicional para comunicar intervención técnica, continuidad operativa y soporte industrial en motores de turbina.',
-    imagen: '/imagenes/IMG_7685.jpg?v=1',
+    imagen: '/imagenes/IMG_7685.jpg',
     alt: 'Mantenimiento especializado de turbinas en Excel Turbines',
   },
   {
@@ -53,7 +53,7 @@ const carruselImagenes = [
     titulo: 'Capacidad técnica en taller',
     descripcion:
       'Imagen para comunicar infraestructura operativa, atención especializada y trabajo técnico aplicado en Excel Turbines.',
-    imagen: '/imagenes/EXCEL.jpg?v=1',
+    imagen: '/imagenes/EXCEL.jpg',
     alt: 'Capacidad técnica en taller de Excel Turbines',
   },
   {
@@ -61,13 +61,13 @@ const carruselImagenes = [
     titulo: 'Soporte técnico y ejecución',
     descripcion:
       'Visual adicional para reforzar procesos de mantenimiento, revisión y soporte técnico en motores de turbina.',
-    imagen: '/imagenes/EXCELL.jpg?v=1',
+    imagen: '/imagenes/EXCELL.jpg',
     alt: 'Soporte técnico y ejecución en Excel Turbines',
   },
 ]
 
 const logoTitulo = {
-  src: '/imagenes/logo-excel.png?v=1',
+  src: '/imagenes/logo-excel.png',
   alt: 'Logo de Excel Turbines de México',
 }
 </script>

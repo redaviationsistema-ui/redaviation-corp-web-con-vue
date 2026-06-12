@@ -20,7 +20,7 @@ export async function generarPdfCotizacion({
   internacional,
 }) {
   const pdf = new jsPDF({ compress: true })
-  const logo = await cargarImagen('/imagenes/LOGO.png?v=1')
+  const logo = await cargarImagen('/imagenes/logoss.png')
 
   pdf.setFillColor(8, 8, 8)
   pdf.rect(0, 0, 210, 297, 'F')

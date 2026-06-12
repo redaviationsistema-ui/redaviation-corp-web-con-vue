@@ -129,7 +129,17 @@ defineProps({
 
       <div class="destacado-video__panel">
         <div class="destacado-video__media">
+          <iframe
+            v-if="pagina.multimediaDestacada.video?.tipo === 'youtube'"
+            :src="pagina.multimediaDestacada.video?.fuente"
+            :title="pagina.multimediaDestacada.video?.alt || pagina.multimediaDestacada.titulo"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          />
           <video
+            v-else
             :src="pagina.multimediaDestacada.video?.fuente"
             :autoplay="pagina.multimediaDestacada.video?.reproduccionAutomatica"
             :muted="pagina.multimediaDestacada.video?.silenciado ?? true"
@@ -231,14 +241,14 @@ defineProps({
 }
 
 .destacado-video__panel {
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
   align-items: stretch;
 }
 
 .destacado-video__media {
   overflow: hidden;
-  min-height: 320px;
-  max-height: 360px;
+  min-height: 420px;
+  max-height: 520px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
 }
@@ -248,6 +258,14 @@ defineProps({
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.destacado-video__media iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
 }
 
 .destacado-video__texto {

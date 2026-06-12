@@ -3,7 +3,7 @@ export const flujosChatbot = [
     id: 'taxi',
     icono: '➤',
     titulo: 'Cotizar Taxi Aéreo',
-    imagen: '/imagenes/taxi-aereo.png?v=1',
+    imagen: '/imagenes/taxi-aereo.png',
     alt: 'Servicio ejecutivo de taxi aéreo',
     descripcion: 'Cotización de vuelos privados nacionales e internacionales bajo demanda.',
     preguntas: [
@@ -22,7 +22,7 @@ export const flujosChatbot = [
     id: 'compra',
     icono: '✈',
     titulo: 'Comprar Aeronave',
-    imagen: '/imagenes/Compraventa.png?v=1',
+    imagen: '/imagenes/Compraventa.png',
     alt: 'Jet ejecutivo representado para venta',
     descripcion: 'Asesoría especializada para localizar y adquirir aeronaves ejecutivas.',
     preguntas: [
@@ -39,7 +39,7 @@ export const flujosChatbot = [
     id: 'venta',
     icono: '⇄',
     titulo: 'Vender Aeronave',
-    imagen: '/imagenes/Ventas.png?v=1',
+    imagen: '/imagenes/Ventas.png',
     alt: 'Representación comercial para vender una aeronave',
     descripcion: 'Representación y acompañamiento comercial para vender aeronaves ejecutivas.',
     preguntas: [
@@ -57,7 +57,7 @@ export const flujosChatbot = [
     id: 'administracion',
     icono: '▤',
     titulo: 'Administración de Aeronaves',
-    imagen: '/imagenes/Administracion.png?v=1',
+    imagen: '/imagenes/Administracion.png',
     alt: 'Administración integral de aeronaves',
     descripcion: 'Gestión de operación, mantenimiento, tripulación y documentación.',
     preguntas: [
@@ -73,7 +73,7 @@ export const flujosChatbot = [
     id: 'precompra',
     icono: '⌕',
     titulo: 'Inspección Precompra',
-    imagen: '/imagenes/inspeccionprecompra.png?v=1',
+    imagen: '/imagenes/inspeccionprecompra.png',
     alt: 'Técnico realizando una inspección precompra',
     descripcion: 'Revisión técnica y documental antes de adquirir una aeronave.',
     preguntas: [
@@ -90,7 +90,7 @@ export const flujosChatbot = [
     id: 'motores',
     icono: '⚙',
     titulo: 'Taller de Motores',
-    imagen: '/imagenes/tallermotores.png?v=1',
+    imagen: '/imagenes/tallermotores.png',
     alt: 'Técnico trabajando en un motor aeronáutico',
     descripcion: 'Inspección, diagnóstico, mantenimiento y reparación de motores.',
     preguntas: [
