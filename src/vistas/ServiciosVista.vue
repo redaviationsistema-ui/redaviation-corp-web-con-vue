@@ -105,6 +105,7 @@ const proceso = [
 
 const diapositiva = computed(() => diapositivas[diapositivaActual.value])
 const servicioSeleccionado = computed(() => serviciosPrincipales[servicioActivo.value])
+const serviciosIndividualesInvertidos = computed(() => [...serviciosIndividuales].reverse())
 
 function cambiarDiapositiva(indice) {
   diapositivaActual.value = (indice + diapositivas.length) % diapositivas.length
@@ -298,7 +299,7 @@ onBeforeUnmount(() => {
 
       <div class="especializados__rejilla">
         <RouterLink
-          v-for="(servicio, indice) in serviciosIndividuales"
+          v-for="(servicio, indice) in serviciosIndividualesInvertidos"
           :key="servicio.id"
           :to="servicio.ruta"
           class="especializado"
