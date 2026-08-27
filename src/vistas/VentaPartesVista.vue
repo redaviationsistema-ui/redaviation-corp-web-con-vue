@@ -14,7 +14,6 @@ const columnasObjetivo = [
   'PartNumber',
   'Description',
   'Manufacturer',
-  'AircraftType',
 ]
 
 const columnas = computed(() => {
@@ -50,6 +49,7 @@ const partesFiltradas = computed(() => {
 })
 
 function etiquetaColumna(columna) {
+  if (columna === 'Manufacturer') return 'Equipment Manufacturer'
   return columna
 }
 
