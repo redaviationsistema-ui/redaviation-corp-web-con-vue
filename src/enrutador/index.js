@@ -22,6 +22,8 @@ const componenteRedesSociales = () => import('../vistas/RedesSocialesVista.vue')
 const componenteVentaPartes = () => import('../vistas/VentaPartesVista.vue')
 const componenteCotizador = () => import('../vistas/CotizadorVista.vue')
 const componenteAvisoPrivacidad = () => import('../vistas/AvisoPrivacidadVista.vue')
+const componentePoliticaCookies = () => import('../vistas/PoliticaCookiesVista.vue')
+const componenteTerminosCondiciones = () => import('../vistas/TerminosCondicionesVista.vue')
 
 const rutas = vistas.map((vista) => ({
   path: vista.ruta,
@@ -84,6 +86,28 @@ const rutasHerramientas = [
       descripcion:
         'Conozca el aviso de privacidad aplicable al tratamiento de datos personales relacionado con servicios aeronáuticos coordinados por RED AVIATION COMPANY.',
       palabrasClave: 'aviso de privacidad, datos personales, red sky group, red aviation',
+    },
+  },
+  {
+    path: '/politica-de-cookies',
+    name: 'politica-cookies',
+    component: componentePoliticaCookies,
+    meta: {
+      titulo: 'Política de Cookies | Red Aviation Co.',
+      descripcion:
+        'Consulte la política de cookies aplicable al sitio web de RED AVIATION COMPANY, S.A. DE C.V.',
+      palabrasClave: 'política de cookies, cookies, google analytics, red aviation',
+    },
+  },
+  {
+    path: '/terminos-y-condiciones',
+    name: 'terminos-condiciones',
+    component: componenteTerminosCondiciones,
+    meta: {
+      titulo: 'Términos y Condiciones | Red Aviation Co.',
+      descripcion:
+        'Revise los términos y condiciones de uso del sitio web de RED AVIATION COMPANY, S.A. DE C.V.',
+      palabrasClave: 'términos y condiciones, legal, sitio web, red aviation',
     },
   },
 ]

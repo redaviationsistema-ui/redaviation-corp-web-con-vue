@@ -449,8 +449,8 @@ export const pieSitio = {
   contacto: ['ventas@redaviationcorp.com', 'sales@redskyg.com', '+52 55 8618 6576', 'WhatsApp disponible'],
   legales: [
     { etiqueta: 'Aviso de Privacidad', ruta: '/aviso-de-privacidad' },
-    { etiqueta: 'Política de Cookies' },
-    { etiqueta: 'Términos y Condiciones' },
+    { etiqueta: 'Política de Cookies', ruta: '/politica-de-cookies' },
+    { etiqueta: 'Términos y Condiciones', ruta: '/terminos-y-condiciones' },
   ],
 }
 
