@@ -21,6 +21,7 @@ const componenteEcosistema = () => import('../vistas/EcosistemaVista.vue')
 const componenteRedesSociales = () => import('../vistas/RedesSocialesVista.vue')
 const componenteVentaPartes = () => import('../vistas/VentaPartesVista.vue')
 const componenteCotizador = () => import('../vistas/CotizadorVista.vue')
+const componenteAvisoPrivacidad = () => import('../vistas/AvisoPrivacidadVista.vue')
 
 const rutas = vistas.map((vista) => ({
   path: vista.ruta,
@@ -72,6 +73,17 @@ const rutasHerramientas = [
       descripcion:
         'Solicite una cotización de vuelo privado con ruta, fecha, pasajeros y aeronave preferida.',
       palabrasClave: 'cotizador vuelo privado, cotización jet privado, vuelos privados',
+    },
+  },
+  {
+    path: '/aviso-de-privacidad',
+    name: 'aviso-privacidad',
+    component: componenteAvisoPrivacidad,
+    meta: {
+      titulo: 'Aviso de Privacidad | Red Aviation Co.',
+      descripcion:
+        'Conozca el aviso de privacidad aplicable al tratamiento de datos personales relacionado con servicios aeronáuticos coordinados por RED AVIATION COMPANY.',
+      palabrasClave: 'aviso de privacidad, datos personales, red sky group, red aviation',
     },
   },
 ]

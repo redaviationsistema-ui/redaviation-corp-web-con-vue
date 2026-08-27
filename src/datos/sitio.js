@@ -447,7 +447,11 @@ export const pieSitio = {
   navegacionRapida: ['Inicio', 'Nosotros', 'Ecosistema', 'Servicios', 'Soluciones Digitales', 'Videos y contenido', 'Contacto'],
   servicios: ['Compra y Venta', 'Vuelos Privados', 'Gestión de Aeronaves', 'Mantenimiento', 'Consultoría'],
   contacto: ['ventas@redaviationcorp.com', 'sales@redskyg.com', '+52 55 8618 6576', 'WhatsApp disponible'],
-  legales: ['Aviso de Privacidad', 'Política de Cookies', 'Términos y Condiciones'],
+  legales: [
+    { etiqueta: 'Aviso de Privacidad', ruta: '/aviso-de-privacidad' },
+    { etiqueta: 'Política de Cookies' },
+    { etiqueta: 'Términos y Condiciones' },
+  ],
 }
 
 export function obtenerVista(id) {

@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import { pieSitio } from '../datos/sitio'
 </script>
 
@@ -34,7 +35,12 @@ import { pieSitio } from '../datos/sitio'
 
     <div class="pie__legal">
       <div class="pie__legal-enlaces">
-        <span v-for="item in pieSitio.legales" :key="item">{{ item }}</span>
+        <template v-for="item in pieSitio.legales" :key="item.etiqueta">
+          <RouterLink v-if="item.ruta" :to="item.ruta" class="pie__legal-enlace">
+            {{ item.etiqueta }}
+          </RouterLink>
+          <span v-else>{{ item.etiqueta }}</span>
+        </template>
       </div>
       <span>Todos los derechos reservados © Red Aviation Co.</span>
     </div>
@@ -109,6 +115,15 @@ import { pieSitio } from '../datos/sitio'
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+}
+
+.pie__legal-enlace {
+  transition: color 180ms ease;
+}
+
+.pie__legal-enlace:hover,
+.pie__legal-enlace:focus-visible {
+  color: #ffffff;
 }
 
 @media (max-width: 960px) {
